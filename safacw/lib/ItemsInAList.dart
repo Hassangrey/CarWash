@@ -10,8 +10,22 @@ class ItemsInAList extends StatelessWidget {
   final List<Items> items = [new Items(
       title: 'Small Car 1',
       price: 15,
-      imgPath: 'images/smallcar.png'
-  )];
+      imgPath: 'images/smallcar.png',
+
+  ),
+    new Items(
+    title: 'Small Car 2',
+    price: 15,
+    imgPath: 'images/smallcar.png',
+    ),
+
+    new Items(
+      title: 'Small Car 3',
+      price: 15,
+      imgPath: 'images/smallcar.png',
+    ),
+
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +37,6 @@ class ItemsInAList extends StatelessWidget {
           Cards(
               item: items[0],
               onPress: () {
-                Navigator.of(context).pop();
                 Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
 
                 // deails page
@@ -31,8 +44,7 @@ class ItemsInAList extends StatelessWidget {
           Cards(
               item: items[1],
               onPress: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
+                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[1]);
               }),
           Cards(
               item: new Items(
@@ -41,8 +53,7 @@ class ItemsInAList extends StatelessWidget {
                   imgPath: 'images/smallcar.png'
               ),
               onPress: () {
-                // deails page
-              }),
+                Navigator.pushNamed(context, ItemDetailsPage.id, arguments: items[2]);              }),
 
         ],
       ),

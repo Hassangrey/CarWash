@@ -7,14 +7,14 @@ import 'Models/Items.dart';
 import 'WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
+
 void main() => runApp(Safa());
 
 class Safa extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      initialRoute: '/welcomePage',
+      initialRoute: WelcomePage.id,
       onGenerateRoute: onGenerateRoute,
 
       /* routes: {
@@ -38,27 +38,26 @@ class Safa extends StatelessWidget {
     );
   }
 }
+
 Route? onGenerateRoute(RouteSettings routeSettings) {
   //if (routeSettings.name == '/welcomePage') {
-    //final value = routeSettings.arguments as String; // Retrieve the value.
-    //return MaterialPageRoute(builder: (context) => DetailTask(value));
+  //final value = routeSettings.arguments as String; // Retrieve the value.
+  //return MaterialPageRoute(builder: (context) => DetailTask(value));
   //}
-  if (routeSettings.name == '/welcomePage') {
+  if (routeSettings.name == WelcomePage.id) {
     return MaterialPageRoute(builder: (context) => WelcomePage());
-  }
-
-  else if (routeSettings.name == '/ItemDetailsPage') {
+  } else if (routeSettings.name == SlideMenu.id) {
+    return MaterialPageRoute(builder: (_) => SlideMenu());
+  } else if (routeSettings.name == SettingsPage.id) {
+    return MaterialPageRoute(builder: (_) => SettingsPage());
+  } else if (routeSettings.name == morePage.id) {
+    return MaterialPageRoute(builder: (_) => morePage());
+  } else if (routeSettings.name == carWashMain.id) {
+    return MaterialPageRoute(builder: (_) => carWashMain());
+  } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Items; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));
-  }
-  else if (routeSettings.name == carWashMain.id) {
-    return MaterialPageRoute(builder: (_) => carWashMain());
-  }
-  else if(routeSettings.name == '/') {
-    return MaterialPageRoute(builder: (context) => morePage());
-  }
-
-  else {
+  } else {
     return null;
   }
 }

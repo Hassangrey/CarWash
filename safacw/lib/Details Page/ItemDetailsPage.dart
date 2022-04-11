@@ -7,7 +7,7 @@ import '../Models/Items.dart';
 
 class ItemDetailsPage extends StatelessWidget {
   const ItemDetailsPage(this.items, {Key? key}) : super(key: key);
-  static const String id = 'ItemDetailsPage';
+  static const String id = '/ItemDetailsPage';
   final Items items;
 //  final Items item;
 
