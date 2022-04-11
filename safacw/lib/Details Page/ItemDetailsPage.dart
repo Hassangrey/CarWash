@@ -6,8 +6,9 @@ import 'package:safacw/HeadImage.dart';
 import '../Models/Items.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-  // const ItemDetailsPage({ required this.item});
+  const ItemDetailsPage(this.items, {Key? key}) : super(key: key);
   static const String id = 'ItemDetailsPage';
+  final Items items;
 //  final Items item;
 
 
@@ -20,12 +21,12 @@ class ItemDetailsPage extends StatelessWidget {
       appBar: kappBarStyle(''),
       body: Column(
         children: [
-          HeaderImage(imgPath: 'images/smallcar.png'),
+          HeaderImage(imgPath: items.getPath),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Small Car\n 15 RS',
+                items.getTitle,
                 style: kTitleStyle,
               ),
 

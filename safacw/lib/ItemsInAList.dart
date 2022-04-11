@@ -6,7 +6,12 @@ import 'Details Page/ItemDetailsPage.dart';
 import 'Cards.dart';
 
 class ItemsInAList extends StatelessWidget {
-  const ItemsInAList({Key? key}) : super(key: key);
+  ItemsInAList({Key? key}) : super(key: key);
+  final List<Items> items = [new Items(
+      title: 'Small Car 1',
+      price: 15,
+      imgPath: 'images/smallcar.png'
+  )];
 
   @override
   Widget build(BuildContext context) {
@@ -16,23 +21,18 @@ class ItemsInAList extends StatelessWidget {
         children: [
 
           Cards(
-              item: new Items(
-                  title: 'Small Car 1',
-                  price: 15,
-                  imgPath: 'images/smallcar.png'
-              ),
-              onPress: () {
-               // deails page
-          }),
-          Cards(
-              item: new Items(
-                  title: 'Small Car 2',
-                  price: 15,
-                  imgPath: 'images/smallcar.png'
-              ),
+              item: items[0],
               onPress: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context, ItemDetailsPage.id);
+                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
+
+                // deails page
+          }),
+          Cards(
+              item: items[1],
+              onPress: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
               }),
           Cards(
               item: new Items(
