@@ -1,14 +1,16 @@
 
-class Items {
+class Item {
    String title;
    double price;
    String imgPath;
+   String desc;
 
 
-  Items({
+  Item({
     required this.title,
     required this.price,
     required this.imgPath,
+    required this.desc,
   });
 
   String get getTitle {
@@ -27,5 +29,8 @@ class Items {
 
    String get getPath{
     return imgPath;
+   }
+   String get getDesc{
+     return desc;
    }
 }

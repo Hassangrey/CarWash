@@ -5,14 +5,13 @@ class HeaderImage extends StatelessWidget {
   final String imgPath;
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(imgPath,
+    return Container(
+
+      child: Image.asset(imgPath,
           scale: (0.5),
         ),
-        SizedBox(height: 50,),
-      ],
+
+
     );
   }
 }

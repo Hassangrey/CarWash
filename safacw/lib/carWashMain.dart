@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/Catagories.dart';
 import 'package:safacw/HeaderWithSearchBar.dart';
 import 'package:safacw/ItemsInAList.dart';
 import 'package:safacw/MoreButton.dart';
-import 'package:safacw/RecommendationsHeader.dart';
 import 'package:safacw/morePage.dart';
-import 'Cards.dart';
-import 'Constants/Constants.dart';
 import 'HeadImage.dart';
 import 'SliderMenu.dart';
 import 'Constants/appBarCustomized.dart';

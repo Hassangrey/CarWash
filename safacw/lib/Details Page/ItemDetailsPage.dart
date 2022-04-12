@@ -1,42 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/Constants/Constants.dart';
-import 'package:safacw/Constants/appBarCustomized.dart';
+import 'package:safacw/Details%20Page/BuyingOptions.dart';
+import 'package:safacw/Details%20Page/Description.dart';
+import 'package:safacw/Details%20Page/DetailPageBar.dart';
 import 'package:safacw/HeadImage.dart';
 
-import '../Models/Items.dart';
+import '../Models/Item.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-  const ItemDetailsPage(this.items, {Key? key}) : super(key: key);
+  const ItemDetailsPage(this.item, {Key? key}) : super(key: key);
   static const String id = '/ItemDetailsPage';
-  final Items items;
-//  final Items item;
-
-
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: kappBarStyle(''),
-      body: Column(
-        children: [
-          HeaderImage(imgPath: items.getPath),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                items.getTitle,
-                style: kTitleStyle,
-              ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            DetailPageBar(tital: item.getTitle, onPress: () {}),
+            HeaderImage(imgPath: item.getPath),
+            Description(desc: item.getDesc),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                BuyingOptions(),
+                Text("PRICE\n" + item.getPrice.toString() ),
 
-            ],
-          ),
-
-
-
-
-        ],
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

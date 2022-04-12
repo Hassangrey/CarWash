@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'Constants/Constants.dart';
-import 'Models/Items.dart';
+import 'Models/Item.dart';
 
 class Cards extends StatelessWidget {
-  const Cards({ required this.item, required this.onPress, });
-  final Items item;
+  const Cards({
+    required this.item,
+    required this.onPress,
+  });
+
+  final Item item;
   final Function() onPress;
 
   @override
@@ -19,11 +23,13 @@ class Cards extends StatelessWidget {
         bottom: kDefaultPadding * 2.5,
       ),
       width: screenSize.width * 0.4,
+      decoration: BoxDecoration(
+        border: Border.all(width: 1, color: kPrimaryColor.withOpacity(0.5)),
+      ),
       child: Column(
         children: [
           Image.asset(item.getPath,
-              width: MediaQuery.of(context).size.width,
-              fit:BoxFit.cover),
+              fit: BoxFit.fill),
           GestureDetector(
             onTap: onPress,
             child: Container(
@@ -48,7 +54,7 @@ class Cards extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: item.getTitle.toUpperCase() +'\n',
+                          text: item.getTitle.toUpperCase() + '\n',
                           style: Theme.of(context).textTheme.button,
                         ),
                         TextSpan(
