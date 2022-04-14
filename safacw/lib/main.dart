@@ -4,7 +4,7 @@ import 'package:safacw/SettingsPage.dart';
 import 'package:safacw/SliderMenu.dart';
 import 'package:safacw/carWashMain.dart';
 import 'Models/Item.dart';
-import 'WelcomePage.dart';
+import 'Welcome Page/WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
 

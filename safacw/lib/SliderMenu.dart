@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/WelcomePage.dart';
+import 'package:safacw/Welcome%20Page/WelcomePage.dart';
 import 'Constants/appBarCustomized.dart';
 import 'package:safacw/SettingsPage.dart';
 class SlideMenu extends StatelessWidget {
