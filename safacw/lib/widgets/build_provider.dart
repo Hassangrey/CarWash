@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:safacw/carWashMain.dart';
 import '../Constants/Constants.dart';
+import '../Models/Item.dart';
 import '../Models/Provider.dart';
 
-Widget buildProvider(Provider provider) {
+Widget buildProvider(Provider provider, BuildContext context) {
+
+
   return Padding(
     padding: EdgeInsets.only(left: 10, right: 10, top: 10),
     child: InkWell(
-      onTap: () {},
+      onTap: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) =>
+                carWashMain(provider: provider),
+          ),
+        );      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -32,7 +42,8 @@ Widget buildProvider(Provider provider) {
                       Text(
                         provider.getDesc,
                         style: kCarItemPriceStyle,
-                      )
+                      ),
+
                     ],
                   )
                 ],

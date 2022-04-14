@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'Constants/Constants.dart';
 
 class HeaderWithSearchBar extends StatelessWidget {
-  const HeaderWithSearchBar({Key? key}) : super(key: key);
+  const HeaderWithSearchBar({Key? key, required this.providerName}) : super(key: key);
+  final String providerName;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class HeaderWithSearchBar extends StatelessWidget {
               child: Row(
                 children: [
                   Text(
-                    'Car Wash',
+                    providerName,
                     style: kServiceTitleStyle,
                   ),
                   Spacer(),

@@ -50,8 +50,8 @@ class ChooseProvider extends StatelessWidget {
                                     'This is a service for small car where you can wash the external, internal part of your car or both!',
                               ),
                             ],
-                            desc: 'X car wash provider'),
-                      ),
+                            desc: 'X car wash provider')
+                      ,context),
                       buildProvider(
                         Provider(
                             name: 'y',
@@ -59,22 +59,29 @@ class ChooseProvider extends StatelessWidget {
                             imgPath: 'images/carwashlogo.jpeg',
                             items: [
                               new Item(
-                                title: 'Small Car 1',
+                                title: 'Small Car 3',
                                 price: 15,
                                 imgPath: 'images/smallcar.png',
                                 desc:
                                     'This is a service for small car where you can wash the external, internal part of your car or both!',
                               ),
                               new Item(
-                                title: 'Small Car 2',
+                                title: 'Small Car 4',
                                 price: 15,
                                 imgPath: 'images/smallcar.png',
                                 desc:
                                     'This is a service for small car where you can wash the external, internal part of your car or both!',
                               ),
+                              new Item(
+                                title: 'Small Car 5',
+                                price: 15,
+                                imgPath: 'images/smallcar.png',
+                                desc:
+                                'This is a service for small car where you can wash the external, internal part of your car or both!',
+                              ),
                             ],
-                            desc: 'Y car wash provider'),
-                      ),
+                            desc: 'Y car wash provider')
+                      , context),
                     ],
                   ),
                 ),
