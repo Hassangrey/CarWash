@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import '../Constants/Constants.dart';
 
+import '../../Constants/Constants.dart';
 class SelectServiceText extends StatelessWidget {
-  const SelectServiceText({Key? key}) : super(key: key);
-
+  const SelectServiceText({Key? key, required this.title}) : super(key: key);
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +17,7 @@ class SelectServiceText extends StatelessWidget {
         children: [
           Center(
               child: Text(
-                'SELECT A SERVICE',
+                title.toUpperCase(),
                 style: kTitleStyle,
               )),
         ],

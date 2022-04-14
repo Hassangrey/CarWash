@@ -5,7 +5,6 @@ class Item {
    String imgPath;
    String desc;
 
-
   Item({
     required this.title,
     required this.price,

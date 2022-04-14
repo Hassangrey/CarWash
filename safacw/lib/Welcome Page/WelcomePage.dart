@@ -1,17 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:safacw/Welcome%20Page/LoginButton.dart';
-import 'package:safacw/Welcome%20Page/SelectServiceText.dart';
-import 'package:safacw/Welcome%20Page/ServicesCard.dart';
-import 'package:safacw/Welcome%20Page/SignUpPage.dart';
-import 'package:safacw/morePage.dart';
 import 'package:safacw/carWashMain.dart';
-import '../SliderMenu.dart';
-import '../Constants/appBarCustomized.dart';
-import 'package:safacw/Constants/Constants.dart';
-import '../SettingsPage.dart';
-import '../serviceCard.dart';
+import 'package:safacw/screens/choose_provider_page.dart';
+import '../../Constants/appBarCustomized.dart';
+import 'LoginButton.dart';
+import 'SelectServiceText.dart';
+import 'ServicesCard.dart';
+import 'SignUpPage.dart';
+
 
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';
@@ -27,11 +24,11 @@ class WelcomePage extends StatelessWidget {
       appBar: kappBarStyle('Welcome'),
       body: Column(
           children: [
-          SelectServiceText(),
+          SelectServiceText(title: 'choose a service'),
             ServiceCard(imgPath: 'images/CarWash.png',
               onPress: (){
 
-              Navigator.pushNamed(context, carWashMain.id);
+              Navigator.pushNamed(context, ChooseProvider.id);
               },
 
             ),
