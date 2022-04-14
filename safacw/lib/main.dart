@@ -4,6 +4,7 @@ import 'package:safacw/SettingsPage.dart';
 import 'package:safacw/SliderMenu.dart';
 import 'package:safacw/carWashMain.dart';
 import 'Models/Item.dart';
+import 'Welcome Page/SignUpPage.dart';
 import 'Welcome Page/WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
@@ -34,7 +35,11 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => SettingsPage());
   } else if (routeSettings.name == morePage.id) {
     return MaterialPageRoute(builder: (_) => morePage());
-  } else if (routeSettings.name == carWashMain.id) {
+  }
+  else if (routeSettings.name == SignUpPage.id) {
+    return MaterialPageRoute(builder: (_) => SignUpPage());
+  }
+  else if (routeSettings.name == carWashMain.id) {
     return MaterialPageRoute(builder: (_) => carWashMain());
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.

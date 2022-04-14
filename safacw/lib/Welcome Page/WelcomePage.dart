@@ -1,8 +1,10 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:safacw/Welcome%20Page/LoginButton.dart';
 import 'package:safacw/Welcome%20Page/SelectServiceText.dart';
 import 'package:safacw/Welcome%20Page/ServicesCard.dart';
+import 'package:safacw/Welcome%20Page/SignUpPage.dart';
 import 'package:safacw/morePage.dart';
 import 'package:safacw/carWashMain.dart';
 import '../SliderMenu.dart';
@@ -47,45 +49,15 @@ class WelcomePage extends StatelessWidget {
               },
 
             ),
-
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Color(0xFFDBC6A5),
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Color(0xFFC89F76),
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
+            LoginButton(tital: 'Log In', color: Color(0xFFDBC6A5), onPress: (){
+              // Go to Log in page
+            }),
+            LoginButton(tital: 'Sign Up', color: Color(0xFFC89F76), onPress: (){
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, SignUpPage.id);
+            }),
             SizedBox(
-              height: 50,
+              height: 10,
             )
 
       ],

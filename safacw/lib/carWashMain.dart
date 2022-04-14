@@ -8,7 +8,7 @@ import 'SliderMenu.dart';
 import 'Constants/appBarCustomized.dart';
 
 class carWashMain extends StatelessWidget {
-  static const String id = 'CarWashMain';
+  static const String id = 'welcomePage';
 
   @override
   Widget build(BuildContext context) {
