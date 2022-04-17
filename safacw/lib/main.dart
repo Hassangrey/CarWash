@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:safacw/Cart%20Page/cart_page.dart';
+import 'package:safacw/Cart%20Page/myorders_page.dart';
 import 'package:safacw/Details%20Page/ItemDetailsPage.dart';
 import 'package:safacw/SettingsPage.dart';
 import 'package:safacw/SliderMenu.dart';
-import 'package:safacw/carWashMain.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import 'Models/Item.dart';
 import 'Welcome Page/SignUpPage.dart';
@@ -39,9 +40,13 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == SignUpPage.id) {
     return MaterialPageRoute(builder: (_) => SignUpPage());
   } // else if (routeSettings.name == carWashMain.id) {
-   // return MaterialPageRoute(builder: (_) => carWashMain()); }
+  // return MaterialPageRoute(builder: (_) => carWashMain()); }
   else if (routeSettings.name == ChooseProvider.id) {
     return MaterialPageRoute(builder: (_) => ChooseProvider());
+  } else if (routeSettings.name == MyOrdersPage.id) {
+    return MaterialPageRoute(builder: (_) => MyOrdersPage());
+  } else if (routeSettings.name == CartPage.id) {
+    return MaterialPageRoute(builder: (_) => CartPage());
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));

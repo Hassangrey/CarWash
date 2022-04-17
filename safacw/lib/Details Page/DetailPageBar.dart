@@ -36,7 +36,7 @@ class DetailPageBar extends StatelessWidget {
             ),
           ),
           IconButton(
-              icon: Icon(Icons.arrow_right),
+              icon: Icon(Icons.shopping_cart),
               onPressed: onPress),
 
         ],

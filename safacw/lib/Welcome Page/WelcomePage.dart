@@ -25,21 +25,21 @@ class WelcomePage extends StatelessWidget {
       body: Column(
           children: [
           SelectServiceText(title: 'choose a service'),
-            ServiceCard(imgPath: 'images/CarWash.png',
+            ServiceCard(imgPath: 'images/comingsoon.png',
               onPress: (){
 
               Navigator.pushNamed(context, ChooseProvider.id);
               },
 
             ),
-            ServiceCard(imgPath: 'images/CarWash.png',
+            ServiceCard(imgPath: 'images/comingsoon.png',
               onPress: (){
 
                 Navigator.pushNamed(context, carWashMain.id);
               },
 
             ),
-            ServiceCard(imgPath: 'images/CarWash.png',
+            ServiceCard(imgPath: 'images/comingsoon.png',
               onPress: (){
 
                 Navigator.pushNamed(context, carWashMain.id);
