@@ -10,52 +10,60 @@ import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
 import 'SignUpPage.dart';
 
-
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-
       appBar: kappBarStyle('Welcome'),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage (
-            image: AssetImage('images/laundrybackg.jpeg'),
+          image: DecorationImage(
+            image: AssetImage('images/laundrybackgr.jpeg'),
             fit: BoxFit.cover,
-            colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.dstATop),
-
-            ),
+            colorFilter: new ColorFilter.mode(
+                Colors.blue.withOpacity(0.2), BlendMode.modulate),
           ),
-
-        child: Column(
-          children: [
-            SelectServiceText(title: 'choose a service'),
-            buildServiceCard(),
-            buildServiceCard(),
-            buildServiceCard(),
-            LoginButton(tital: 'Log In', color: Color(0xFFDBC6A5), onPress: (){
-              // Go to Log in page
-            }),
-            LoginButton(tital: 'Sign Up', color: Color(0xFFC89F76), onPress: (){
-              Navigator.of(context).pop();
-              Navigator.pushNamed(context, SignUpPage.id);
-            }),
-            SizedBox(
-              height: 10,
-            )
-          ],
         ),
-        
-          
-         
-
-      
+        child: Padding(
+          padding: const EdgeInsets.only(top: 50),
+          child: Column(
+            children: [
+              buildServiceCard('', 'images/comingsoon.png', () {
+                // go to laundry page
+              }),
+              buildServiceCard('Car Wash', 'images/laundrybackg.jpeg', () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ChooseProvider(),
+                  ),
+                );
+              }),
+              buildServiceCard('', 'images/comingsoon.png', () {
+                // go to building cleaning page
+              }),
+              SizedBox(
+                height: 30,
+              ),
+              LoginButton(
+                  tital: 'Log In',
+                  color: Color(0xFF46C7FF),
+                  onPress: () {
+                    // Go to Log in page
+                  }),
+              LoginButton(
+                  tital: 'Sign Up',
+                  color: Color(0xFF239BFE),
+                  onPress: () {
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, SignUpPage.id);
+                  }),
+            ],
+          ),
+        ),
       ),
     );
   }

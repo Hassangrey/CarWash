@@ -39,9 +39,7 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => morePage());
   } else if (routeSettings.name == SignUpPage.id) {
     return MaterialPageRoute(builder: (_) => SignUpPage());
-  } // else if (routeSettings.name == carWashMain.id) {
-  // return MaterialPageRoute(builder: (_) => carWashMain()); }
-  else if (routeSettings.name == ChooseProvider.id) {
+  } else if (routeSettings.name == ChooseProvider.id) {
     return MaterialPageRoute(builder: (_) => ChooseProvider());
   } else if (routeSettings.name == MyOrdersPage.id) {
     return MaterialPageRoute(builder: (_) => MyOrdersPage());
