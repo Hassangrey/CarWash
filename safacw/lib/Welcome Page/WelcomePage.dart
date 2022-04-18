@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:safacw/carWashMain.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import '../../Constants/appBarCustomized.dart';
+import '../serviceCard.dart';
 import 'LoginButton.dart';
 import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
@@ -20,32 +21,24 @@ class WelcomePage extends StatelessWidget {
         .size;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1EAD2),
+
       appBar: kappBarStyle('Welcome'),
-      body: Column(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage (
+            image: AssetImage('images/laundrybackg.jpeg'),
+            fit: BoxFit.cover,
+            colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.4), BlendMode.dstATop),
+
+            ),
+          ),
+
+        child: Column(
           children: [
-          SelectServiceText(title: 'choose a service'),
-            ServiceCard(imgPath: 'images/comingsoon.png',
-              onPress: (){
-
-              Navigator.pushNamed(context, ChooseProvider.id);
-              },
-
-            ),
-            ServiceCard(imgPath: 'images/comingsoon.png',
-              onPress: (){
-
-                Navigator.pushNamed(context, carWashMain.id);
-              },
-
-            ),
-            ServiceCard(imgPath: 'images/comingsoon.png',
-              onPress: (){
-
-                Navigator.pushNamed(context, carWashMain.id);
-              },
-
-            ),
+            SelectServiceText(title: 'choose a service'),
+            buildServiceCard(),
+            buildServiceCard(),
+            buildServiceCard(),
             LoginButton(tital: 'Log In', color: Color(0xFFDBC6A5), onPress: (){
               // Go to Log in page
             }),
@@ -56,8 +49,13 @@ class WelcomePage extends StatelessWidget {
             SizedBox(
               height: 10,
             )
+          ],
+        ),
+        
+          
+         
 
-      ],
+      
       ),
     );
   }
