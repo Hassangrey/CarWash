@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Details%20Page/ItemDetailsPage.dart';
-import 'package:safacw/Models/Items.dart';
 import 'Details Page/ItemDetailsPage.dart';
-
 import 'Cards.dart';
+import 'Models/Provider.dart';
 
 class ItemsInAList extends StatelessWidget {
-  ItemsInAList({Key? key}) : super(key: key);
-  final List<Items> items = [new Items(
-      title: 'Small Car 1',
-      price: 15,
-      imgPath: 'images/smallcar.png'
-  )];
+  ItemsInAList({Key? key, required this.provider}) : super(key: key);
+  final Provider provider;
 
   @override
   Widget build(BuildContext context) {
@@ -19,31 +14,14 @@ class ItemsInAList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
+          for (var i = 0; i < provider.items.length; i++)
+            Cards(
+                item: provider.items[i],
+                onPress: () {
+                  Navigator.pushNamed(context, ItemDetailsPage.id,
+                      arguments: provider.items[i]);
 
-          Cards(
-              item: items[0],
-              onPress: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
-
-                // deails page
-          }),
-          Cards(
-              item: items[1],
-              onPress: () {
-                Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/ItemDetailsPage', arguments: items[0]);
-              }),
-          Cards(
-              item: new Items(
-                  title: 'Small Car 3',
-                  price: 15,
-                  imgPath: 'images/smallcar.png'
-              ),
-              onPress: () {
-                // deails page
-              }),
-
+                }),
         ],
       ),
     );

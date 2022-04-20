@@ -6,7 +6,7 @@ const double kDefaultPadding = 20;
 const kTitleStyle = TextStyle(
       fontSize: 25,
       fontWeight: FontWeight.bold,
-      color: Colors.blueAccent,
+      color: Color(0xFFAD9276),
 );
 
 const kServiceTitleStyle = TextStyle(
