@@ -19,7 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passTEC = TextEditingController();
 
 
+getData(username,password) async {
+          var data = await AuthService.login(username, password);
 
+       return data;
+
+   
+ }
 
 
 
@@ -64,8 +70,15 @@ class _LoginPageState extends State<LoginPage> {
                       var _email = _emailTEC.text;
                       var _pass = _passTEC.text;
 
-                      var data = AuthService.login(_email, _pass);
-
+                      
+                      var result = getData(_email,_pass);
+                      if (result.statusCode==200){
+                          // move to home page
+                      }
+                      else {
+                        var message = result.body;
+                      }
+                   
                       if (_formKey.currentState!.validate()) {
                         // If the form is valid, display a snackbar. In the real world,
                         // you'd often call a server or save the information in a database.

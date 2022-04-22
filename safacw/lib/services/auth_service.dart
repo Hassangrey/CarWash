@@ -2,7 +2,9 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  static final baseUrl = 'http://senior-project-api.herokuapp.com';
+ // static final baseUrl = 'http://senior-project-api.herokuapp.com'; because we're poor
+  static final baseUrl = 'http://127.0.0.1:8000';
+
   // ignore: non_constant_identifier_names
   static final SESSION = FlutterSession();
 
@@ -24,15 +26,19 @@ class AuthService {
       var res = await http.post(
         Uri.parse('$baseUrl/auth/jwt/create/'),
         body: {
-          'email': username,
+          'username': username,
           'password': password,
         },
       );
 
       return res;
-    } finally {
+    }catch (error){
+      print("error occured" + error.toString());
+    } 
+    finally {
       // you can do somethig here
     }
+    
   }
 
   static setToken(String token, String refreshToken) async {
@@ -51,8 +57,8 @@ class AuthService {
 
 class _AuthData {
   String token, refreshToken;
-  String? clientId;
-  _AuthData(this.token, this.refreshToken, {this.clientId});
+  //String? clientId;
+  _AuthData(this.token, this.refreshToken);
 
   // toJson
   // required by Session lib
@@ -61,7 +67,7 @@ class _AuthData {
 
     data['token'] = token;
     data['refreshToken'] = refreshToken;
-    data['clientId'] = clientId;
+  //  data['clientId'] = clientId;
     return data;
   }
 }
