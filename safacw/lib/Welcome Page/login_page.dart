@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:safacw/Constants/appBarCustomized.dart';
+import 'dart:convert';
 
 import '../Details Page/DetailPageBar.dart';
 import '../services/auth_service.dart';
@@ -7,7 +9,6 @@ import '../services/auth_service.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
   static const String id = '/LoginPage';
-
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -19,11 +20,19 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController _passTEC = TextEditingController();
 
 
-getData(username,password) async {
-          var data = await AuthService.login(username, password);
+  Future<dynamic> getData(username,password) async {
+          var response = await AuthService.login(username, password);
 
-       return data;
+       if (response.statusCode==200){
+                      final Map<String, dynamic> data = json.decode(response.body);
+                      AuthService.setToken(data['access'], data['refresh']);
+                      return "true";
+                      }
+                      else {
+                      final Map<String, dynamic> data = json.decode(response.body);
 
+                        return data;
+                      }
    
  }
 
@@ -71,20 +80,19 @@ getData(username,password) async {
                       var _pass = _passTEC.text;
 
                       
-                      var result = getData(_email,_pass);
-                      if (result.statusCode==200){
-                          // move to home page
-                      }
-                      else {
-                        var message = result.body;
-                      }
-                   
+
                       if (_formKey.currentState!.validate()) {
                         // If the form is valid, display a snackbar. In the real world,
                         // you'd often call a server or save the information in a database.
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Processing Data')),
-                        );
+                      var result = getData(_email,_pass).then((value) {
+                        if (value=="true"){
+                        }
+                        else{
+                          // show error message from value variable
+                        }
+                      });
+
+                    
                       }
                     },
                     child: const Text('Submit'),
