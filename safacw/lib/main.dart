@@ -8,7 +8,7 @@ import 'package:safacw/SliderMenu.dart';
 import 'package:safacw/Welcome%20Page/login_screen.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import 'Models/Item.dart';
-import 'Welcome Page/SignUpPage.dart';
+import 'Welcome Page/signup_page.dart';
 import 'Welcome Page/WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
@@ -22,7 +22,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.id,
+      initialRoute: SignUpPage.id,
       onGenerateRoute: onGenerateRoute,
     );
   }

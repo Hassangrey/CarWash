@@ -9,7 +9,7 @@ import '../serviceCard.dart';
 import 'LoginButton.dart';
 import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
-import 'SignUpPage.dart';
+import 'signup_page.dart';
 import 'login_page.dart';
 
 class WelcomePage extends StatelessWidget {

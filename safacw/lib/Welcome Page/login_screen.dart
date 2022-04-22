@@ -4,7 +4,7 @@ import 'dart:convert';
 
 
 import '../services/auth_service.dart';
-import 'SignUpPage.dart';
+import 'signup_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
