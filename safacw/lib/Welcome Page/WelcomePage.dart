@@ -9,6 +9,7 @@ import 'LoginButton.dart';
 import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
 import 'SignUpPage.dart';
+import 'login_page.dart';
 
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';
@@ -52,8 +53,8 @@ class WelcomePage extends StatelessWidget {
                   tital: 'Log In',
                   color: Color(0xFF46C7FF),
                   onPress: () {
-                    // Go to Log in page
-                  }),
+                    Navigator.of(context).pop();
+                    Navigator.pushNamed(context, LoginPage.id);                  }),
               LoginButton(
                   tital: 'Sign Up',
                   color: Color(0xFF239BFE),

@@ -1,3 +1,4 @@
+// @dart=2.
 import 'package:flutter/material.dart';
 import 'package:safacw/Cart%20Page/cart_page.dart';
 import 'package:safacw/Cart%20Page/myorders_page.dart';
@@ -10,6 +11,8 @@ import 'Welcome Page/SignUpPage.dart';
 import 'Welcome Page/WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
+
+import 'Welcome Page/login_page.dart';
 
 void main() => runApp(Safa());
 
@@ -39,6 +42,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => morePage());
   } else if (routeSettings.name == SignUpPage.id) {
     return MaterialPageRoute(builder: (_) => SignUpPage());
+  } else if (routeSettings.name == LoginPage.id) {
+    return MaterialPageRoute(builder: (_) => LoginPage());
   } else if (routeSettings.name == ChooseProvider.id) {
     return MaterialPageRoute(builder: (_) => ChooseProvider());
   } else if (routeSettings.name == MyOrdersPage.id) {

@@ -2,11 +2,11 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 
 class AuthService {
-  final baseUrl = 'http://senior-project-api.herokuapp.com';
+  static final baseUrl = 'http://senior-project-api.herokuapp.com';
   // ignore: non_constant_identifier_names
   static final SESSION = FlutterSession();
 
-  Future<dynamic> register(String email, String username, String password) async {
+  static Future<dynamic> register(String email, String username, String password) async {
     try {
       var res = await http.post(Uri.parse('$baseUrl/auth/users/'), body: {
         'email': email,
@@ -19,7 +19,7 @@ class AuthService {
     }
   }
 
-  Future<dynamic> login(String username, String password) async {
+  static Future<dynamic> login(String username, String password) async {
     try {
       var res = await http.post(
         Uri.parse('$baseUrl/auth/jwt/create/'),
