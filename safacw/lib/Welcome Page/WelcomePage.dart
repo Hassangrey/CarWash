@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:safacw/Welcome%20Page/login_screen.dart';
 import 'package:safacw/carWashMain.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import '../../Constants/appBarCustomized.dart';
@@ -54,7 +55,7 @@ class WelcomePage extends StatelessWidget {
                   color: Color(0xFF46C7FF),
                   onPress: () {
                     Navigator.of(context).pop();
-                    Navigator.pushNamed(context, LoginPage.id);                  }),
+                    Navigator.pushNamed(context, LoginScreen.id);                  }),
               LoginButton(
                   tital: 'Sign Up',
                   color: Color(0xFF239BFE),
