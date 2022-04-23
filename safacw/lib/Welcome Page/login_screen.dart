@@ -4,6 +4,7 @@ import 'dart:convert';
 
 
 import '../services/auth_service.dart';
+import 'WelcomePage.dart';
 import 'signup_page.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -186,6 +187,8 @@ class _LoginScreenState extends State<LoginScreen> {
             // you'd often call a server or save the information in a database.
             var result = getData(_email, _pass).then((value) {
               if (value == "true") {
+              Navigator.popAndPushNamed(context, WelcomePage.id);
+
               } else {
 
                 // show error message from value variable

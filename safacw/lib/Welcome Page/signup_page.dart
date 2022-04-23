@@ -4,6 +4,7 @@ import 'package:safacw/Welcome%20Page/login_screen.dart';
 import 'dart:convert';
 
 import '../services/auth_service.dart';
+import 'WelcomePage.dart';
 import 'signup_page.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -28,12 +29,22 @@ class _SignUpPageState extends State<SignUpPage> {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
-    //  AuthService.setToken(data['access'], data['refresh']);
-      print(data);
+    var response2 = await AuthService.login(username, password);
+
+       if (response2.statusCode == 200) {
+      final Map<String, dynamic> data2 = json.decode(response2.body);
+      AuthService.setToken(data2['access'], data2['refresh']);
+      // move to another page bellow 
+      Navigator.popAndPushNamed(context, WelcomePage.id);
+
       return "true";
     } else {
+      final Map<String, dynamic> data2 = json.decode(response.body);
+
+      return data2;
+    }
+    } else {
       final Map<String, dynamic> data = json.decode(response.body);
-      print(data);
       return data;
 
     }
@@ -279,6 +290,8 @@ class _SignUpPageState extends State<SignUpPage> {
             // you'd often call a server or save the information in a database.
             var result = getData(_email, _user, _pass).then((value) {
               if (value == "true") {
+                  Navigator.popAndPushNamed(context, WelcomePage.id);
+
               } else {
                 // show error message from value variable
               }
