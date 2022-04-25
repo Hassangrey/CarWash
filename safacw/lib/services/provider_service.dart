@@ -18,7 +18,7 @@ class ProviderService {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
 
-    var req = await client.get(Uri.parse(baseUrl + "profiles/?type=1"),
+    var req = await client.get(Uri.parse(baseUrl + "profiles/?type=3"),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
@@ -26,7 +26,6 @@ class ProviderService {
     if (data['results'] != null) {
       List<dynamic> items =
           data['results'].map((json) => ProviderAPI.fromJsonMap(json)).toList();
-
       return items;
     }
     return null;

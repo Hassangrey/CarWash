@@ -7,6 +7,7 @@ import 'package:safacw/screens/choose_provider_page.dart';
 import '../../Constants/appBarCustomized.dart';
 import '../serviceCard.dart';
 import '../services/address_service.dart';
+import '../services/provider_service.dart';
 import 'LoginButton.dart';
 import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
@@ -18,11 +19,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-    try{
-    AddressService.get_all();
-    }catch (e){
-      print(e);
-    }
+  
     return Scaffold(
       appBar: kappBarStyle('Welcome'),
       body: Container(
