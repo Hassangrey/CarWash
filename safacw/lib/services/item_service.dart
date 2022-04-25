@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
+import '../Models/Provider_API.dart';
 import 'auth_service.dart';
 
 class ItemService {
@@ -43,6 +44,23 @@ class ItemService {
     if (data != null) {
       Item items =
           Item.fromJsonMap(data);
+
+      return items;
+    }
+    return null;
+  }
+  static Future get_items_provider(ProviderAPI provider) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+
+    var req = await client.get(Uri.parse(baseUrl + "item?username=" + provider.name),
+        headers: {'Authorization': 'JWT $token'});
+
+    final data = jsonDecode(req.body);
+
+    if (data['results'] != null) {
+      List<dynamic> items =
+          data['results'].map((json) => Item.fromJsonMap(json)).toList();
 
       return items;
     }

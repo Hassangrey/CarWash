@@ -25,7 +25,7 @@ class ProviderService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Provider_API.fromJsonMap(json)).toList();
+          data['results'].map((json) => ProviderAPI.fromJsonMap(json)).toList();
 
       return items;
     }
@@ -41,8 +41,8 @@ class ProviderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Provider_API orders =
-          Provider_API.fromJsonMap(data);
+      ProviderAPI orders =
+          ProviderAPI.fromJsonMap(data);
 
       return orders;
     }
