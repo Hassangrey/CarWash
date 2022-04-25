@@ -14,13 +14,7 @@ import 'signup_page.dart';
 
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';
-  @override
-  void initState() {
-    print("ggggggggggggg");
-
-  AddressService.get_all();
-  print("ggggggggggggg");
-}
+ 
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
