@@ -6,19 +6,29 @@ import 'package:safacw/carWashMain.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import '../../Constants/appBarCustomized.dart';
 import '../serviceCard.dart';
+import '../services/address_service.dart';
 import 'LoginButton.dart';
 import 'SelectServiceText.dart';
 import 'ServicesCard.dart';
 import 'signup_page.dart';
-import 'login_page.dart';
 
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';
+  @override
+  void initState() {
+    print("ggggggggggggg");
 
+  AddressService.get_all();
+  print("ggggggggggggg");
+}
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
-
+    try{
+    AddressService.get_all();
+    }catch (e){
+      print(e);
+    }
     return Scaffold(
       appBar: kappBarStyle('Welcome'),
       body: Container(

@@ -1,16 +1,16 @@
-class Address {
+class User {
   int? id;
-  double? username;
-  double? email;
+  String? username;
+  String? email;
 
-  Address({
+  User({
     this.id,
     this.username,
     this.email,
   });
 
  
-  Address.fromJsonMap(Map map) {
+  User.fromJsonMap(Map map) {
     id = map['id'];
     username = map['username'];
     email = map['email'];

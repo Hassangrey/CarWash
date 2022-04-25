@@ -13,7 +13,6 @@ import 'Welcome Page/WelcomePage.dart';
 import 'SettingsPage.dart';
 import 'package:safacw/morePage.dart';
 
-import 'Welcome Page/login_page.dart';
 
 void main() => runApp(Safa());
 
@@ -22,7 +21,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: WelcomePage.id,
+      initialRoute: LoginScreen.id,
       onGenerateRoute: onGenerateRoute,
     );
   }
