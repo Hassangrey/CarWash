@@ -1,35 +1,61 @@
-
 class Item {
-   String title;
-   double price;
-   String imgPath;
-   String desc;
+  int? id;
+
+  String? title;
+  double? price;
+  String? imgPath;
+  String? desc;
 
   Item({
-    required this.title,
-    required this.price,
-    required this.imgPath,
-    required this.desc,
+    this.id,
+
+    this.title,
+    this.price,
+    this.imgPath,
+    this.desc,
   });
 
   String get getTitle {
-    return title;
+    return title!;
   }
+
   void setTitle(String value) {
     title = value;
   }
 
-   double get getPrice {
-     return price;
-   }
-   void setPrice(double value) {
-     price = value;
-   }
+  double get getPrice {
+    return price!;
+  }
 
-   String get getPath{
-    return imgPath;
-   }
-   String get getDesc{
-     return desc;
-   }
+  void setPrice(double value) {
+    price = value;
+  }
+
+  String get getPath {
+    return imgPath!;
+  }
+
+  String get getDesc {
+    return desc!;
+  }
+
+  Item.fromJsonMap(Map map) {
+    id = map['id'];
+
+    title = map['title'];
+    price = map['price'];
+    imgPath = map['imgPath'];
+    desc = map['desc'];
+  }
+  Map toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+
+    data['title'] = this.title;
+    data['price'] = this.price;
+    data['imgPath'] = this.imgPath;
+    data['desc'] = this.desc;
+
+    return data;
+  }
 }
