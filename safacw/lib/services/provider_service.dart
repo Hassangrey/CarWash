@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 import '../Models/Address.dart';
 import '../Models/Item.dart';
 import '../Models/Order.dart';
-import '../Models/Provider_API.dart';
+import '../Models/Provider.dart';
 import 'auth_service.dart';
 
 class ProviderService {
@@ -25,7 +25,7 @@ class ProviderService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => ProviderAPI.fromJsonMap(json)).toList();
+          data['results'].map((json) => Provider.fromJsonMap(json)).toList();
       return items;
     }
     return null;
@@ -40,8 +40,8 @@ class ProviderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      ProviderAPI orders =
-          ProviderAPI.fromJsonMap(data);
+      Provider orders =
+          Provider.fromJsonMap(data);
 
       return orders;
     }

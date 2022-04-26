@@ -1,22 +1,22 @@
 import 'Item.dart';
 
 class Provider {
-  String name;
-  int id;
-  String desc;
-  String imgPath;
-  List<Item> items;
+  String? name;
+  int? id;
+  String? desc;
+  String? imgPath;
+  List<Item>? items;
 
   Provider({
-    required this.name,
-    required this.id,
-    required this.imgPath,
-    required this.items,
-    required this.desc,
+    this.id,
+    this.name,
+    this.imgPath,
+    this.items,
+    this.desc,
   });
 
   String get getName {
-    return name;
+    return name!;
   }
 
   void setName(String newName) {
@@ -24,17 +24,28 @@ class Provider {
   }
 
   int get getId {
-    return id;
+    return id!;
   }
   String get getDesc {
-    return desc;
+    return desc!;
   }
 
   String get getImgPath {
-    return imgPath;
+    return imgPath!;
   }
   void setImgPath(String newImagePath) {
     imgPath = newImagePath;
+  }
+  Map toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['user'] = this.name;
+
+    return data;
+  }
+   Provider.fromJsonMap(Map map) {
+    id = map['id'];
+    name = map['user'];
   }
 
 }

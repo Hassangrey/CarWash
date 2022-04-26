@@ -14,12 +14,12 @@ class ItemsInAList extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          for (var i = 0; i < provider.items.length; i++)
+          for (var i = 0; i < provider.items!.length; i++)
             Cards(
-                item: provider.items[i],
+                item: provider.items![i],
                 onPress: () {
                   Navigator.pushNamed(context, ItemDetailsPage.id,
-                      arguments: provider.items[i]);
+                      arguments: provider.items![i]);
 
                 }),
         ],
