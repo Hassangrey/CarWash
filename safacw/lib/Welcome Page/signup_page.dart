@@ -23,30 +23,32 @@ class _SignUpPageState extends State<SignUpPage> {
   TextEditingController _emailTEC = TextEditingController();
   TextEditingController _passTEC = TextEditingController();
   TextEditingController _confirmPassTEC = TextEditingController();
+  TextEditingController _phoneNumberTEC = TextEditingController();
+
+  bool showPass = true;
 
   Future<dynamic> getData(email, username, password) async {
     var response = await AuthService.register(email, username, password);
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> data = json.decode(response.body);
-    var response2 = await AuthService.login(username, password);
+      var response2 = await AuthService.login(username, password);
 
-       if (response2.statusCode == 200) {
-      final Map<String, dynamic> data2 = json.decode(response2.body);
-      AuthService.setToken(data2['access'], data2['refresh']);
-      // move to another page bellow 
-      Navigator.popAndPushNamed(context, WelcomePage.id);
+      if (response2.statusCode == 200) {
+        final Map<String, dynamic> data2 = json.decode(response2.body);
+        AuthService.setToken(data2['access'], data2['refresh']);
+        // move to another page bellow
+        Navigator.popAndPushNamed(context, WelcomePage.id);
 
-      return "true";
-    } else {
-      final Map<String, dynamic> data2 = json.decode(response.body);
+        return "true";
+      } else {
+        final Map<String, dynamic> data2 = json.decode(response.body);
 
-      return data2;
-    }
+        return data2;
+      }
     } else {
       final Map<String, dynamic> data = json.decode(response.body);
       return data;
-
     }
   }
 
@@ -133,6 +135,7 @@ class _SignUpPageState extends State<SignUpPage> {
               ]),
           height: 60,
           child: TextFormField(
+            keyboardType: TextInputType.emailAddress,
             controller: _emailTEC,
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -151,6 +154,62 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Color(0xFF3c8ad1),
                 ),
                 hintText: 'Enter Your Email',
+                hintStyle: TextStyle(
+                  color: Colors.black38,
+                )),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildPhoneNumber() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Phone Number',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  offset: Offset(0, 2),
+                )
+              ]),
+          height: 60,
+          child: TextFormField(
+            keyboardType: TextInputType.number,
+            controller: _phoneNumberTEC,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter your phone number';
+              }
+              return null;
+            },
+            style: TextStyle(
+              color: Colors.black87,
+            ),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.phone,
+                  color: Color(0xFF3c8ad1),
+                ),
+                hintText: 'Enter Your phone number',
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),
@@ -195,7 +254,7 @@ class _SignUpPageState extends State<SignUpPage> {
               }
               return null;
             },
-            obscureText: true,
+            obscureText: showPass,
             style: TextStyle(
               color: Colors.black87,
             ),
@@ -205,6 +264,16 @@ class _SignUpPageState extends State<SignUpPage> {
                 prefixIcon: Icon(
                   Icons.lock,
                   color: Color(0xFF3c8ad1),
+                ),
+                suffixIcon: IconButton(
+                  icon: showPass
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                  onPressed: () {
+                    setState(
+                      () => showPass = !showPass,
+                    );
+                  },
                 ),
                 hintText: 'Enter Your Password',
                 hintStyle: TextStyle(
@@ -285,13 +354,13 @@ class _SignUpPageState extends State<SignUpPage> {
           var _user = _userlTEC.text;
           var _email = _emailTEC.text;
           var _pass = _passTEC.text;
+          var _phone = _phoneNumberTEC.text;
           if (_formKey.currentState!.validate()) {
             // If the form is valid, display a snackbar. In the real world,
             // you'd often call a server or save the information in a database.
             var result = getData(_email, _user, _pass).then((value) {
               if (value == "true") {
-                  Navigator.popAndPushNamed(context, WelcomePage.id);
-
+                Navigator.popAndPushNamed(context, WelcomePage.id);
               } else {
                 // show error message from value variable
               }
@@ -380,13 +449,15 @@ class _SignUpPageState extends State<SignUpPage> {
                           ),
                         ),
                         buildUserName(),
-                        SizedBox(height: 35),
+                        SizedBox(height: 15),
                         buildEmail(),
-                        SizedBox(height: 35),
+                        SizedBox(height: 15),
+                        buildPhoneNumber(),
+                        SizedBox(height: 15),
                         buildPassword(),
-                        SizedBox(height: 35),
+                        SizedBox(height: 15),
                         buildConfirmPassword(),
-                        SizedBox(height: 50),
+                        SizedBox(height: 25),
                         buildSignUpBtn(),
                         buildLoginBtn(() {
                           Navigator.popAndPushNamed(context, LoginScreen.id);

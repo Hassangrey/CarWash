@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 
-
 import '../services/auth_service.dart';
 import 'WelcomePage.dart';
 import 'signup_page.dart';
@@ -21,6 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
   //WIDGETS
   TextEditingController _emailTEC = TextEditingController();
   TextEditingController _passTEC = TextEditingController();
+  bool showPass = true;
 
   Future<dynamic> getData(username, password) async {
     var response = await AuthService.login(username, password);
@@ -48,7 +48,9 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
@@ -57,12 +59,12 @@ class _LoginScreenState extends State<LoginScreen> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0,2),
+                  offset: Offset(0, 2),
                 )
-              ]
-          ),
+              ]),
           height: 60,
           child: TextFormField(
+            keyboardType: TextInputType.emailAddress,
             controller: _emailTEC,
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -70,7 +72,6 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               return null;
             },
-
             style: TextStyle(
               color: Colors.black87,
             ),
@@ -84,14 +85,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 hintText: 'Enter Your Email',
                 hintStyle: TextStyle(
                   color: Colors.black38,
-                )
-            ),
-
+                )),
           ),
         )
       ],
     );
-
   }
 
   Widget buildPassword() {
@@ -106,7 +104,9 @@ class _LoginScreenState extends State<LoginScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
@@ -115,10 +115,9 @@ class _LoginScreenState extends State<LoginScreen> {
               boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
-                  offset: Offset(0,2),
+                  offset: Offset(0, 2),
                 )
-              ]
-          ),
+              ]),
           height: 60,
           child: TextFormField(
             controller: _passTEC,
@@ -128,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               return null;
             },
-            obscureText: true,
+            obscureText: showPass,
             style: TextStyle(
               color: Colors.black87,
             ),
@@ -139,17 +138,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   Icons.lock,
                   color: Color(0xFF3c8ad1),
                 ),
+                suffixIcon: IconButton(
+                  icon: showPass
+                      ? Icon(Icons.visibility_off)
+                      : Icon(Icons.visibility),
+                  onPressed: () {
+                    setState(
+                      () => showPass = !showPass,
+                    );
+                  },
+                ),
                 hintText: 'Enter Your Password',
                 hintStyle: TextStyle(
                   color: Colors.black38,
-                )
-            ),
-
+                )),
           ),
         )
       ],
     );
-
   }
 
   Widget buildForgotPassBtn() {
@@ -164,16 +170,13 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Colors.white,
             fontWeight: FontWeight.bold,
             fontSize: 14,
-
           ),
-
         ),
       ),
     );
-
   }
 
-  Widget buildLoginBtn(){
+  Widget buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
@@ -187,15 +190,12 @@ class _LoginScreenState extends State<LoginScreen> {
             // you'd often call a server or save the information in a database.
             var result = getData(_email, _pass).then((value) {
               if (value == "true") {
-              Navigator.popAndPushNamed(context, WelcomePage.id);
-
+                Navigator.popAndPushNamed(context, WelcomePage.id);
               } else {
-
                 // show error message from value variable
               }
             });
           }
-          
         },
         padding: EdgeInsets.all(15),
         shape: RoundedRectangleBorder(
@@ -207,11 +207,9 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xFF3c8ad1),
             fontSize: 18,
             fontWeight: FontWeight.bold,
-
           ),
         ),
       ),
-
     );
   }
 
@@ -219,32 +217,26 @@ class _LoginScreenState extends State<LoginScreen> {
     return FlatButton(
       onPressed: onPress,
       child: RichText(
-        text: TextSpan(
-            children: [
-              TextSpan(
-                text: 'Don\'t have an account? ',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 18,
-                ),
-              ),
-              TextSpan(
-                  text: 'Sign Up',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-
-                  )
-              )
-            ]
-        ),
+        text: TextSpan(children: [
+          TextSpan(
+            text: 'Don\'t have an account? ',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
+            ),
+          ),
+          TextSpan(
+              text: 'Sign Up',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ))
+        ]),
       ),
-
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -275,7 +267,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       horizontal: 25,
                       vertical: 120,
                     ),
-                   child: Column(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
@@ -297,8 +289,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           Navigator.popAndPushNamed(context, SignUpPage.id);
                         }),
                       ],
+                    ),
                   ),
-                ),
                 ),
               ],
             ),

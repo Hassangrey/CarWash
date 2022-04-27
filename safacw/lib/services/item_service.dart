@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
-
 import '../Models/Address.dart';
 import '../Models/Item.dart';
 import '../Models/Provider.dart';
@@ -12,8 +10,6 @@ import 'auth_service.dart';
 class ItemService {
   static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
-
- 
 
   static Future get_all() async {
     var client = http.Client();
@@ -32,6 +28,7 @@ class ItemService {
     }
     return null;
   }
+
   static Future get_one(int id) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
@@ -42,18 +39,19 @@ class ItemService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items =
-          Item.fromJsonMap(data);
+      Item items = Item.fromJsonMap(data);
 
       return items;
     }
     return null;
   }
+
   static Future get_items_provider(Provider provider) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
 
-    var req = await client.get(Uri.parse(baseUrl + "item?username=" + provider.name!),
+    var req = await client.get(
+        Uri.parse(baseUrl + "item?username=" + provider.name!),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
@@ -66,73 +64,75 @@ class ItemService {
     }
     return null;
   }
-   static Future create(Item item) async {
+
+  static Future create(Item item) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var new_item = item.toJson();
     var req = await client.post(Uri.parse(baseUrl + "item/"),
-        headers: {'Authorization': 'JWT $token'},
-        body: new_item);
+        headers: {'Authorization': 'JWT $token'}, body: new_item);
 
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items =
-          Item.fromJsonMap(data);
+      Item items = Item.fromJsonMap(data);
 
       return items;
     }
     return null;
   }
-     static Future update(Item item) async {
+
+  static Future update(Item item) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var new_item = item.toJson();
-    var req = await client.put(Uri.parse(baseUrl + "item/" + item.id.toString() + '/'),
+    var req = await client.put(
+        Uri.parse(baseUrl + "item/" + item.id.toString() + '/'),
         headers: {'Authorization': 'JWT $token'},
         body: new_item);
 
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Address addresses =
-          Address.fromJsonMap(data);
+      Address addresses = Address.fromJsonMap(data);
 
       return addresses;
     }
     return null;
   }
-     static Future delete(Item item) async {
+
+  static Future delete(Item item) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var new_item = item.toJson();
-    var req = await client.delete(Uri.parse(baseUrl + "item/"  + item.id.toString() + '/'),
+    var req = await client.delete(
+        Uri.parse(baseUrl + "item/" + item.id.toString() + '/'),
         headers: {'Authorization': 'JWT $token'},
         body: new_item);
 
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Address addresses =
-          Address.fromJsonMap(data);
+      Address addresses = Address.fromJsonMap(data);
 
       return addresses;
     }
     return null;
   }
-      static Future partial_update(Item item) async {
+
+  static Future partial_update(Item item) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var new_item = item.toJson();
-    var req = await client.patch(Uri.parse(baseUrl + "item/"  + item.id.toString() + '/'),
+    var req = await client.patch(
+        Uri.parse(baseUrl + "item/" + item.id.toString() + '/'),
         headers: {'Authorization': 'JWT $token'},
         body: new_item);
 
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Address addresses =
-          Address.fromJsonMap(data);
+      Address addresses = Address.fromJsonMap(data);
 
       return addresses;
     }
