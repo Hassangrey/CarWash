@@ -4,7 +4,7 @@ import 'package:safacw/Models/Provider.dart';
 import 'package:safacw/widgets/build_provider.dart';
 
 import '../Constants/appBarCustomized.dart';
-import '../Welcome Page/SelectServiceText.dart';
+import '../widgets/SelectServiceText.dart';
 
 class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';

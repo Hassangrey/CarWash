@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Constants/Constants.dart';
+import '../Constants/Constants.dart';
 
 class HeaderWithSearchBar extends StatelessWidget {
   const HeaderWithSearchBar({Key? key, required this.providerName}) : super(key: key);

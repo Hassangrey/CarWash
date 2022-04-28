@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/HeaderWithSearchBar.dart';
-import 'package:safacw/ItemsInAList.dart';
-import 'package:safacw/MoreButton.dart';
-import 'package:safacw/morePage.dart';
-import 'HeadImage.dart';
-import 'Models/Item.dart';
-import 'Models/Provider.dart';
-import 'SliderMenu.dart';
-import 'Constants/appBarCustomized.dart';
+import 'package:safacw/widgets/HeaderWithSearchBar.dart';
+import 'package:safacw/widgets/ItemsInAList.dart';
+import 'package:safacw/widgets/MoreButton.dart';
+import 'package:safacw/screens/more_items_page.dart';
+import '../widgets/HeadImage.dart';
+import '../Models/Item.dart';
+import '../Models/Provider.dart';
+import '../widgets/SliderMenu.dart';
+import '../Constants/appBarCustomized.dart';
 
-class carWashMain extends StatelessWidget {
+class CarWashMain extends StatelessWidget {
   static const String id = '/carwashpage';
   final Provider provider;
 
-  const carWashMain ({required this.provider});
+  const CarWashMain ({required this.provider});
 
 
 

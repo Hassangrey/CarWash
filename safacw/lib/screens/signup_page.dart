@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:safacw/Welcome%20Page/login_screen.dart';
+import 'package:safacw/screens/login_screen.dart';
 import 'dart:convert';
 
+import 'welcome_page.dart';
 import '../services/auth_service.dart';
-import 'WelcomePage.dart';
 import 'signup_page.dart';
 
 class SignUpPage extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/carWashMain.dart';
+import 'package:safacw/screens/carwash_main_page.dart';
 import '../Constants/Constants.dart';
 import '../Models/Item.dart';
 import '../Models/Provider.dart';
@@ -14,7 +14,7 @@ Widget buildProvider(Provider provider, BuildContext context) {
         Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) =>
-                carWashMain(provider: provider),
+                CarWashMain(provider: provider),
           ),
         );      },
       child: Row(
@@ -23,14 +23,12 @@ Widget buildProvider(Provider provider, BuildContext context) {
           Container(
               child: Row(
                 children: [
-                  Hero(
-                      tag: provider.getImgPath,
-                      child: Image(
-                        image: AssetImage(provider.getImgPath),
-                        fit: BoxFit.cover,
-                        height: 75,
-                        width: 75,
-                      )),
+                  Image(
+                    image: AssetImage(provider.getImgPath),
+                    fit: BoxFit.cover,
+                    height: 75,
+                    width: 75,
+                  ),
                   SizedBox(width: 10),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

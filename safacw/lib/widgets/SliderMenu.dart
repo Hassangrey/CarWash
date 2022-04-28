@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/Cart%20Page/myorders_page.dart';
-import 'package:safacw/Welcome%20Page/WelcomePage.dart';
-import 'package:safacw/SettingsPage.dart';
+import 'package:safacw/screens/myorders_page.dart';
+import 'package:safacw/screens/welcome_page.dart';
+import 'package:safacw/screens/settings_page.dart';
 class SlideMenu extends StatelessWidget {
   static const String id = 'SlideMenu';
 

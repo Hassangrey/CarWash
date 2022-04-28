@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Constants/Constants.dart';
-import 'Models/Item.dart';
+import '../Constants/Constants.dart';
+import '../Models/Item.dart';
 
 class Cards extends StatelessWidget {
   const Cards({
@@ -16,23 +16,23 @@ class Cards extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
 
-    return Container(
-      margin: EdgeInsets.only(
-        left: kDefaultPadding,
-        top: kDefaultPadding / 2,
-        bottom: kDefaultPadding * 2.5,
-      ),
-      width: screenSize.width * 0.4,
-      decoration: BoxDecoration(
-        border: Border.all(width: 1, color: kPrimaryColor.withOpacity(0.5)),
-      ),
-      child: Column(
-        children: [
-          Image.asset(item.getPath,
-              fit: BoxFit.fill),
-          GestureDetector(
-            onTap: onPress,
-            child: Container(
+    return GestureDetector(
+      onTap: onPress,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: kDefaultPadding,
+          top: kDefaultPadding / 2,
+          bottom: kDefaultPadding * 2.5,
+        ),
+        width: screenSize.width * 0.4,
+        decoration: BoxDecoration(
+          border: Border.all(width: 1, color: kPrimaryColor.withOpacity(0.5)),
+        ),
+        child: Column(
+          children: [
+            Image.asset(item.getPath,
+                fit: BoxFit.fill),
+            Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
@@ -69,8 +69,8 @@ class Cards extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

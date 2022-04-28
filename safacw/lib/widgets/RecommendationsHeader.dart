@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'Constants/Constants.dart';
+import '../Constants/Constants.dart';
 
 class RecHeader extends StatelessWidget {
   const RecHeader({Key? key}) : super(key: key);

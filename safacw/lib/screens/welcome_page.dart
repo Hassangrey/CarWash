@@ -1,17 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:safacw/Welcome%20Page/login_screen.dart';
-import 'package:safacw/carWashMain.dart';
+import 'package:safacw/screens/login_screen.dart';
+import 'package:safacw/screens/carwash_main_page.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
+import 'package:safacw/screens/signup_page.dart';
 import '../../Constants/appBarCustomized.dart';
-import '../serviceCard.dart';
+import '../widgets/serviceCard.dart';
 import '../services/address_service.dart';
 import '../services/provider_service.dart';
-import 'LoginButton.dart';
-import 'SelectServiceText.dart';
-import 'ServicesCard.dart';
-import 'signup_page.dart';
+import '../widgets/LoginButton.dart';
+import '../widgets/SelectServiceText.dart';
+import '../widgets/ServicesCard.dart';
 
 class WelcomePage extends StatelessWidget {
   static const String id = 'welcomePage';

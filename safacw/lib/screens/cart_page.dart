@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Details Page/DetailPageBar.dart';
+import '../widgets/DetailPageBar.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -9,11 +9,6 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.arrow_forward_ios_sharp),
-        onPressed: () => {print("object")},
-        // To connect the button
-      ),
       body: SafeArea(
         child: Column(
           children: [

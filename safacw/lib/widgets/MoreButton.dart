@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'morePage.dart';
-import 'Constants/Constants.dart';
+import '../screens/more_items_page.dart';
+import '../Constants/Constants.dart';
 import 'RecommendationsHeader.dart';
 
 class MoreButton extends StatelessWidget {

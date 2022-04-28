@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Details Page/DetailPageBar.dart';
+import '../widgets/DetailPageBar.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({Key? key}) : super(key: key);

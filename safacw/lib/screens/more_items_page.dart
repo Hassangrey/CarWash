@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Constants/appBarCustomized.dart';
-import 'package:safacw/SliderMenu.dart';
+import '../Constants/appBarCustomized.dart';
+import 'package:safacw/widgets/SliderMenu.dart';
 import 'package:safacw/Constants/Constants.dart';
 
 class morePage extends StatelessWidget {
@@ -58,14 +58,12 @@ Widget buildCarItem(String imgPath, String carName, String price) {
           Container(
               child: Row(
             children: [
-              Hero(
-                  tag: imgPath,
-                  child: Image(
-                    image: AssetImage(imgPath),
-                    fit: BoxFit.cover,
-                    height: 75,
-                    width: 75,
-                  )),
+              Image(
+                image: AssetImage(imgPath),
+                fit: BoxFit.cover,
+                height: 75,
+                width: 75,
+              ),
               SizedBox(width: 10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

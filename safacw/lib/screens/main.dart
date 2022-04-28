@@ -1,17 +1,17 @@
 // @dart=2.
 import 'package:flutter/material.dart';
-import 'package:safacw/Cart%20Page/cart_page.dart';
-import 'package:safacw/Cart%20Page/myorders_page.dart';
-import 'package:safacw/Details%20Page/ItemDetailsPage.dart';
-import 'package:safacw/SettingsPage.dart';
-import 'package:safacw/SliderMenu.dart';
-import 'package:safacw/Welcome%20Page/login_screen.dart';
+import 'package:safacw/screens/cart_page.dart';
+import 'package:safacw/screens/myorders_page.dart';
+import 'package:safacw/screens/item_details_page.dart';
+import 'package:safacw/screens/settings_page.dart';
+import 'package:safacw/screens/signup_page.dart';
+import 'package:safacw/widgets/SliderMenu.dart';
+import 'package:safacw/screens/login_screen.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
-import 'Models/Item.dart';
-import 'Welcome Page/signup_page.dart';
-import 'Welcome Page/WelcomePage.dart';
-import 'SettingsPage.dart';
-import 'package:safacw/morePage.dart';
+import '../Models/Item.dart';
+import 'welcome_page.dart';
+import 'settings_page.dart';
+import 'package:safacw/screens/more_items_page.dart';
 
 
 void main() => runApp(Safa());
@@ -21,7 +21,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.id,
+      initialRoute: WelcomePage.id,
       onGenerateRoute: onGenerateRoute,
     );
   }

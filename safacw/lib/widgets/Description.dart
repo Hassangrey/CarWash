@@ -4,7 +4,6 @@ class Description extends StatelessWidget {
   const Description({Key? key, required this.desc}) : super(key: key);
  final String desc;
 
-  @override
   Widget build(BuildContext context) {
     return Container(
       child: Text(

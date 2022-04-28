@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/Details%20Page/ItemDetailsPage.dart';
-import 'Details Page/ItemDetailsPage.dart';
+import 'package:safacw/screens/item_details_page.dart';
+import '../screens/item_details_page.dart';
 import 'Cards.dart';
-import 'Models/Provider.dart';
+import '../Models/Provider.dart';
 
 class ItemsInAList extends StatelessWidget {
   ItemsInAList({Key? key, required this.provider}) : super(key: key);
