@@ -13,6 +13,7 @@ class Provider {
     this.imgPath,
     this.items,
     this.desc,
+
   });
 
   String get getName {
@@ -42,6 +43,7 @@ class Provider {
     data['user'] = this.name;
     data['description'] = this.desc;
     data['imgPath'] = this.imgPath;
+    data['items'] = this.items;
 
 
 
@@ -52,6 +54,7 @@ class Provider {
     name = map['user'];
     desc = map['description'];
     imgPath = map['imgPath'];
+    items = map['items'];
 
   }
 
