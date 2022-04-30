@@ -7,6 +7,7 @@ import 'package:safacw/widgets/build_provider.dart';
 import '../Constants/appBarCustomized.dart';
 import '../services/provider_service.dart';
 import '../widgets/SelectServiceText.dart';
+import 'loadingscreen_page.dart';
 
 class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';
@@ -23,11 +24,7 @@ class ChooseProvider extends StatelessWidget {
           future: ProviderService.get_all(),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.data == null) {
-              return Container(
-                child: Center(
-                  child: Text('LOADING...'),
-                ),
-              );
+              return LoadingScreen();
             } else {
               return SingleChildScrollView(
                 scrollDirection: Axis.vertical,
