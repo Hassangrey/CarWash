@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:safacw/screens/login_screen.dart';
-import 'package:safacw/screens/carwash_main_page.dart';
+import 'package:safacw/screens/carwash_mainpage.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
 import 'package:safacw/screens/signup_page.dart';
 import '../../Constants/appBarCustomized.dart';

@@ -14,7 +14,7 @@ class ProviderService {
   static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
- static Future get_all() async {
+  static Future get_all() async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
 
@@ -30,6 +30,7 @@ class ProviderService {
     }
     return null;
   }
+
   static Future get_one(int id) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
@@ -40,15 +41,12 @@ class ProviderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Provider orders =
-          Provider.fromJsonMap(data);
+      Provider orders = Provider.fromJsonMap(data);
 
       return orders;
     }
     return null;
   }
-
- 
 }
 
 class UserAgentClient extends http.BaseClient {

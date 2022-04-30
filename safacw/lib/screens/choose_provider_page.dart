@@ -1,9 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/Provider.dart';
 import 'package:safacw/widgets/build_provider.dart';
-
 import '../Constants/appBarCustomized.dart';
+import '../services/provider_service.dart';
 import '../widgets/SelectServiceText.dart';
 
 class ChooseProvider extends StatelessWidget {
@@ -17,77 +19,45 @@ class ChooseProvider extends StatelessWidget {
       appBar: kappBarStyle(''),
       body: Padding(
         padding: const EdgeInsets.all(35.0),
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SelectServiceText(title: 'choose a provider'),
-              Padding(
-                padding: EdgeInsets.only(top: 45),
-                child: Container(
-                  height: MediaQuery.of(context).size.height - 300,
-                  child: ListView(
-                    children: [
-                      buildProvider(
-                        Provider(
-                            name: 'x',
-                            id: 1,
-                            imgPath: 'images/carwashlogo.jpeg',
-                            items: [
-                              new Item(
-                                title: 'Small Car 1',
-                                price: 15,
-                                imgPath: 'images/smallcar.png',
-                                desc:
-                                    'This is a service for small car where you can wash the external, internal part of your car or both!',
-                              ),
-                              new Item(
-                                title: 'Small Car 2',
-                                price: 15,
-                                imgPath: 'images/smallcar.png',
-                                desc:
-                                    'This is a service for small car where you can wash the external, internal part of your car or both!',
-                              ),
-                            ],
-                            desc: 'X car wash provider')
-                      ,context),
-                      buildProvider(
-                        Provider(
-                            name: 'y',
-                            id: 1,
-                            imgPath: 'images/carwashlogo.jpeg',
-                            items: [
-                              new Item(
-                                title: 'Small Car 3',
-                                price: 15,
-                                imgPath: 'images/smallcar.png',
-                                desc:
-                                    'This is a service for small car where you can wash the external, internal part of your car or both!',
-                              ),
-                              new Item(
-                                title: 'Small Car 4',
-                                price: 15,
-                                imgPath: 'images/smallcar.png',
-                                desc:
-                                    'This is a service for small car where you can wash the external, internal part of your car or both!',
-                              ),
-                              new Item(
-                                title: 'Small Car 5',
-                                price: 15,
-                                imgPath: 'images/smallcar.png',
-                                desc:
-                                'This is a service for small car where you can wash the external, internal part of your car or both!',
-                              ),
-                            ],
-                            desc: 'Y car wash provider')
-                      , context),
-                    ],
-                  ),
+        child: FutureBuilder(
+          future: ProviderService.get_all(),
+          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+            if (snapshot.data == null) {
+              return Container(
+                child: Center(
+                  child: Text('LOADING...'),
                 ),
-              )
-            ],
-          ),
+              );
+            } else {
+              return SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SelectServiceText(title: 'choose a provider'),
+                    Padding(
+                      padding: EdgeInsets.only(top: 45),
+                      child: Container(
+                        height: MediaQuery.of(context).size.height - 300,
+                        child: ListView.builder(
+                            itemCount: snapshot.data.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ListTile(
+                                leading: CircleAvatar(
+                                  backgroundImage: AssetImage(snapshot.data[index].imgPath),
+                                ),
+                                title: Text(snapshot.data[index].name),
+                                subtitle: Text(snapshot.data[index].desc),
+
+                              );
+                            }),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
+          },
         ),
       ),
     );
