@@ -1,25 +1,29 @@
+import 'dart:ffi';
+
+import 'Item.dart';
+
 class Order {
   int? id;
   String? name;
-  double? price;
+  List<Item>? items;
 
   Order({
     this.id,
     this.name,
-    this.price,
+     this.items,
   });
 
  
   Order.fromJsonMap(Map map) {
     id = map['id'];
     name = map['name'];
-    price = map['price'];
+    items = map['items'];
   }
   Map toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['name'] = this.name;
-    data['price'] = this.price;
+    data['items'] = this.items;
 
     return data;
   }
