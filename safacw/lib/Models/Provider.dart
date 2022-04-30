@@ -40,12 +40,19 @@ class Provider {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
     data['user'] = this.name;
+    data['description'] = this.desc;
+    data['imgPath'] = this.imgPath;
+
+
 
     return data;
   }
    Provider.fromJsonMap(Map map) {
     id = map['id'];
     name = map['user'];
+    desc = map['description'];
+    imgPath = map['imgPath'];
+
   }
 
 }
