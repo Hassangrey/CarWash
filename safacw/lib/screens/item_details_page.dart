@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/screens/cart_page.dart';
-import 'package:safacw/widgets/BuyingOptions.dart';
 import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
@@ -30,7 +29,6 @@ class ItemDetailsPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  BuyingOptions(),
                   Text("PRICE\n" + item.getPrice.toString(),
                   style: TextStyle(
                     fontSize: 20,
