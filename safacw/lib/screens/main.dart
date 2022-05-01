@@ -21,7 +21,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.id,
+      initialRoute: ItemDetailsPage.id,
       onGenerateRoute: onGenerateRoute,
     );
   }

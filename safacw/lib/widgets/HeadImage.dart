@@ -6,7 +6,6 @@ class HeaderImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       child: Image.asset(imgPath,
           scale: (0.5),
         ),
