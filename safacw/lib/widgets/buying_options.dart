@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class BuyingOptions extends StatefulWidget {
-  const BuyingOptions({Key? key}) : super(key: key);
+  const BuyingOptions({Key? key, required this.bothPrice, required this.interiorPrice, required this.exteriorPrice}) : super(key: key);
+  final String bothPrice;
+  final String interiorPrice;
+  final String exteriorPrice;
 
   @override
   State<BuyingOptions> createState() => _BuyingOptionsState();
@@ -21,21 +24,21 @@ class _BuyingOptionsState extends State<BuyingOptions> {
           value: 0,
           groupValue: selectedValue,
           title: Text('Both'),
-          subtitle: Text('\$0.00'),
+          subtitle: Text('\$' + widget.bothPrice),
           onChanged: (value) => setState(() => selectedValue = value!),
         ),
         RadioListTile<int>(
           value: 1,
           groupValue: selectedValue,
           title: Text('Interior Only'),
-          subtitle: Text('\$0.00'),
+          subtitle: Text('\$' + widget.interiorPrice),
           onChanged: (value) => setState(() => selectedValue = value!),
         ),
         RadioListTile<int>(
           value: 2,
           groupValue: selectedValue,
           title: Text('Exterior Only'),
-          subtitle: Text('\$0.00'),
+          subtitle: Text('\$' + widget.exteriorPrice),
           onChanged: (value) => setState(() => selectedValue = value!),
         ),
 

@@ -6,7 +6,13 @@ import 'package:safacw/widgets/buying_options.dart';
 import '../Constants/Constants.dart';
 
 class CardInfoText extends StatefulWidget {
-  const CardInfoText({Key? key}) : super(key: key);
+  const CardInfoText({Key? key, required this.itemName, required this.price, required this.desc, required this.bothPrice, required this.interiorPrice, required this.exteriorPrice}) : super(key: key);
+  final String itemName;
+  final String price;
+  final String desc;
+  final String bothPrice;
+  final String interiorPrice;
+  final String exteriorPrice;
 
 
   @override
@@ -24,23 +30,26 @@ class _CardInfoTextState extends State<CardInfoText> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'ITEM_NAME',
+              widget.itemName,
               style: kItemNameStyle,
             ),
             Text(
-              '\$0.00',
+              '\$' + widget.price + '.0',
               style: kItemNameStyle,
             ),
           ],
         ),
         SizedBox(height: 30),
         Text(
-            'Lorem ipsum dolor sit amet. In debitis explicabo ab neque suscipit sed sapiente blanditiis sed modi eaque sed quia quia sit recusandae autem qui minus beatae? Et sunt alias ex ullam pariatur ut galisum alias ad odit praesentium et voluptas culpa 33 galisum iste. 33 distinctio quis id aliquam necessitatibus ut ullam earum non saepe velit eum architecto veniam non ipsum dolor.  ',
+            widget.desc,
             style: kDescStyle),
         SizedBox(height: 30),
         Text('Choose Washing Type', style: kChooseTypeStyle),
         SizedBox(height: 10),
-        BuyingOptions(),
+        BuyingOptions(
+          bothPrice: widget.bothPrice,
+          exteriorPrice: widget.exteriorPrice,
+          interiorPrice: widget.interiorPrice),
         GestureDetector(
           onTap: () {},
           child: Container(
@@ -54,11 +63,11 @@ class _CardInfoTextState extends State<CardInfoText> {
                 'ADD TO CART',
                 style: TextStyle(
                   fontSize: 30,
-                  color: Colors.white54,
+                  color: Colors.grey,
                   fontWeight: FontWeight.bold
                 ),
               ),
-            ),
+            ),// ADD TO CART BUTTON
           ),
         )
       ],

@@ -54,11 +54,11 @@ class Cards extends StatelessWidget {
                     text: TextSpan(
                       children: [
                         TextSpan(
-                          text: item.getTitle.toUpperCase() + '\n',
+                          text: item.title.toString().toUpperCase() + '\n',
                           style: Theme.of(context).textTheme.button,
                         ),
                         TextSpan(
-                          text: item.getPrice.toString() + ' R.S',
+                          text: item.price.toString() + ' R.S',
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.5),
                           ),

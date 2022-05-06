@@ -4,7 +4,13 @@ import '../Constants/Constants.dart';
 import 'detail_page_infoText.dart';
 
 class InfoCard extends StatelessWidget {
-  const InfoCard({Key? key}) : super(key: key);
+  const InfoCard({Key? key, required this.itemName, required this.price, required this.desc, required this.bothPrice, required this.interiorPrice, required this.exteriorPrice}) : super(key: key);
+  final String itemName;
+  final String price;
+  final String desc;
+  final String bothPrice;
+  final String interiorPrice;
+  final String exteriorPrice;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +27,14 @@ class InfoCard extends StatelessWidget {
               topRight: Radius.circular(30),
             ),
           ),
-          child: CardInfoText(),
+          child: CardInfoText(
+            itemName: itemName,
+            price: price,
+            desc: desc,
+            bothPrice: bothPrice,
+            interiorPrice: interiorPrice,
+            exteriorPrice: exteriorPrice,
+          ),
         ),
         Align(
           alignment: Alignment.topCenter,

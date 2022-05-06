@@ -15,17 +15,14 @@ class Item {
     this.desc,
   });
 
-  String get getTitle {
-    return title!;
-  }
+
 
   void setTitle(String value) {
     title = value;
   }
 
-  double get getPrice {
-    return price!;
-  }
+
+
 
   void setPrice(double value) {
     price = value;

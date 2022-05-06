@@ -32,7 +32,15 @@ class ItemDetailsPage extends StatelessWidget {
               children: [
                 DetailPageBar(tital: 'ITEM_NAME', onPress: () {}),
                 DetailPageHeader(imgPath: 'images/smallcar.png'),
-                InfoCard(),
+                InfoCard(
+                  itemName: 'ITEM_NAME',
+                  price: '10',
+                  desc: 'Oorem ipsum dolor sit amet. In debitis explicabo ab neque suscipit sed sapiente blanditiis sed modi eaque sed quia quia sit recusandae autem qui minus beatae? Et sunt alias ex ullam pariatur ut galisum alias ad odit praesentium et voluptas culpa 33 galisum iste. 33 distinctio quis id aliquam necessitatibus ut ullam earum non saepe velit eum architecto veniam non ipsum dolor.  ',
+                  bothPrice: '1',
+                  interiorPrice: '2',
+                  exteriorPrice: '3',
+                ),
+
               ],
             ),
           ),
