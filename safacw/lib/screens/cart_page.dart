@@ -12,70 +12,6 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-<<<<<<< HEAD
-        child: Consumer<CartModel>(
-          builder: (context, cart, child) {
-            return Column(
-              children: [
-                DetailPageBar(tital: 'CART', onPress: () {}
-                ),
-                Container(
-                  // The list of items
-                  // width: double.infinity,
-                    height: 500,
-                    child: ListView.builder(
-                      // to build the list
-                      itemCount: cart.items.length,
-                      itemBuilder: (context, i) {
-                        return ListTile(
-                          // The list
-                          title: Text("${cart.items[i].title}"),
-
-                          subtitle: Text("${cart.items[i].desc}"),
-                          leading: Icon(Icons.car_rental),
-                          trailing: Text("${cart.items[i].price}" + "SR"),
-                          onTap: () => showDialog(
-                            // the window appears on Tap
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  actions: [
-                                    FlatButton(
-                                        onPressed: () {
-                                          ;
-                                        },
-                                        child: Text("Yes")),
-                                    FlatButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: Text("Cancel"))
-                                  ],
-                                  // title:
-                                  //     Text("Alert: ", style: TextStyle(fontSize: 15)),
-                                  content: Text(
-                                    "Do you want to delete the " +
-                                        "${item[i]['carSize']}",
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                );
-                              }),
-                        );
-                      },
-                    )),
-                Container(
-                  alignment: Alignment.bottomLeft,
-                  margin: EdgeInsets.only(left: 10),
-                  child: Text(
-                    "The total cost is: " + "${cart.totalPrice}" + "SR",
-                    style: TextStyle(fontSize: 18),
-                  ),
-                )
-
-              ],
-            );
-          }
-=======
         child: Column(
           children: [
             DetailPageBar(tital: 'CART', onPress: () {}),
@@ -131,7 +67,6 @@ class CartPage extends StatelessWidget {
               ),
             )
           ],
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
         ),
       ),
     );

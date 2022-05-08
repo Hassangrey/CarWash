@@ -4,11 +4,7 @@ import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
-<<<<<<< HEAD
-import '../Models/Cart.dart';
-=======
 import 'package:safacw/widgets/detail_page_image_header.dart';
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
 import '../Models/Item.dart';
 import '../widgets/detail_page_info_card.dart';
 
@@ -46,40 +42,9 @@ class ItemDetailsPage extends StatelessWidget {
                   exteriorPrice: '3',
                 ),
 
-<<<<<<< HEAD
-            }),
-            HeaderImage(imgPath: item.getPath),
-            Description(desc: item.getDesc),
-            Padding(
-              padding: const EdgeInsets.all(8.0).copyWith(right: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  BuyingOptions(),
-                  Text("PRICE\n" + item.getPrice.toString(),
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  ),
-                  TextButton(
-      onPressed: () {
-              // If the item is not in cart, we let the user add it.
-              // We are using context.read() here because the callback
-              // is executed whenever the user taps the button. In other
-              // words, it is executed outside the build method.
-              var cart = context.read<CartModel>();
-              cart.add(item);
-            },child: const Text('ADD'))
-                ],
-              ),
-            )
-          ],
-=======
               ],
             ),
           ),
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
         ),
       ),
     );
