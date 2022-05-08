@@ -10,9 +10,10 @@ import '../Models/Item.dart';
 import '../widgets/detail_page_info_card.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-  const ItemDetailsPage(this.item, {Key? key}) : super(key: key);
+   ItemDetailsPage(this.item, {Key? key}) : super(key: key);
   static const String id = '/ItemDetailsPage';
-  final Item item;
+   Item item2 = new Item(title: 'CAR111', price: 14,);
+   final Item item;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,9 @@ class ItemDetailsPage extends StatelessWidget {
             padding: EdgeInsets.only(top: 50),
             child: Column(
               children: [
-                DetailPageBar(tital: 'ITEM_NAME', onPress: () {}),
+                DetailPageBar(tital: 'ITEM_NAME', onPress: () {
+                  Navigator.popAndPushNamed(context, CartPage.id);
+                }),
                 DetailPageHeader(imgPath: 'images/smallcar.png'),
                 InfoCard(
                   itemName: 'ITEM_NAME',
@@ -42,15 +45,29 @@ class ItemDetailsPage extends StatelessWidget {
                   interiorPrice: '2',
                   exteriorPrice: '3',
                 ),
-                              TextButton(
-      onPressed: () {
-              // If the item is not in cart, we let the user add it.
-              // We are using context.read() here because the callback
-              // is executed whenever the user taps the button. In other
-              // words, it is executed outside the build method.
-              var cart = context.read<CartModel>();
-              cart.add(item);
-            },child: const Text('ADD'))
+                GestureDetector(
+                  onTap: () {
+                    var cart = context.read<CartModel>();
+                    cart.add(item2);
+                  },
+                  child: Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                        color: Color(0xFFABE8FF),
+                        borderRadius: BorderRadius.circular(30)),
+                    width: double.infinity,
+                    child: Center(
+                      child: Text(
+                        'ADD TO CART',
+                        style: TextStyle(
+                            fontSize: 30,
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                    ),// ADD TO CART BUTTON
+                  ),
+                ),
 
               ],
             ),

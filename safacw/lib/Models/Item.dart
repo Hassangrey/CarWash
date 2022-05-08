@@ -22,8 +22,6 @@ class Item {
   }
 
 
-
-
   void setPrice(double value) {
     price = value;
   }

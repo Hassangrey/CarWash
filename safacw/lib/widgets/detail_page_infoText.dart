@@ -50,26 +50,7 @@ class _CardInfoTextState extends State<CardInfoText> {
           bothPrice: widget.bothPrice,
           exteriorPrice: widget.exteriorPrice,
           interiorPrice: widget.interiorPrice),
-        GestureDetector(
-          onTap: () {},
-          child: Container(
-            height: 70,
-            decoration: BoxDecoration(
-                color: Color(0xFFABE8FF),
-                borderRadius: BorderRadius.circular(30)),
-            width: double.infinity,
-            child: Center(
-              child: Text(
-                'ADD TO CART',
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.grey,
-                  fontWeight: FontWeight.bold
-                ),
-              ),
-            ),// ADD TO CART BUTTON
-          ),
-        )
+
       ],
     );
   }

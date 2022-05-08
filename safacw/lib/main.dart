@@ -9,10 +9,10 @@ import 'package:safacw/screens/signup_page.dart';
 import 'package:safacw/widgets/SliderMenu.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
-import '../Models/Cart.dart';
-import '../Models/Item.dart';
-import 'welcome_page.dart';
-import 'settings_page.dart';
+import 'Models/Cart.dart';
+import 'Models/Item.dart';
+import 'screens/welcome_page.dart';
+import 'screens/settings_page.dart';
 import 'package:safacw/screens/more_items_page.dart';
 
 
@@ -29,7 +29,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: CartPage.id,
+      initialRoute: ItemDetailsPage.id,
       onGenerateRoute: onGenerateRoute,
     );
   }
