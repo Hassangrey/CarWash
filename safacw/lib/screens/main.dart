@@ -1,5 +1,6 @@
 // @dart=2.
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/screens/myorders_page.dart';
 import 'package:safacw/screens/item_details_page.dart';
@@ -8,13 +9,20 @@ import 'package:safacw/screens/signup_page.dart';
 import 'package:safacw/widgets/SliderMenu.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
+import '../Models/Cart.dart';
 import '../Models/Item.dart';
 import 'welcome_page.dart';
 import 'settings_page.dart';
 import 'package:safacw/screens/more_items_page.dart';
 
 
-void main() => runApp(Safa());
+void main() => runApp(
+      ChangeNotifierProvider(
+      create: (context) => CartModel(),
+      child: Safa(),
+    ),
+  
+  );
 
 class Safa extends StatelessWidget {
   @override

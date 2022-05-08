@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/widgets/BuyingOptions.dart';
 import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
+import '../Models/Cart.dart';
 import '../Models/Item.dart';
 
 class ItemDetailsPage extends StatelessWidget {
@@ -37,6 +39,15 @@ class ItemDetailsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                   ),
+                  TextButton(
+      onPressed: () {
+              // If the item is not in cart, we let the user add it.
+              // We are using context.read() here because the callback
+              // is executed whenever the user taps the button. In other
+              // words, it is executed outside the build method.
+              var cart = context.read<CartModel>();
+              cart.add(item);
+            },child: const Text('ADD'))
                 ],
               ),
             )

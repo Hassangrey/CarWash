@@ -1,11 +1,14 @@
 import 'dart:ffi';
 
+import 'package:flutter/material.dart';
+
 import 'Item.dart';
 
 class Order {
   int? id;
   String? name;
-  List<Item>? items;
+  List<Item>? items = [];
+  
 
   Order({
     this.id,
