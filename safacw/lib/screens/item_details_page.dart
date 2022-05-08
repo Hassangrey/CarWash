@@ -5,6 +5,7 @@ import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
 import 'package:safacw/widgets/detail_page_image_header.dart';
+import '../Models/Cart.dart';
 import '../Models/Item.dart';
 import '../widgets/detail_page_info_card.dart';
 
@@ -41,6 +42,15 @@ class ItemDetailsPage extends StatelessWidget {
                   interiorPrice: '2',
                   exteriorPrice: '3',
                 ),
+                              TextButton(
+      onPressed: () {
+              // If the item is not in cart, we let the user add it.
+              // We are using context.read() here because the callback
+              // is executed whenever the user taps the button. In other
+              // words, it is executed outside the build method.
+              var cart = context.read<CartModel>();
+              cart.add(item);
+            },child: const Text('ADD'))
 
               ],
             ),

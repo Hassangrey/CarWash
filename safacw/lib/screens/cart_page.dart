@@ -12,7 +12,9 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+            child: Consumer<CartModel>(
+          builder: (context, cart, child) {
+        return Column(
           children: [
             DetailPageBar(tital: 'CART', onPress: () {}),
             Padding(
@@ -24,12 +26,12 @@ class CartPage extends StatelessWidget {
                   height: 500,
                   child: ListView.builder(
                     // to build the list
-                    itemCount: item.length,
+                    itemCount: cart.items.length,
                     itemBuilder: (context, i) {
                       return ListTile(
                         // The list
-                        title: Text("${item[i]['carSize']}"),
-                        subtitle: Text("${item[i]['cost']}" +
+                        title: Text("${cart.items[i].title}"),
+                        subtitle: Text("${cart.items[i].price}" +
                             "SR" "     " +
                             "${item[i]['service']}"),
                         leading: Image.asset('images/smallcar.png'),
@@ -67,8 +69,8 @@ class CartPage extends StatelessWidget {
               ),
             )
           ],
-        ),
-      ),
+        );
+          }),)
     );
   }
 }
