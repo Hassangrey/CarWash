@@ -12,7 +12,6 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-<<<<<<< HEAD
         child: Consumer<CartModel>(
           builder: (context, cart, child) {
             return Column(
@@ -75,7 +74,8 @@ class CartPage extends StatelessWidget {
               ],
             );
           }
-=======
+<<<<<<< HEAD
+
         child: Column(
           children: [
             DetailPageBar(tital: 'CART', onPress: () {}),
@@ -131,7 +131,8 @@ class CartPage extends StatelessWidget {
               ),
             )
           ],
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
+=======
+>>>>>>> a84d1011c8b3d9842e42001cdfc3d853e61d9151
         ),
       ),
     );
