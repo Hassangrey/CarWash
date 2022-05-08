@@ -12,7 +12,7 @@ import '../widgets/detail_page_info_card.dart';
 class ItemDetailsPage extends StatelessWidget {
    ItemDetailsPage(this.item, {Key? key}) : super(key: key);
   static const String id = '/ItemDetailsPage';
-   Item item2 = new Item(title: 'CAR111', price: 14,);
+   Item item2 = new Item(title: 'CAR11761', price: 14,);
    final Item item;
 
   @override

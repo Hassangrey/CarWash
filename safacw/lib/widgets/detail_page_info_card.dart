@@ -18,7 +18,7 @@ class InfoCard extends StatelessWidget {
       children: [
         Container(
           padding: EdgeInsets.only(top: 50, right: 20, left: 20),
-          height: MediaQuery.of(context).size.height * 0.65,
+          height: MediaQuery.of(context).size.height * 0.575,
           width: double.infinity,
           decoration: BoxDecoration(
             color: Colors.white70,
