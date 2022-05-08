@@ -4,22 +4,23 @@ import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
-<<<<<<< HEAD
 import '../Models/Cart.dart';
-=======
-import 'package:safacw/widgets/detail_page_image_header.dart';
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
 import '../Models/Item.dart';
+import '../widgets/buying_options.dart';
+import '../widgets/detail_page_image_header.dart';
 import '../widgets/detail_page_info_card.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-  const ItemDetailsPage(this.item, {Key? key}) : super(key: key);
+   ItemDetailsPage(this.item, {Key? key}) : super(key: key);
   static const String id = '/ItemDetailsPage';
   final Item item;
 
   @override
   Widget build(BuildContext context) {
+      Size screenSize = MediaQuery.of(context).size;
+
     return Scaffold(
+      
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
@@ -46,8 +47,7 @@ class ItemDetailsPage extends StatelessWidget {
                   exteriorPrice: '3',
                 ),
 
-<<<<<<< HEAD
-            }),
+            
             HeaderImage(imgPath: item.getPath),
             Description(desc: item.getDesc),
             Padding(
@@ -55,7 +55,7 @@ class ItemDetailsPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  BuyingOptions(),
+                 // const BuyingOptions(),
                   Text("PRICE\n" + item.getPrice.toString(),
                   style: TextStyle(
                     fontSize: 20,
@@ -70,18 +70,15 @@ class ItemDetailsPage extends StatelessWidget {
               // words, it is executed outside the build method.
               var cart = context.read<CartModel>();
               cart.add(item);
-            },child: const Text('ADD'))
+            },
+            child: const Text('ADD'))
                 ],
               ),
             )
-          ],
-=======
-              ],
-            ),
-          ),
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
-        ),
-      ),
-    );
-  }
-}
+          ], //done
+        ),//done
+      ), //done
+      ) //done
+      ));//done
+  } //done
+} //done

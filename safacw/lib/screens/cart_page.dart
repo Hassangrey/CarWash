@@ -12,7 +12,6 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-<<<<<<< HEAD
         child: Consumer<CartModel>(
           builder: (context, cart, child) {
             return Column(
@@ -75,63 +74,6 @@ class CartPage extends StatelessWidget {
               ],
             );
           }
-=======
-        child: Column(
-          children: [
-            DetailPageBar(tital: 'CART', onPress: () {}),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-
-                  // The list of items
-                  // width: double.infinity,
-                  height: 500,
-                  child: ListView.builder(
-                    // to build the list
-                    itemCount: item.length,
-                    itemBuilder: (context, i) {
-                      return ListTile(
-                        // The list
-                        title: Text("${item[i]['carSize']}"),
-                        subtitle: Text("${item[i]['cost']}" +
-                            "SR" "     " +
-                            "${item[i]['service']}"),
-                        leading: Image.asset('images/smallcar.png'),
-                        trailing: Icon(Icons.delete_sharp),
-                      );
-                    },
-                  )),
-            ),
-            Container(
-              alignment: Alignment.bottomLeft,
-              margin: EdgeInsets.only(left: 10),
-              child: Text(
-                "The total cost is: " + "${total(item)}" + "SR",
-                style: TextStyle(fontSize: 18),
-              ),
-            ),
-            SizedBox(height: 30),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                    color: Color(0xFFABE8FF),
-                    borderRadius: BorderRadius.circular(30)),
-                width: double.infinity,
-                child: Center(
-                  child: Text(
-                    'ADD TO CART',
-                    style: TextStyle(
-                        fontSize: 30,
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ), // ADD TO CART BUTTON
-              ),
-            )
-          ],
->>>>>>> f52459365621385da0207520905cae5a20f3aa97
         ),
       ),
     );
