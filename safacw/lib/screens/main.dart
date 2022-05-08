@@ -29,7 +29,7 @@ class Safa extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.id,
+      initialRoute: CartPage.id,
       onGenerateRoute: onGenerateRoute,
     );
   }
