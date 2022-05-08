@@ -74,7 +74,7 @@ class CartPage extends StatelessWidget {
               ],
             );
           }
-
+<<<<<<< HEAD
 
         child: Column(
           children: [
@@ -131,6 +131,8 @@ class CartPage extends StatelessWidget {
               ),
             )
           ],
+=======
+>>>>>>> a84d1011c8b3d9842e42001cdfc3d853e61d9151
         ),
       ),
     );

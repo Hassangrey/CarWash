@@ -5,7 +5,10 @@ import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
 import '../Models/Cart.dart';
+<<<<<<< HEAD
 import 'package:safacw/widgets/detail_page_image_header.dart';
+=======
+>>>>>>> a84d1011c8b3d9842e42001cdfc3d853e61d9151
 import '../Models/Item.dart';
 import '../widgets/buying_options.dart';
 import '../widgets/detail_page_image_header.dart';
@@ -48,11 +51,12 @@ class ItemDetailsPage extends StatelessWidget {
                   exteriorPrice: '3',
                 ),
 
-
+<<<<<<< HEAD
 
             }),
-
+=======
             
+>>>>>>> a84d1011c8b3d9842e42001cdfc3d853e61d9151
             HeaderImage(imgPath: item.getPath),
             Description(desc: item.getDesc),
             Padding(
@@ -80,7 +84,7 @@ class ItemDetailsPage extends StatelessWidget {
                 ],
               ),
             )
-
+<<<<<<< HEAD
           ],
               ],
             ),
@@ -90,7 +94,7 @@ class ItemDetailsPage extends StatelessWidget {
     );
   }
 }
-
+=======
           ], //done
         ),//done
       ), //done
@@ -98,4 +102,4 @@ class ItemDetailsPage extends StatelessWidget {
       ));//done
   } //done
 } //done
-
+>>>>>>> a84d1011c8b3d9842e42001cdfc3d853e61d9151
