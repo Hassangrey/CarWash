@@ -15,8 +15,6 @@ class Item {
     this.desc,
   });
 
-  get getPrice => null;
-
 
 
   void setTitle(String value) {
