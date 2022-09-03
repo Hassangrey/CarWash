@@ -161,9 +161,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget buildForgotPassBtn() {
     return Container(
       alignment: Alignment.centerRight,
-      child: FlatButton(
+      child: ElevatedButton(
         onPressed: () => print('Forgot Pass?'),
-        padding: EdgeInsets.only(right: 0),
         child: Text(
           'Forgot Password?',
           style: TextStyle(
@@ -180,8 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
-      child: RaisedButton(
-        elevation: 5,
+      child: ElevatedButton(
         onPressed: () {
           var _email = _emailTEC.text;
           var _pass = _passTEC.text;
@@ -197,10 +195,6 @@ class _LoginScreenState extends State<LoginScreen> {
             });
           }
         },
-        padding: EdgeInsets.all(15),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15),
-        ),
         child: Text(
           'LOGIN',
           style: TextStyle(
@@ -214,7 +208,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget buildSignUpBtn(Function() onPress) {
-    return FlatButton(
+    return ElevatedButton(
       onPressed: onPress,
       child: RichText(
         text: TextSpan(children: [
