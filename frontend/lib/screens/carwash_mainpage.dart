@@ -11,8 +11,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CarWashMain extends StatelessWidget {
   static const String id = '/carwashpage';
-  final Provider provider;
-  const CarWashMain({required this.provider});
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
