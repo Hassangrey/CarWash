@@ -55,13 +55,13 @@ class _SafaState extends State<Safa> {
     return ScreenUtilInit(
       designSize: const Size(428, 926),
       builder: (context, child) {
-        return const MaterialApp(
+        return MaterialApp(
             debugShowCheckedModeBanner: false,
             initialRoute: CarWashMain.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
-            locale: Locale('en'));
+            locale: _locale);
       },
     );
   }
