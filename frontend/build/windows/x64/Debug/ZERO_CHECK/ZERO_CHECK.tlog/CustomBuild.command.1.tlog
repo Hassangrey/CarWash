@@ -1,0 +1,10 @@
+^C:\USERS\HP\DOCUMENTS\PROJECTS\SENIOR_PROJECT\FLUTTER\CARWASH\SAFACW\BUILD\WINDOWS\CMAKEFILES\46763FE60B4A76778F66867327440E54\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/HP/Documents/projects/senior_project/flutter/CarWash/safacw/windows -BC:/Users/HP/Documents/projects/senior_project/flutter/CarWash/safacw/build/windows --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/HP/Documents/projects/senior_project/flutter/CarWash/safacw/build/windows/safacw.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
