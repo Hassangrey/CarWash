@@ -10,6 +10,7 @@ class ItemsInAList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(provider.items![0]);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(

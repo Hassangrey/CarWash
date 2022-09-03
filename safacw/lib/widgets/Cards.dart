@@ -30,7 +30,7 @@ class Cards extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(item.getPath,
+            Image.asset('images/smallcar.png',
                 fit: BoxFit.fill),
             Container(
               padding: EdgeInsets.all(8),
@@ -58,7 +58,8 @@ class Cards extends StatelessWidget {
                           style: Theme.of(context).textTheme.button,
                         ),
                         TextSpan(
-                          text: item.price.toString() + ' R.S',
+                          text: ('14 RS'),
+                         // text: item.price.toString() + ' RS',
                           style: TextStyle(
                             color: kPrimaryColor.withOpacity(0.5),
                           ),

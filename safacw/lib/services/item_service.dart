@@ -25,6 +25,7 @@ class ItemService {
           data['results'].map((json) => Item.fromJsonMap(json)).toList();
 
       return items;
+
     }
     return null;
   }
@@ -55,6 +56,7 @@ class ItemService {
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
+
 
     if (data['results'] != null) {
       List<dynamic> items =

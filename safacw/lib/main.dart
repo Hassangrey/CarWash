@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/screens/cart_page.dart';
+import 'package:safacw/screens/confirmed_order_page.dart';
 import 'package:safacw/screens/myorders_page.dart';
 import 'package:safacw/screens/item_details_page.dart';
 import 'package:safacw/screens/settings_page.dart';
@@ -15,21 +16,19 @@ import 'screens/welcome_page.dart';
 import 'screens/settings_page.dart';
 import 'package:safacw/screens/more_items_page.dart';
 
-
 void main() => runApp(
       ChangeNotifierProvider(
-      create: (context) => CartModel(),
-      child: Safa(),
-    ),
-  
-  );
+        create: (context) => CartModel(),
+        child: Safa(),
+      ),
+    );
 
 class Safa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: ItemDetailsPage.id,
+      initialRoute: LoginScreen.id,
       onGenerateRoute: onGenerateRoute,
     );
   }
@@ -58,6 +57,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => MyOrdersPage());
   } else if (routeSettings.name == CartPage.id) {
     return MaterialPageRoute(builder: (_) => CartPage());
+  } else if (routeSettings.name == ConfirmOrder.id) {
+    return MaterialPageRoute(builder: (_) => ConfirmOrder());
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));

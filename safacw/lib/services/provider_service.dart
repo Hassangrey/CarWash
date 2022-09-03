@@ -28,7 +28,7 @@ class ProviderService {
           data['results'].map((json) => Provider.fromJsonMap(json)).toList();
 for(var i = 0; i< providers.length; i++) {
            List<dynamic> x = await ItemService.get_items_provider(providers[i]);
-   
+
           var ints = new List<Item>.from(x);
 
           providers[i].items = ints;

@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Email',
+          'Username',
           style: TextStyle(
             color: Colors.white,
             fontSize: 16,
@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
             controller: _emailTEC,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Please enter your email';
+                return 'Please enter your username';
               }
               return null;
             },
@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   Icons.email,
                   color: Color(0xFF3c8ad1),
                 ),
-                hintText: 'Enter Your Email',
+                hintText: 'Enter Your username',
                 hintStyle: TextStyle(
                   color: Colors.black38,
                 )),

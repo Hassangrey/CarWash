@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/Provider.dart';
+import 'package:safacw/screens/carwash_mainpage.dart';
 import 'package:safacw/widgets/build_provider.dart';
 import '../Constants/appBarCustomized.dart';
 import '../services/provider_service.dart';
@@ -39,14 +40,25 @@ class ChooseProvider extends StatelessWidget {
                         child: ListView.builder(
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
-                              return ListTile(
-                             //   leading: CircleAvatar(
-                             //     backgroundImage: AssetImage(snapshot.data[index].imgPath),
-                              //  ),
-                                title: Text(snapshot.data[index].name),
-                                subtitle: Text(snapshot.data[index].desc),
 
-                              );
+                              if (snapshot.data[index].name != null) {
+                                return ListTile(
+                                  leading: CircleAvatar(
+                                      backgroundImage:
+                                          AssetImage('images/carwashlogo.jpeg')
+                                      // NetworkImage(snapshot.data[index].imgPath),
+                                      ),
+                                 title: Text(snapshot.data[index].name),
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => CarWashMain(provider: snapshot.data[index]),
+                                      ),
+                                    );                                  },
+                                  // subtitle: Text(snapshot.data[index].desc),
+                                );
+                              } else
+                                return Text('');
                             }),
                       ),
                     )

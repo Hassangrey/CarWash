@@ -37,8 +37,8 @@ class Item {
   Item.fromJsonMap(Map map) {
     id = map['id'];
 
-    title = map['title'];
-    price = map['price'];
+    title = map['name'];
+    price = map['in_price'];
     imgPath = map['imgPath'];
     desc = map['desc'];
   }
@@ -46,8 +46,8 @@ class Item {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
 
-    data['title'] = this.title;
-    data['price'] = this.price;
+    data['name'] = this.title;
+    data['in_price'] = this.price;
     data['imgPath'] = this.imgPath;
     data['desc'] = this.desc;
 

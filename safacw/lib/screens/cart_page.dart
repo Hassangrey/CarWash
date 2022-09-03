@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:safacw/screens/confirmed_order_page.dart';
 
 import '../Models/Cart.dart';
 import '../widgets/DetailPageBar.dart';
@@ -23,7 +24,7 @@ class CartPage extends StatelessWidget {
 
                   // The list of items
                   // width: double.infinity,
-                  height: 500,
+                  height: 250,
                   child: ListView.builder(
                     // to build the list
                     itemCount: cart.items.length,
@@ -44,14 +45,17 @@ class CartPage extends StatelessWidget {
               alignment: Alignment.bottomLeft,
               margin: EdgeInsets.only(left: 10),
               child: Text(
-                "The total cost is: " + "${total(item)}" + "SR",
+                "The total cost is: 30 SR",
                 style: TextStyle(fontSize: 18),
               ),
             ),
             SizedBox(height: 30),
-            GestureDetector(
-              onTap: () {},
-              child: Container(
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, ConfirmOrder.id);
+              },
+              splashColor: Colors.lightBlueAccent,
+              child: Ink(
                 height: 70,
                 decoration: BoxDecoration(
                     color: Color(0xFFABE8FF),
@@ -59,7 +63,7 @@ class CartPage extends StatelessWidget {
                 width: double.infinity,
                 child: Center(
                   child: Text(
-                    'ADD TO CART',
+                    'CONFIRM',
                     style: TextStyle(
                         fontSize: 30,
                         color: Colors.grey,
@@ -85,7 +89,7 @@ double total(List x) {
 }
 
 List item = [
-  {"carSize": "Small Car", "service": "Internal", "cost": 20},
-  {"carSize": "Large Car", "service": "External", "cost": 30},
-  {"carSize": "Small Car", "service": "Both", "cost": 40}
+  {"carSize": "Small Car", "service": "Internal", "cost": 10},
+  {"carSize": "Large Car", "service": "External", "cost": 10},
+  {"carSize": "Small Car", "service": "Both", "cost": 0}
 ];
