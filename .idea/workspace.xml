@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2a8b632e-010b-4c3b-8082-7786334e0c62" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/safacw/lib/screens/confirmed_order_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/Models/Item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/Models/Item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/screens/cart_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/screens/cart_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/screens/choose_provider_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/screens/choose_provider_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/screens/item_details_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/screens/item_details_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/screens/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/screens/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/services/item_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/services/item_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/services/provider_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/services/provider_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/widgets/Cards.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/widgets/Cards.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/safacw/lib/widgets/ItemsInAList.dart" beforeDir="false" afterPath="$PROJECT_DIR$/safacw/lib/widgets/ItemsInAList.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2APzjxjLSgvJ8gO9jmJPrDfV7CO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
+    <property name="cidr.known.project.marker" value="true" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2a8b632e-010b-4c3b-8082-7786334e0c62" name="Default Changelist" comment="" />
+      <created>1654926146912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1654926146912</updated>
+    </task>
+    <servers />
+  </component>
+</project>
