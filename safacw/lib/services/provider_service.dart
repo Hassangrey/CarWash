@@ -26,14 +26,13 @@ class ProviderService {
     if (data['results'] != null) {
       List<dynamic> providers =
           data['results'].map((json) => Provider.fromJsonMap(json)).toList();
-for(var i = 0; i< providers.length; i++) {
-           List<dynamic> x = await ItemService.get_items_provider(providers[i]);
+      for (var i = 0; i < providers.length; i++) {
+        List<dynamic> x = await ItemService.get_items_provider(providers[i]);
 
-          var ints = new List<Item>.from(x);
+        var ints = new List<Item>.from(x);
 
-          providers[i].items = ints;
-}
-
+        providers[i].items = ints;
+      }
 
       return providers;
     }

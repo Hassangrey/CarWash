@@ -14,14 +14,10 @@ class MoreButton extends StatelessWidget {
       padding: const EdgeInsets.all(15.0),
       child: Row(
         children: [
-          RecHeader(),
-          Spacer(),
-          FlatButton(
-            color: kPrimaryColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Text(
+          const RecHeader(),
+          const Spacer(),
+          ElevatedButton(
+            child: const Text(
               'More',
               style: TextStyle(
                 color: Colors.white70,

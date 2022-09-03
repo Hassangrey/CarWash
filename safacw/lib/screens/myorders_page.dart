@@ -40,7 +40,7 @@ class MyOrdersPage extends StatelessWidget {
                           builder: (context) {
                             return AlertDialog(
                               actions: [
-                                FlatButton(
+                                ElevatedButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },

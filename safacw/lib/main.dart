@@ -1,5 +1,6 @@
 // @dart=2.
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/screens/confirmed_order_page.dart';
@@ -26,10 +27,15 @@ void main() => runApp(
 class Safa extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: LoginScreen.id,
-      onGenerateRoute: onGenerateRoute,
+    return ScreenUtilInit(
+      designSize: const Size(428, 629),
+      builder: (BuildContext context, Widget? child) {
+        return const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          initialRoute: LoginScreen.id,
+          onGenerateRoute: onGenerateRoute,
+        );
+      },
     );
   }
 }
@@ -48,17 +54,17 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == morePage.id) {
     return MaterialPageRoute(builder: (_) => morePage());
   } else if (routeSettings.name == SignUpPage.id) {
-    return MaterialPageRoute(builder: (_) => SignUpPage());
+    return MaterialPageRoute(builder: (_) => const SignUpPage());
   } else if (routeSettings.name == LoginScreen.id) {
-    return MaterialPageRoute(builder: (_) => LoginScreen());
+    return MaterialPageRoute(builder: (_) => const LoginScreen());
   } else if (routeSettings.name == ChooseProvider.id) {
-    return MaterialPageRoute(builder: (_) => ChooseProvider());
+    return MaterialPageRoute(builder: (_) => const ChooseProvider());
   } else if (routeSettings.name == MyOrdersPage.id) {
-    return MaterialPageRoute(builder: (_) => MyOrdersPage());
+    return MaterialPageRoute(builder: (_) => const MyOrdersPage());
   } else if (routeSettings.name == CartPage.id) {
-    return MaterialPageRoute(builder: (_) => CartPage());
+    return MaterialPageRoute(builder: (_) => const CartPage());
   } else if (routeSettings.name == ConfirmOrder.id) {
-    return MaterialPageRoute(builder: (_) => ConfirmOrder());
+    return MaterialPageRoute(builder: (_) => const ConfirmOrder());
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));

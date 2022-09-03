@@ -10,7 +10,6 @@ class ItemsInAList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(provider.items![0]);
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -21,7 +20,6 @@ class ItemsInAList extends StatelessWidget {
                 onPress: () {
                   Navigator.pushNamed(context, ItemDetailsPage.id,
                       arguments: provider.items![i]);
-
                 }),
         ],
       ),
