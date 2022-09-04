@@ -40,12 +40,12 @@ class ChooseProvider extends StatelessWidget {
                             itemCount: snapshot.data.length,
                             itemBuilder: (BuildContext context, int index) {
                               return ListTile(
-                             //   leading: CircleAvatar(
-                             //     backgroundImage: AssetImage(snapshot.data[index].imgPath),
-                              //  ),
+                                // leading: CircleAvatar(
+                                //   backgroundImage: NetworkImage(
+                                //       snapshot.data[index].imgPath),
+                                // ),
                                 title: Text(snapshot.data[index].name),
                                 subtitle: Text(snapshot.data[index].desc),
-
                               );
                             }),
                       ),

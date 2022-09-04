@@ -5,47 +5,44 @@ import '../Models/Item.dart';
 import '../Models/Provider.dart';
 
 Widget buildProvider(Provider provider, BuildContext context) {
-
-
   return Padding(
     padding: EdgeInsets.only(left: 10, right: 10, top: 10),
     child: InkWell(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) =>
-                CarWashMain(provider: provider),
+            builder: (context) => CarWashMain(),
           ),
-        );      },
+        );
+      },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
               child: Row(
+            children: [
+              Image(
+                image: AssetImage(provider.getImgPath),
+                fit: BoxFit.cover,
+                height: 75,
+                width: 75,
+              ),
+              SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image(
-                    image: AssetImage(provider.getImgPath),
-                    fit: BoxFit.cover,
-                    height: 75,
-                    width: 75,
+                  Text(
+                    provider.getName,
+                    style: kCarItemNameStyle,
                   ),
-                  SizedBox(width: 10),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        provider.getName,
-                        style: kCarItemNameStyle,
-                      ),
-                      Text(
-                        provider.getDesc,
-                        style: kCarItemPriceStyle,
-                      ),
-
-                    ],
-                  )
+                  Text(
+                    provider.getDesc,
+                    style: kCarItemPriceStyle,
+                  ),
                 ],
-              )),
+              )
+            ],
+          )),
         ],
       ),
     ),
