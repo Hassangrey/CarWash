@@ -12,4 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'English';
+
+  @override
+  String get welcome_title => 'Welcome to Safa';
 }

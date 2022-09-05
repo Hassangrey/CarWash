@@ -110,6 +110,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'English'**
   String get language;
+
+  /// No description provided for @welcome_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Welcome to Safa'**
+  String get welcome_title;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

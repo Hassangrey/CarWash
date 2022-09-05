@@ -9,9 +9,9 @@ class CarWashMain extends StatelessWidget {
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
     return PageLayout(
-      child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [Text(translation(context).welcome_title)]),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(translation(context).home_page_string),
+      ]),
     );
   }
 }

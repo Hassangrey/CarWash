@@ -4,5 +4,6 @@
         "desciption:": "This is the home page"
     },
     "username_string": "Username",
-    "language":"English"
+    "language":"English",
+    "welcome_title": "Welcome to Safa"
 }

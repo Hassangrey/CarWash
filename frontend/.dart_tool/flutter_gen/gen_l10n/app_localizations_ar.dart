@@ -12,4 +12,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get language => 'العربية';
+
+  @override
+  String get welcome_title => 'حياك بتطبيق صفاء';
 }
