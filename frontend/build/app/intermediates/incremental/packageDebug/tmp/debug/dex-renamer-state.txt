@@ -1,0 +1,4 @@
+#Tue Sep 06 17:01:03 AST 2022
+base.0=/Users/hassan/Documents/GitHub/CarWash/frontend/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
