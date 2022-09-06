@@ -1,3 +1,6 @@
+
+
+
 import 'app_localizations.dart';
 
 /// The translations for Arabic (`ar`).
@@ -12,4 +15,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get language => 'العربية';
+
+  @override
+  String get welcome_title => 'حياك بتطبيق صفاء';
 }

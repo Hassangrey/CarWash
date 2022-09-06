@@ -1,3 +1,6 @@
+
+
+
 import 'app_localizations.dart';
 
 /// The translations for English (`en`).
@@ -12,4 +15,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'English';
+
+  @override
+  String get welcome_title => 'Welcome to Safa';
 }
