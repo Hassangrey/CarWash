@@ -56,7 +56,7 @@ class _SafaState extends State<Safa> {
       designSize: const Size(428, 926),
       builder: (context, child) {
         return MaterialApp(
-            theme: ThemeData(),
+            theme: ThemeData(fontFamily: 'JosefinSans'),
             debugShowCheckedModeBanner: false,
             initialRoute: CarWashMain.id,
             onGenerateRoute: onGenerateRoute,

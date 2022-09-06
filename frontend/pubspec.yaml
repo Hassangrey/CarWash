@@ -34,3 +34,19 @@ flutter:
   assets:
     - assets/images/
     - lib/lang/
+
+  fonts:
+  - family: JosefinSans
+    fonts:
+      - asset: assets/fonts/JosefinSans-ExtraLight.ttf
+        weight: 100
+      - asset: assets/fonts/JosefinSans-Light.ttf
+        weight: 300
+      - asset: assets/fonts/JosefinSans-Medium.ttf
+        weight: 400
+      - asset: assets/fonts/JosefinSans-Regular.ttf
+        weight: 500
+      - asset: assets/fonts/JosefinSans-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/JosefinSans-Bold.ttf
+        weight: 900
