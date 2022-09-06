@@ -96,7 +96,7 @@ abstract class AppLocalizations {
   /// No description provided for @home_page_string.
   ///
   /// In en, this message translates to:
-  /// **'Hone Page'**
+  /// **'Home Page'**
   String get home_page_string;
 
   /// No description provided for @username_string.

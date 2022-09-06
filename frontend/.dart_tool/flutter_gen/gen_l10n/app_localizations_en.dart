@@ -5,7 +5,7 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get home_page_string => 'Hone Page';
+  String get home_page_string => 'Home Page';
 
   @override
   String get username_string => 'Username';
