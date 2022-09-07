@@ -28,7 +28,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
             permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = []
         return [permission() for permission in permission_classes]
 
     def get_queryset(self):
@@ -58,7 +58,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
             permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = []
         return [permission() for permission in permission_classes]
     
 class AddressViewSet(viewsets.ModelViewSet):
@@ -79,7 +79,7 @@ class AddressViewSet(viewsets.ModelViewSet):
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
             permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = []
         return [permission() for permission in permission_classes]
     
 
@@ -101,7 +101,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
             permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
         else:
-            permission_classes = [IsAuthenticated]
+            permission_classes = []
         return [permission() for permission in permission_classes]
     def get_queryset(self):
         queryset = Item.objects.all()
