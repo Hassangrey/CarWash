@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:safacw/screens/choose_provider_page.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'dart:convert';
-
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'welcome_page.dart';
 import '../services/auth_service.dart';
 import 'signup_page.dart';
@@ -214,7 +215,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   color: Colors.black38,
                 )),
           ),
-        )
+        ),
       ],
     );
   }
@@ -457,6 +458,20 @@ class _SignUpPageState extends State<SignUpPage> {
                         buildLoginBtn(() {
                           Navigator.popAndPushNamed(context, LoginScreen.id);
                         }),
+                        TextButton(
+                          onPressed: () => Navigator.pushNamed(
+                            context,
+                            ChooseProvider.id,
+                          ),
+                          child: Text(
+                            'Skip ->',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 24.sp,
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ),
