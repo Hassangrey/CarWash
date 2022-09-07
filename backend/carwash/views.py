@@ -26,7 +26,7 @@ class ProfileViewSet(viewsets.ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
-            permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
+            permission_classes = [IsOwnerOrReadOnly,]
         else:
             permission_classes = []
         return [permission() for permission in permission_classes]
@@ -56,7 +56,7 @@ class OrderViewSet(viewsets.ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
-            permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
+            permission_classes = [IsOwnerOrReadOnly]
         else:
             permission_classes = []
         return [permission() for permission in permission_classes]
@@ -77,7 +77,7 @@ class AddressViewSet(viewsets.ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
-            permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
+            permission_classes = [IsOwnerOrReadOnly]
         else:
             permission_classes = []
         return [permission() for permission in permission_classes]
@@ -99,7 +99,7 @@ class ItemViewSet(viewsets.ModelViewSet):
         Instantiates and returns the list of permissions that this view requires.
         """
         if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
-            permission_classes = [IsOwnerOrReadOnly,IsAuthenticated]
+            permission_classes = [IsOwnerOrReadOnly]
         else:
             permission_classes = []
         return [permission() for permission in permission_classes]
