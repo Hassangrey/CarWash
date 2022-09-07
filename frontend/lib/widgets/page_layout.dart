@@ -49,7 +49,7 @@ class PageLayout extends StatelessWidget {
                   begin: Alignment.topRight,
                   end: Alignment.bottomLeft,
                   colors: [
-                Color(0xFF15AAFF),
+                Color(0xFFFED8F7),
                 Color(0xFFADF7F2),
                 Color(0xFFDBF3FA),
               ])),
