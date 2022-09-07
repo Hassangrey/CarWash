@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Models/language_constants.dart';
+import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/screens/carwash_mainpage.dart';
 import 'package:safacw/screens/myorders_page.dart';
@@ -60,7 +61,7 @@ class _SafaState extends State<Safa> {
               fontFamily: 'JosefinSans',
             ),
             debugShowCheckedModeBanner: false,
-            initialRoute: CarWashMain.id,
+            initialRoute: NavBarHolder.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -75,6 +76,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (context) => WelcomePage());
   } else if (routeSettings.name == SlideMenu.id) {
     return MaterialPageRoute(builder: (_) => SlideMenu());
+  } else if (routeSettings.name == NavBarHolder.id) {
+    return MaterialPageRoute(builder: (_) => NavBarHolder());
   } else if (routeSettings.name == SettingsPage.id) {
     return MaterialPageRoute(builder: (_) => SettingsPage());
   } else if (routeSettings.name == morePage.id) {
