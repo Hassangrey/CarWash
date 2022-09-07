@@ -54,7 +54,7 @@ class _SafaState extends State<Safa> {
     Locale? hello;
     hello = _locale;
     return ScreenUtilInit(
-      designSize: const Size(428, 926),
+      designSize: const Size(412, 869),
       builder: (context, child) {
         return MaterialApp(
             theme: ThemeData(
