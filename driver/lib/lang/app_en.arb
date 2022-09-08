@@ -1,0 +1,9 @@
+{
+    "home_page_string": "Home Page",
+    "@home_page_string": {
+        "desciption:": "This is the home page"
+    },
+    "username_string": "Username",
+    "language":"English",
+    "welcome_title": "Welcome to Safa"
+}
