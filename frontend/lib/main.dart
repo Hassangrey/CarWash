@@ -24,7 +24,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main() => runApp(
       ChangeNotifierProvider(
         create: (context) => CartModel(),
-        child: Safa(),
+        child: const Safa(),
       ),
     );
 
@@ -51,8 +51,6 @@ class _SafaState extends State<Safa> {
 
   @override
   Widget build(BuildContext context) {
-    Locale? hello;
-    hello = _locale;
     return ScreenUtilInit(
       designSize: const Size(412, 869),
       builder: (context, child) {
@@ -61,7 +59,7 @@ class _SafaState extends State<Safa> {
               fontFamily: 'JosefinSans',
             ),
             debugShowCheckedModeBanner: false,
-            initialRoute: NavBarHolder.id,
+            initialRoute: SignUpPage.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -77,7 +75,7 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == SlideMenu.id) {
     return MaterialPageRoute(builder: (_) => SlideMenu());
   } else if (routeSettings.name == NavBarHolder.id) {
-    return MaterialPageRoute(builder: (_) => NavBarHolder());
+    return MaterialPageRoute(builder: (_) => const NavBarHolder());
   } else if (routeSettings.name == SettingsPage.id) {
     return MaterialPageRoute(builder: (_) => SettingsPage());
   } else if (routeSettings.name == morePage.id) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildServiceCard(String title, String imgPath, Function() onPress) => Padding(
+Widget buildServiceCard(String title, Function() onPress) => Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
         clipBehavior: Clip.antiAlias,
@@ -12,7 +12,8 @@ Widget buildServiceCard(String title, String imgPath, Function() onPress) => Pad
             Stack(
               children: [
                 Ink.image(
-                  image: AssetImage(imgPath),
+                  image: NetworkImage(
+                      'https://365psd.com/images/previews/b0c/icon-pattern-backgrounds-53906.jpg'),
                   height: 150,
                   fit: BoxFit.cover,
                   child: InkWell(
@@ -25,11 +26,10 @@ Widget buildServiceCard(String title, String imgPath, Function() onPress) => Pad
                   right: 12,
                   child: Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
                       fontSize: 25,
-
                     ),
                   ),
                 )

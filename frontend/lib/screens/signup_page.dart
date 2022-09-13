@@ -454,14 +454,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         const SizedBox(height: 15),
                         buildConfirmPassword(),
                         const SizedBox(height: 25),
-                        buildSignUpBtn(),
-                        buildLoginBtn(() {
-                          Navigator.popAndPushNamed(context, LoginScreen.id);
-                        }),
                         TextButton(
                           onPressed: () => Navigator.pushNamed(
                             context,
-                            ChooseProvider.id,
+                            WelcomePage.id,
                           ),
                           child: Text(
                             'Skip ->',
@@ -471,7 +467,11 @@ class _SignUpPageState extends State<SignUpPage> {
                               fontSize: 24.sp,
                             ),
                           ),
-                        )
+                        ),
+                        buildSignUpBtn(),
+                        buildLoginBtn(() {
+                          Navigator.popAndPushNamed(context, LoginScreen.id);
+                        }),
                       ],
                     ),
                   ),

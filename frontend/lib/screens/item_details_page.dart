@@ -10,10 +10,13 @@ import '../Models/Item.dart';
 import '../widgets/detail_page_info_card.dart';
 
 class ItemDetailsPage extends StatelessWidget {
-   ItemDetailsPage(this.item, {Key? key}) : super(key: key);
+  ItemDetailsPage(this.item, {Key? key}) : super(key: key);
   static const String id = '/ItemDetailsPage';
-   Item item2 = new Item(title: 'CAR11761', price: 14,);
-   final Item item;
+  Item item2 = new Item(
+    title: 'CAR11761',
+    price: 14,
+  );
+  final Item item;
 
   @override
   Widget build(BuildContext context) {
@@ -23,24 +26,27 @@ class ItemDetailsPage extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/laundrybackgr.jpeg'),
+              image: const AssetImage('images/laundrybackgr.jpeg'),
               fit: BoxFit.cover,
-              colorFilter: new ColorFilter.mode(
+              colorFilter: ColorFilter.mode(
                   Colors.blue.withOpacity(0.2), BlendMode.modulate),
             ),
           ),
           child: Padding(
-            padding: EdgeInsets.only(top: 50),
+            padding: const EdgeInsets.only(top: 50),
             child: Column(
               children: [
-                DetailPageBar(tital: 'ITEM_NAME', onPress: () {
-                  Navigator.popAndPushNamed(context, CartPage.id);
-                }),
-                DetailPageHeader(imgPath: 'images/smallcar.png'),
-                InfoCard(
+                DetailPageBar(
+                    tital: 'ITEM_NAME',
+                    onPress: () {
+                      Navigator.popAndPushNamed(context, CartPage.id);
+                    }),
+                const DetailPageHeader(imgPath: 'images/smallcar.png'),
+                const InfoCard(
                   itemName: 'ITEM_NAME',
                   price: '10',
-                  desc: 'Oorem ipsum dolor sit amet. In debitis explicabo ab neque suscipit sed sapiente blanditiis sed modi eaque sed quia quia sit recusandae autem qui minus beatae? Et sunt alias ex ullam pariatur ut galisum alias ad odit praesentium et voluptas culpa 33 galisum iste. 33 distinctio quis id aliquam necessitatibus ut ullam earum non saepe velit eum architecto veniam non ipsum dolor.  ',
+                  desc:
+                      'Oorem ipsum dolor sit amet. In debitis explicabo ab neque suscipit sed sapiente blanditiis sed modi eaque sed quia quia sit recusandae autem qui minus beatae? Et sunt alias ex ullam pariatur ut galisum alias ad odit praesentium et voluptas culpa 33 galisum iste. 33 distinctio quis id aliquam necessitatibus ut ullam earum non saepe velit eum architecto veniam non ipsum dolor.  ',
                   bothPrice: '1',
                   interiorPrice: '2',
                   exteriorPrice: '3',
@@ -53,22 +59,20 @@ class ItemDetailsPage extends StatelessWidget {
                   child: Container(
                     height: 70,
                     decoration: BoxDecoration(
-                        color: Color(0xFFABE8FF),
+                        color: const Color(0xFFABE8FF),
                         borderRadius: BorderRadius.circular(30)),
                     width: double.infinity,
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'ADD TO CART',
                         style: TextStyle(
                             fontSize: 30,
                             color: Colors.grey,
-                            fontWeight: FontWeight.bold
-                        ),
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),// ADD TO CART BUTTON
+                    ), // ADD TO CART BUTTON
                   ),
                 ),
-
               ],
             ),
           ),
