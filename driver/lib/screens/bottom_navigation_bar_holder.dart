@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safacw/screens/3rd_screen.dart';
+import 'package:safacw/screens/order_history_screen.dart';
+import 'package:safacw/screens/settings_page.dart';
 
 class NavBarHolder extends StatefulWidget {
   const NavBarHolder({Key? key}) : super(key: key);
@@ -15,7 +17,11 @@ class NavBarHolder extends StatefulWidget {
 
 class _NavBarHolderState extends State<NavBarHolder> {
   int currentIndex = 0;
-  final screens = [];
+  final screens = [
+    ThirdScreen(),
+    OrderHistoryScreen(),
+    SettingsPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,16 +37,12 @@ class _NavBarHolderState extends State<NavBarHolder> {
         iconSize: 25.sp,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_filled),
-            label: 'Home',
+            icon: Icon(Icons.two_wheeler),
+            label: 'Pick an order',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: 'Orders',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.two_wheeler),
-            label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),

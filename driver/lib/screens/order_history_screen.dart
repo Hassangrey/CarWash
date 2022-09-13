@@ -4,15 +4,15 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:safacw/widgets/page_layout.dart';
 
-class ThirdScreen extends StatelessWidget {
-  const ThirdScreen({Key? key}) : super(key: key);
-  static const String id = '/3rdScreen';
+class OrderHistoryScreen extends StatelessWidget {
+  const OrderHistoryScreen({Key? key}) : super(key: key);
+  static const String id = '/OrderHistoryScreen';
   @override
   Widget build(BuildContext context) {
     return PageLayout(
       child: Column(children: [
         Container(
-          child: Text('Select an order:'),
+          child: Text('Orders History'),
           margin: EdgeInsets.only(bottom: 20),
         ),
         InkWell(
@@ -21,6 +21,7 @@ class ThirdScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.black),
                   borderRadius: BorderRadius.circular(40)),
+              width: 300,
               height: 50,
               child: Center(child: Text('Order 1'))),
         ),

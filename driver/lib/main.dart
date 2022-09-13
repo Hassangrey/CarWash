@@ -6,6 +6,8 @@ import 'package:provider/provider.dart';
 import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/3rd_screen.dart';
+import 'package:safacw/screens/order_history_screen.dart';
+import 'package:safacw/screens/settings_page.dart';
 import 'Models/Cart.dart';
 import 'Models/Item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -50,7 +52,7 @@ class _SafaState extends State<Safa> {
               fontFamily: 'JosefinSans',
             ),
             debugShowCheckedModeBanner: false,
-            initialRoute: ThirdScreen.id,
+            initialRoute: NavBarHolder.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -65,6 +67,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => NavBarHolder());
   } else if (routeSettings.name == ThirdScreen.id) {
     return MaterialPageRoute(builder: (_) => ThirdScreen());
+  } else if (routeSettings.name == SettingsPage.id) {
+    return MaterialPageRoute(builder: (_) => SettingsPage());
+  } else if (routeSettings.name == SettingsPage.id) {
+    return MaterialPageRoute(builder: (_) => SettingsPage());
   } else {
     return null;
   }
