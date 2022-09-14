@@ -11,6 +11,7 @@ import 'package:safacw/screens/settings_page.dart';
 import 'Models/Cart.dart';
 import 'Models/Item.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:safacw/screens/orderDetails.dart';
 
 void main() => runApp(
       ChangeNotifierProvider(
@@ -52,7 +53,7 @@ class _SafaState extends State<Safa> {
               fontFamily: 'JosefinSans',
             ),
             debugShowCheckedModeBanner: false,
-            initialRoute: NavBarHolder.id,
+            initialRoute: orderDetails.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,
@@ -71,6 +72,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => SettingsPage());
   } else if (routeSettings.name == SettingsPage.id) {
     return MaterialPageRoute(builder: (_) => SettingsPage());
+  } else if (routeSettings.name == orderDetails.id) {
+    return MaterialPageRoute(builder: (_) => orderDetails());
   } else {
     return null;
   }
