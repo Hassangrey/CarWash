@@ -18,45 +18,7 @@ class ChooseProvider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: kappBarStyle(''),
-      body: Padding(
-        padding: const EdgeInsets.all(35.0),
-        child: FutureBuilder(
-          future: ProviderService.get_all(),
-          builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-            if (snapshot.data == null) {
-              return LoadingScreen();
-            } else {
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SelectServiceText(title: 'choose a provider'),
-                    Padding(
-                      padding: EdgeInsets.only(top: 45),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height - 300,
-                        child: ListView.builder(
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ListTile(
-                                // leading: CircleAvatar(
-                                //   backgroundImage: NetworkImage(
-                                //       snapshot.data[index].imgPath),
-                                // ),
-                                title: Text(snapshot.data[index].name),
-                                subtitle: Text(snapshot.data[index].desc),
-                              );
-                            }),
-                      ),
-                    )
-                  ],
-                ),
-              );
-            }
-          },
-        ),
-      ),
+      body: Padding(padding: const EdgeInsets.all(35.0), child: Container()),
     );
   }
 }

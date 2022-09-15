@@ -15,28 +15,17 @@ class ProviderService {
   static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
-  static Future get_all() async {
+  static Future getProvidersProfile() async {
     var client = http.Client();
-    var token = (await AuthService.getToken())['token'];
+    // var token = (await AuthService.getToken())['token'];
 
-    var req = await client.get(Uri.parse(baseUrl + "profiles/?type=3"),
-        headers: {'Authorization': 'JWT $token'});
+    var req = await client
+        .get(Uri.parse("http://192.168.8.104:8000/api" + "/profiles"));
+    // headers: {'Authorization': 'JWT $token'}
+
     final data = jsonDecode(req.body);
+    print(data);
 
-    if (data['results'] != null) {
-      List<dynamic> providers =
-          data['results'].map((json) => Provider.fromJsonMap(json)).toList();
-for(var i = 0; i< providers.length; i++) {
-           List<dynamic> x = await ItemService.get_items_provider(providers[i]);
-   
-          var ints = new List<Item>.from(x);
-
-          providers[i].items = ints;
-}
-
-
-      return providers;
-    }
     return null;
   }
 
