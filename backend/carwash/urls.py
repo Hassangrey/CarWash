@@ -11,6 +11,7 @@ router.register(r'profiles', ProfileViewSet)
 router.register(r'order', OrderViewSet)
 router.register(r'address', AddressViewSet)
 router.register(r'item', ItemViewSet)
+router.register(r'location', LocationViewSet)
 
 
 urlpatterns = [

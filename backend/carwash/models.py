@@ -66,7 +66,7 @@ class Profile(models.Model):
     def __str__(self):
         return f'Profile for user {self.user.username}'
 
-class location(models.Model):
+class Location(models.Model):
     driver = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name='driver_location',
                              on_delete=models.CASCADE)

@@ -112,3 +112,24 @@ class ItemViewSet(viewsets.ModelViewSet):
                 queryset = queryset.filter(user=userID)
                 print()
         return queryset
+
+class LocationViewSet(viewsets.ModelViewSet):
+    serializer_class = OrderSerializer
+    queryset = Location.objects.all()
+
+    
+ 
+    def perform_create(self, serializer):
+        user=self.request.user
+        serializer =serializer.save(user=user)
+
+        
+    def get_permissions(self):        
+        """
+        Instantiates and returns the list of permissions that this view requires.
+        """
+        if self.action == 'create' or self.action == 'update' or self.action == 'partial_update' or self.action == 'destroy':
+            permission_classes = [IsOwnerOrReadOnly]
+        else:
+            permission_classes = []
+        return [permission() for permission in permission_classes]

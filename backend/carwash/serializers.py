@@ -33,3 +33,9 @@ class ItemSerializer(serializers.ModelSerializer):
         fields='__all__'
         #read_only_fields = ('users_like', 'total_likes')
 
+class LocationSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model=Location
+        fields='__all__'
+        #read_only_fields = ('users_like', 'total_likes')
