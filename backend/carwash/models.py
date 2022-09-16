@@ -48,6 +48,7 @@ class Profile(models.Model):
 
     real_name = models.TextField(null=True)
     phone = models.CharField(null=True, max_length=255)
+    status = models.BooleanField(null=True, blank=True,default=True)
     CUSTOMER = '1'
     DRIVER = '2'
     SERVICE_PROVIDER = '3'
@@ -56,6 +57,7 @@ class Profile(models.Model):
     (DRIVER, 'DRIVER'),
     (SERVICE_PROVIDER, 'SERVICE_PROVIDER'),
 )
+
     Type = models.CharField(
         max_length=2,
         choices=types,
