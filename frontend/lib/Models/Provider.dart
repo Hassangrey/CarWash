@@ -1,19 +1,18 @@
 import 'Item.dart';
 
-class Provider {
+class MyProvider {
   String? name;
   int? id;
   String? desc;
   String? imgPath;
   List<Item>? items;
 
-  Provider({
+  MyProvider({
     this.id,
     this.name,
     this.imgPath,
     this.items,
     this.desc,
-
   });
 
   String get getName {
@@ -27,6 +26,7 @@ class Provider {
   int get getId {
     return id!;
   }
+
   String get getDesc {
     return desc!;
   }
@@ -34,9 +34,11 @@ class Provider {
   String get getImgPath {
     return imgPath!;
   }
+
   void setImgPath(String newImagePath) {
     imgPath = newImagePath;
   }
+
   Map toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = this.id;
@@ -45,17 +47,14 @@ class Provider {
     data['imgPath'] = this.imgPath;
     data['items'] = this.items;
 
-
-
     return data;
   }
-   Provider.fromJsonMap(Map map) {
+
+  MyProvider.fromJsonMap(Map map) {
     id = map['id'];
     name = map['user'];
     desc = map['description'];
     imgPath = map['imgPath'];
     items = map['items'];
-
   }
-
 }

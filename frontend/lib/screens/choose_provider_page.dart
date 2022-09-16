@@ -1,13 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:safacw/Models/Item.dart';
-import 'package:safacw/Models/Provider.dart';
-import 'package:safacw/widgets/build_provider.dart';
-import '../Constants/appBarCustomized.dart';
-import '../services/provider_service.dart';
-import '../widgets/SelectServiceText.dart';
-import 'loadingscreen_page.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/providers/carwash_provider.dart';
+import 'package:safacw/widgets/page_layout.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';
@@ -16,9 +13,17 @@ class ChooseProvider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: kappBarStyle(''),
-      body: Padding(padding: const EdgeInsets.all(35.0), child: Container()),
-    );
+    var carProvider = Provider.of<CarWashProvider>(context);
+    return PageLayout(
+        child: carProvider.isLoading
+            ? Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                itemCount: carProvider.carWashProvidersProfilers.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                      title: Text(carProvider.carWashProvidersProfilers[index]
+                          ['user']));
+                },
+              ));
   }
 }

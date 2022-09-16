@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/screens/carwash_mainpage.dart';
 import '../Constants/Constants.dart';
-import '../Models/Item.dart';
-import '../Models/Provider.dart';
+import '../models/Item.dart';
+import '../models/Provider.dart';
 
 Widget buildProvider(Provider provider, BuildContext context) {
   return Padding(

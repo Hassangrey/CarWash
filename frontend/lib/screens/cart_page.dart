@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../Models/Cart.dart';
+import '../models/Cart.dart';
 import '../widgets/DetailPageBar.dart';
 
 class CartPage extends StatelessWidget {
@@ -10,10 +10,8 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-            child: Consumer<CartModel>(
-          builder: (context, cart, child) {
+    return Scaffold(body: SafeArea(
+      child: Consumer<CartModel>(builder: (context, cart, child) {
         return Column(
           children: [
             DetailPageBar(tital: 'CART', onPress: () {}),
@@ -70,8 +68,8 @@ class CartPage extends StatelessWidget {
             )
           ],
         );
-          }),)
-    );
+      }),
+    ));
   }
 }
 

@@ -5,8 +5,8 @@ import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
 import 'package:safacw/widgets/detail_page_image_header.dart';
-import '../Models/Cart.dart';
-import '../Models/Item.dart';
+import '../models/Cart.dart';
+import '../models/Item.dart';
 import '../widgets/detail_page_info_card.dart';
 
 class ItemDetailsPage extends StatelessWidget {

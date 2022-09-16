@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
-import '../Models/Address.dart';
-import '../Models/Item.dart';
-import '../Models/Provider.dart';
+import '../models/Address.dart';
+import '../models/Item.dart';
+import '../models/Provider.dart';
 import 'auth_service.dart';
 
 class ItemService {
@@ -46,7 +46,7 @@ class ItemService {
     return null;
   }
 
-  static Future get_items_provider(Provider provider) async {
+  static Future get_items_provider(MyProvider provider) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
 

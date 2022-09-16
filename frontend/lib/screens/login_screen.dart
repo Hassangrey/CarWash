@@ -4,7 +4,7 @@ import 'package:safacw/screens/signup_page.dart';
 import 'dart:convert';
 
 import '../services/auth_service.dart';
-import 'welcome_page.dart';
+import 'choose_service_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

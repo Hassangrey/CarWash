@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:safacw/Models/language_constants.dart';
+import 'package:safacw/models/language_constants.dart';
 import 'package:safacw/main.dart';
 
 class PageLayout extends StatelessWidget {

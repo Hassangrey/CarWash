@@ -1,25 +1,22 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
-import 'package:safacw/screens/login_screen.dart';
-import 'package:safacw/screens/carwash_mainpage.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/Models/Provider.dart';
+import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/choose_provider_page.dart';
-import 'package:safacw/screens/signup_page.dart';
-import '../../Constants/appBarCustomized.dart';
 import '../widgets/serviceCard.dart';
-import '../services/address_service.dart';
-import '../services/provider_service.dart';
-import '../widgets/LoginButton.dart';
-import '../widgets/SelectServiceText.dart';
-import '../widgets/ServicesCard.dart';
 
-class WelcomePage extends StatelessWidget {
+class WelcomePage extends StatefulWidget {
   static const String id = 'welcomePage';
 
+  const WelcomePage({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
-    Size screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -40,7 +37,10 @@ class WelcomePage extends StatelessWidget {
                 // go to laundry page
               }),
               buildServiceCard('Car Wash', () {
-                Navigator.pushNamed(context, NavBarHolder.id);
+                Navigator.pushNamed(context, ChooseProvider.id);
+
+                Provider.of<CarWashProvider>(context, listen: false)
+                    .getAllCarWashProvidersProfilers();
               }),
               buildServiceCard('Builfing Cleaning -SOON', () {
                 // go to building cleaning page

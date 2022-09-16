@@ -4,7 +4,7 @@ import 'package:safacw/screens/choose_provider_page.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'welcome_page.dart';
+import 'choose_service_screen.dart';
 import '../services/auth_service.dart';
 import 'signup_page.dart';
 
