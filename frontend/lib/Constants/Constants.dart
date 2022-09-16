@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 const COLOR_BLUE_DARK = Color(0xFF131F3F);
 const COLOR_BLUE_LIGHT = Color(0xFFABC9F2);
 const COLOR_GREY = Color(0xFFA7A7A7);
+const COLOR_TRY = Color(0xFFCEDDEF);
 
 const kPrimaryColor = Color(0xFF46B4E7);
 const double kDefaultPadding = 20;
