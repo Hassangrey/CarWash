@@ -9,7 +9,6 @@ class CarWashProvider extends ChangeNotifier {
   getAllCarWashProvidersProfilers() async {
     isLoading = true;
     carWashProvidersProfilers = (await ProviderService.getProvidersProfile());
-    print(carWashProvidersProfilers);
     isLoading = false;
     notifyListeners();
   }
