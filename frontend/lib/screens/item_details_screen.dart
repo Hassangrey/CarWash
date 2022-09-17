@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:safacw/screens/cart_page.dart';
 import 'package:safacw/widgets/Description.dart';
 import 'package:safacw/widgets/DetailPageBar.dart';
 import 'package:safacw/widgets/HeadImage.dart';
@@ -36,11 +35,6 @@ class ItemDetailsPage extends StatelessWidget {
             padding: const EdgeInsets.only(top: 50),
             child: Column(
               children: [
-                DetailPageBar(
-                    tital: 'ITEM_NAME',
-                    onPress: () {
-                      Navigator.popAndPushNamed(context, CartPage.id);
-                    }),
                 const DetailPageHeader(imgPath: 'images/smallcar.png'),
                 const InfoCard(
                   itemName: 'ITEM_NAME',

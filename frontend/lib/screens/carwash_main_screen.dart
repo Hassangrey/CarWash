@@ -35,15 +35,6 @@ class CarWashMain extends StatelessWidget {
               addVerticalSpace(18.h),
               Items(),
               addVerticalSpace(40.h),
-              TextButton(
-                onPressed: () {
-                  ProviderService.getProvidersProfile();
-                },
-                child: Text(
-                  'REST OF THE PAGE',
-                  style: kServiceTitleStyle,
-                ),
-              )
             ],
           ),
         ),
@@ -64,21 +55,18 @@ class Items extends StatelessWidget {
       removeTop: true,
       child: SizedBox(
         height: 300.h,
-        child: GridView.builder(
-          itemCount: 8,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (BuildContext context, int index) {
-            return const Padding(
-              padding: EdgeInsets.all(12.0),
-              child: GridTile(
-                child: ColoredBox(
-                  color: COLOR_GREY,
-                ),
-              ),
-            );
-          },
-        ),
+        child: GridView.count(
+            primary: false,
+            crossAxisCount: 2,
+            mainAxisSpacing: 10,
+            crossAxisSpacing: 10,
+            children: List.generate(8, (index) {
+              return Container(
+                height: 200.h,
+                width: 140.w,
+                color: COLOR_GREY,
+              );
+            })),
       ),
     );
   }
@@ -92,7 +80,7 @@ class OffersList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200.h,
+      height: 180.h,
       child: MediaQuery.removeViewPadding(
         removeBottom: true,
         removeTop: true,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:safacw/screens/choose_provider_page.dart';
+import 'package:safacw/screens/choose_provider_screen.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'dart:convert';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

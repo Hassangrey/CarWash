@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/screens/myorders_page.dart';
 import 'package:safacw/screens/choose_service_screen.dart';
-import 'package:safacw/screens/settings_page.dart';
+import 'package:safacw/screens/Screens%204/settings_screen.dart';
 
 class SlideMenu extends StatelessWidget {
   static const String id = 'SlideMenu';
@@ -39,7 +39,7 @@ class SlideMenu extends StatelessWidget {
             title: Text('Settings'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.pushNamed(context, SettingsPage.id);
+              Navigator.pushNamed(context, SettingsScreen.id);
             },
           ),
         ],
