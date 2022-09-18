@@ -58,12 +58,12 @@ class Items extends StatelessWidget {
         child: GridView.count(
             primary: false,
             crossAxisCount: 2,
-            mainAxisSpacing: 10,
+            mainAxisSpacing: 20,
             crossAxisSpacing: 10,
-            children: List.generate(8, (index) {
+            children: List.generate(4, (index) {
               return Container(
                 height: 200.h,
-                width: 140.w,
+                width: 80.w,
                 color: COLOR_GREY,
               );
             })),

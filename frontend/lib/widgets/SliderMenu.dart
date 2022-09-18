@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:safacw/screens/myorders_page.dart';
 import 'package:safacw/screens/choose_service_screen.dart';
 import 'package:safacw/screens/Screens%204/settings_screen.dart';
 
@@ -32,7 +31,6 @@ class SlideMenu extends StatelessWidget {
             title: Text('New Order'),
             onTap: () {
               Navigator.of(context).pop();
-              Navigator.pushNamed(context, MyOrdersPage.id);
             },
           ),
           ListTile(

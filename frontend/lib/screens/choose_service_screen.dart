@@ -44,8 +44,8 @@ class _WelcomePageState extends State<WelcomePage> {
               buildServiceCard('Car Wash', () {
                 Navigator.pushNamed(context, CarWashMain.id);
                 // * Fetch the service providers
-                Provider.of<CarWashProvider>(context, listen: false)
-                    .getAllCarWashProvidersProfilers();
+                // Provider.of<CarWashProvider>(context, listen: false)
+                //     .getAllCarWashProvidersProfilers();
               }),
               buildServiceCard('Building Cleaning', () {
                 Navigator.pushNamed(context, BuildingCleaningMainScreen.id);
