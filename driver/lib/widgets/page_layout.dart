@@ -12,7 +12,35 @@ class PageLayout extends StatelessWidget {
     return Scaffold(
       //  resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
-
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(100.0.h), // here the desired height
+        child: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          centerTitle: true,
+          title: const Text(
+            '',
+            style: TextStyle(
+              fontSize: 36,
+              letterSpacing: 4,
+              color: Colors.black45,
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                final locale = Localizations.localeOf(context);
+                Locale _locale = await setLocale(locale.languageCode);
+                Safa.setLocale(context, _locale);
+              },
+              child: Text(
+                translation(context).language,
+                style: const TextStyle(color: Colors.black),
+              ),
+            )
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       body: Stack(children: [
         Container(
