@@ -19,7 +19,7 @@ class PageLayout extends StatelessWidget {
           elevation: 0,
           centerTitle: true,
           title: const Text(
-            '',
+            'Safa',
             style: TextStyle(
               fontSize: 36,
               letterSpacing: 4,
