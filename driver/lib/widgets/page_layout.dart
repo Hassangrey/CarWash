@@ -71,7 +71,7 @@ class PageLayout extends StatelessWidget {
             child: SafeArea(
                 top: false,
                 child: Padding(
-                  padding: EdgeInsets.only(top: 16.0.h),
+                  padding: EdgeInsets.only(top: 16.0.h, bottom: 16.0.h),
                   child: child,
                 )),
           ),

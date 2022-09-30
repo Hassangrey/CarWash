@@ -54,7 +54,7 @@ class _SafaState extends State<Safa> {
               fontFamily: 'JosefinSans',
             ),
             debugShowCheckedModeBanner: false,
-            initialRoute: acceptedOrder.id,
+            initialRoute: NavBarHolder.id,
             onGenerateRoute: onGenerateRoute,
             localizationsDelegates: AppLocalizations.localizationsDelegates,
             supportedLocales: AppLocalizations.supportedLocales,

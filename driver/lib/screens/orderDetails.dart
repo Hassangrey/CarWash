@@ -80,13 +80,15 @@ class _orderDetails extends State<orderDetails> {
   }
 
   Widget build(BuildContext context) {
-    return _kGooglePlex == null
-        ? Center(
-            child: Container(
-                height: 50.h, width: 50.w, child: CircularProgressIndicator()),
-          )
-        : PageLayout(
-            child: Wrap(children: [
+    return PageLayout(
+      child: _kGooglePlex == null
+          ? Center(
+              child: Container(
+                  height: 50.h,
+                  width: 50.w,
+                  child: CircularProgressIndicator()),
+            )
+          : Wrap(children: [
               Stack(
                 children: [
                   Container(
@@ -112,9 +114,8 @@ class _orderDetails extends State<orderDetails> {
                         }),
                   ),
                   Positioned.fill(
-                    top: 5.h,
                     child: Container(
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.bottomLeft,
                       child: FloatingActionButton.extended(
                         heroTag: "home",
                         onPressed: _goToCustomer,
@@ -123,25 +124,24 @@ class _orderDetails extends State<orderDetails> {
                     ),
                   ),
                   Positioned.fill(
-                    top: 65.h,
+                    left: 80.h,
                     child: Container(
                       child: FloatingActionButton.extended(
                         heroTag: "laundry",
                         onPressed: _goTolaundry,
                         label: Icon(Icons.local_laundry_service),
                       ),
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.bottomLeft,
                     ),
                   ),
                   Positioned.fill(
-                    top: 440.h,
                     child: Container(
                       child: FloatingActionButton.extended(
                         heroTag: "myLocation",
                         onPressed: _currentLocation,
                         label: Icon(Icons.location_on_outlined),
                       ),
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.bottomRight,
                     ),
                   ),
                 ],
@@ -151,13 +151,14 @@ class _orderDetails extends State<orderDetails> {
                 child: ElevatedButton(
                   onPressed: () {
                     ps.cancel();
-                    Navigator.pushNamed(context, NavBarHolder.id);
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, NavBarHolder.id, ModalRoute.withName('/'));
                   },
                   child: Center(child: Text('Go Back!')),
                 ),
               )
             ]),
-          );
+    );
   }
 
   Future<void> _goToCustomer() async {

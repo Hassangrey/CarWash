@@ -124,13 +124,15 @@ class _acceptedOrder extends State<acceptedOrder> {
   }
 
   Widget build(BuildContext context) {
-    return _kGooglePlex == null
-        ? Center(
-            child: Container(
-                height: 50.h, width: 50.w, child: CircularProgressIndicator()),
-          )
-        : PageLayout(
-            child: Wrap(children: [
+    return PageLayout(
+      child: _kGooglePlex == null
+          ? Center(
+              child: Container(
+                  height: 50.h,
+                  width: 50.w,
+                  child: CircularProgressIndicator()),
+            )
+          : Wrap(children: [
               Stack(
                 children: [
                   Container(
@@ -259,7 +261,7 @@ class _acceptedOrder extends State<acceptedOrder> {
               //   ),
               // ))
             ]),
-          );
+    );
   }
 
   Future<void> _goToCustomer() async {

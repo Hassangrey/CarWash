@@ -9,6 +9,7 @@ import 'package:safacw/screens/settings_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:safacw/screens/acceptedOrder.dart';
 
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({Key? key}) : super(key: key);
@@ -31,57 +32,175 @@ class _ThirdScreen extends State<ThirdScreen> {
   @override
   Widget build(BuildContext context) {
     return PageLayout(
-      child: Column(children: [
-        Container(
-          child: Text('Select an order:'),
-          margin: EdgeInsets.only(bottom: 20),
-        ),
-        InkWell(
-          onTap: () => {
-            showModalBottomSheet(
-                context: context,
-                builder: (context) {
-                  return Wrap(children: [
-                    Container(
-                      margin: EdgeInsets.all(10.sm),
-                      child: Text(
-                        'The order details appear here!',
-                        textAlign: TextAlign.center,
+        child: ListView.builder(
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Container(
+          padding: EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.r),
+            color: Colors.grey[100],
+          ),
+          margin: EdgeInsets.only(
+            bottom: 10,
+          ),
+          child: InkWell(
+            onTap: () => {BottomSheet(context)},
+            child: Row(
+              children: [
+                Container(
+                  width: 50.w,
+                  height: 50.h,
+                  margin: EdgeInsets.all(5),
+                  child: Image.network(
+                    'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(left: 15),
+                  width: 170.w,
+                  child: Text('Laundry ${index + 1}'),
+                ),
+                Container(
+                  padding: EdgeInsets.only(top: 15.h),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Price: 30SR',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 10.sp),
                       ),
-                      height: 200.h,
-                      width: 420.w,
-                    ),
-                    Center(
-                      child: Container(
-                          margin: EdgeInsets.all(5.sm),
+                      Text('Distance: 0.3km',
+                          textAlign: TextAlign.right,
+                          style: TextStyle(fontSize: 10.sp)),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+      },
+    ));
+  }
+
+  Future<dynamic> BottomSheet(BuildContext context) {
+    return showModalBottomSheet(
+        isScrollControlled: true,
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.all(10),
+            child: Wrap(
+              children: [
+                Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.all(5),
+                  child: Image.network(
+                    'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                    width: 50.w,
+                    height: 50.h,
+                    alignment: Alignment.center,
+                  ),
+                ),
+                Container(
+                    width: double.infinity,
+                    margin: EdgeInsets.all(5),
+                    child: Text(
+                      'Laundry Name',
+                      textAlign: TextAlign.center,
+                    )),
+                Container(
+                  height: 400,
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    shrinkWrap: true,
+                    itemCount: 8,
+                    itemBuilder: (context, index) {
+                      return Container(
+                          padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black),
-                              borderRadius: BorderRadius.circular(40.r)),
-                          height: 40.h,
-                          width: 210.w,
-                          child: InkWell(
-                              onTap: () => Navigator.pushNamed(
-                                    context,
-                                    orderDetails.id,
-                                  ),
-                              child: Center(
-                                child: Text(
-                                  'More details',
+                            borderRadius: BorderRadius.circular(20.r),
+                            color: Colors.grey[200],
+                          ),
+                          margin: EdgeInsets.only(
+                            bottom: 10,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                width: 50.w,
+                                height: 50.h,
+                                margin: EdgeInsets.all(5),
+                                child: Image.network(
+                                  'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
                                 ),
-                              ))),
-                    )
-                  ]);
-                })
-          },
-          child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.black),
-                  borderRadius: BorderRadius.circular(40)),
-              height: 50,
-              child: Center(child: Text('Order 1'))),
-        ),
-      ]),
-    );
+                              ),
+                              Container(
+                                margin: EdgeInsets.only(left: 15),
+                                width: 170.w,
+                                child: Text('Item ${index + 1}'),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(top: 15.h),
+                                child: Column(
+                                  children: [
+                                    Text(
+                                      'Price: 10SR',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(fontSize: 10.sp),
+                                    ),
+                                    Text('Pieces: 2',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(fontSize: 10.sp)),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ));
+                    },
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.all(10),
+                  width: double.infinity,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 185.w,
+                        child: FloatingActionButton.extended(
+                          backgroundColor: Colors.blue[300],
+                          heroTag: "laundry",
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(context,
+                                orderDetails.id, ModalRoute.withName('/'));
+                          },
+                          label: Icon(Icons.location_on_outlined),
+                        ),
+                        alignment: Alignment.bottomLeft,
+                      ),
+                      Container(
+                        width: 185.w,
+                        child: FloatingActionButton.extended(
+                          backgroundColor: Colors.green[400],
+                          heroTag: "laundry",
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(context,
+                                acceptedOrder.id, ModalRoute.withName('/'));
+                          },
+                          label: Icon(Icons.done_outline_rounded),
+                        ),
+                        alignment: Alignment.bottomRight,
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+          );
+        });
   }
 
   Future<void> checkAccess() async {
