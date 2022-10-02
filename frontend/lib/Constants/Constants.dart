@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ? COLORS WILL BE USED IN STYLYING THE APP
-const COLOR_BLUE_DARK = Color(0xFF131F3F);
+const COLOR_BLUE_DARK = Color.fromARGB(255, 51, 75, 139);
 const COLOR_BLUE_LIGHT = Color(0xFFABC9F2);
 const COLOR_GREY = Color(0xFFA7A7A7);
 const COLOR_TRY = Color(0xFFCEDDEF);

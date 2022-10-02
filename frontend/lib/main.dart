@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:safacw/models/language_constants.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/laundry_main_screen.dart';
+import 'package:safacw/screens/Screens%201/viewall_screen.dart';
 import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
@@ -96,6 +97,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => CarWashMain());
   } else if (routeSettings.name == LaundryMainScreen.id) {
     return MaterialPageRoute(builder: (_) => LaundryMainScreen());
+  } else if (routeSettings.name == ViewAllScreen.id) {
+    return MaterialPageRoute(builder: (_) => ViewAllScreen());
   } else if (routeSettings.name == BuildingCleaningMainScreen.id) {
     return MaterialPageRoute(builder: (_) => BuildingCleaningMainScreen());
   } else if (routeSettings.name == ItemDetailsPage.id) {

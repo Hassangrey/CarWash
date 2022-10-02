@@ -1,9 +1,12 @@
 {
     "home_page_string": "الصفحة الرئيسية",
     "username_string": "اسم المستخدم",
-    "language": "العربية",
+    "language": "English",
     "laundry_screen_title": "مغسلة",
-    "welcome_title": "حياك بتطبيق صفاء"
+    "welcome_title": "حياك بتطبيق صفاء",
+     "offers_title": "العروض",
+    "services_title": "خدماتنا",
+    "viewall_title": "عرض الكل"
     
     
 }

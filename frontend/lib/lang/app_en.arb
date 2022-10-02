@@ -4,7 +4,10 @@
         "desciption:": "This is the home page"
     },
     "username_string": "Username",
-    "language":"English",
+    "language":"العربية",
     "laundry_screen_title": "Laundry Screen",
-    "welcome_title": "Welcome to Safa"
+    "welcome_title": "Welcome to Safa",
+    "offers_title": "Offers",
+    "services_title": "Our Services",
+    "viewall_title": "View all"
 }
