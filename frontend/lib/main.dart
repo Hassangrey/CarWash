@@ -21,6 +21,9 @@ import 'models/Cart.dart';
 import 'models/Item.dart';
 import 'screens/choose_service_screen.dart';
 import 'screens/Screens 4/settings_screen.dart';
+import 'package:safacw/screens/Screens 4/addresses_screen.dart';
+import 'package:safacw/screens/Screens 4/profile_screen.dart';
+
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() => runApp(
@@ -104,7 +107,14 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));
-  } else {
+  } else if (routeSettings.name == AddressesScreen.id) {
+    final value = routeSettings.arguments as Item; // Retrieve the value.
+    return MaterialPageRoute(builder: (context) => AddressesScreen());
+  } else if (routeSettings.name == ProfileScreen.id) {
+    final value = routeSettings.arguments as Item; // Retrieve the value.
+    return MaterialPageRoute(builder: (context) => ProfileScreen());
+  } 
+  else {
     return null;
   }
 }
