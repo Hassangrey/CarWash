@@ -13,12 +13,11 @@ class CarWashProvider extends ChangeNotifier {
 
   getAllCarWashProvidersProfilers(String type) async {
     isLoading = true;
+    type=type;
     carWashProvidersProfilers = (await ProviderService.getProvidersProfile(type));
     isLoading = false;
     notifyListeners();
   }
-    changeType(String type) async {
-      type=type;
-    notifyListeners();
-  }
+
+   
 }
