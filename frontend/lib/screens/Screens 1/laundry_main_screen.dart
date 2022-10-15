@@ -3,7 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:safacw/Constants/Constants.dart';
-import 'package:safacw/models/language_constants.dart';
+import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/screens/Screens%201/viewall_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

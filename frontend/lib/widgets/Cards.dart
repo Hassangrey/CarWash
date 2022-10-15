@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Constants/Constants.dart';
-import '../models/Item.dart';
+import 'package:safacw/Models/Item.dart';
 
 class Cards extends StatelessWidget {
   const Cards({

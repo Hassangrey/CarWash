@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'package:safacw/models/language_constants.dart';
+import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/laundry_main_screen.dart';
 import 'package:safacw/screens/Screens%201/viewall_screen.dart';
@@ -17,8 +17,8 @@ import 'package:safacw/screens/signup_page.dart';
 import 'package:safacw/widgets/SliderMenu.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'package:safacw/screens/choose_provider_screen.dart';
-import 'models/Cart.dart';
-import 'models/Item.dart';
+import 'package:safacw/Models/Cart.dart';
+import 'package:safacw/Models/Item.dart';
 import 'screens/choose_service_screen.dart';
 import 'screens/Screens 4/settings_screen.dart';
 import 'package:safacw/screens/Screens 4/addresses_screen.dart';
@@ -68,7 +68,7 @@ class _SafaState extends State<Safa> {
                 fontFamily: 'JosefinSans',
               ),
               debugShowCheckedModeBanner: false,
-              initialRoute: SignUpPage.id,
+              initialRoute: LoginScreen.id,
               onGenerateRoute: onGenerateRoute,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,

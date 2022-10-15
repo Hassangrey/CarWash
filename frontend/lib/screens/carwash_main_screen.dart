@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
-import 'package:safacw/models/language_constants.dart';
+import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/services/service_providers_service.dart';
 import 'package:safacw/widgets/detail_page_info_card.dart';
 import 'package:safacw/widgets/page_layout.dart';

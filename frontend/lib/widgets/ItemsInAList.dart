@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:safacw/screens/item_details_screen.dart';
 import '../screens/item_details_screen.dart';
 import 'Cards.dart';
-import '../models/Provider.dart';
+import 'package:safacw/Models/Provider.dart';
 
 class ItemsInAList extends StatelessWidget {
   ItemsInAList({Key? key, required this.provider}) : super(key: key);

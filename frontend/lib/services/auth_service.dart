@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 
 class AuthService {
  // static final baseUrl = 'http://senior-project-api.herokuapp.com'; because we're poor
-  static final baseUrl = 'http://127.0.0.1:8000';
+  static final baseUrl = 'http://192.168.0.116:8000';
 
   // ignore: non_constant_identifier_names
   static final SESSION = FlutterSession();
