@@ -8,12 +8,17 @@ class CarWashProvider extends ChangeNotifier {
   bool isLoading = false;
   bool hasError = false;
   List<dynamic> carWashProvidersProfilers = [];
+  String type = '';
 
 
-  getAllCarWashProvidersProfilers() async {
+  getAllCarWashProvidersProfilers(String type) async {
     isLoading = true;
-    carWashProvidersProfilers = (await ProviderService.getProvidersProfile(3));
+    carWashProvidersProfilers = (await ProviderService.getProvidersProfile(type));
     isLoading = false;
+    notifyListeners();
+  }
+    changeType(String type) async {
+      type=type;
     notifyListeners();
   }
 }

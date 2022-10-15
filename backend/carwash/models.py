@@ -57,11 +57,23 @@ class Profile(models.Model):
     (DRIVER, 'DRIVER'),
     (SERVICE_PROVIDER, 'SERVICE_PROVIDER'),
 )
-
     Type = models.CharField(
         max_length=2,
         choices=types,
         default=SERVICE_PROVIDER
+    )
+    LAUNDRY = 'Laundry'
+    CARWASH = 'CarWash'
+    BUILDING_CLEANING = 'BuildingCleaning'
+    provider_types = (
+    (LAUNDRY, 'Laundry'),
+    (CARWASH, 'CarWash'),
+    (BUILDING_CLEANING, 'BuildingCleaning'),
+)
+    Service_provider_type = models.CharField(
+        max_length=20,
+        choices=provider_types,
+        default=BUILDING_CLEANING
     )
     def __str__(self):
         return f'Profile for user {self.user.username}'

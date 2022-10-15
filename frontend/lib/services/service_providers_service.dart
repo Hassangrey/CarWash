@@ -19,7 +19,7 @@ class ProviderService {
   static final SESSION = FlutterSession();
 
   // * Method to return the service providers of the car wash service
-  static Future getProvidersProfile(int type) async {
+  static Future getProvidersProfile(String type) async {
     // * Make an http client to make a request. GET request in this case
     var client = http.Client();
     // var token = (await AuthService.getToken())['token'];
@@ -30,13 +30,14 @@ class ProviderService {
     // ? Open the terminal, type in ifconfig. Your ip should start with 192.168...
     // ? Replace my IP with yours in the Uri.parse method below
     response = await client
-        .get(Uri.parse("$baseUrl" + profilesEndPoint + '?type='+type.toString()));
+        .get(Uri.parse("$baseUrl" + profilesEndPoint + '?type=3&provider=' +type));
 
     // headers: {'Authorization': 'JWT $token'}
     try {
       // * If OK. Return the list of the users
       if (response.statusCode == 200) {
          final data = jsonDecode(response.body);
+         print(data);
       List<dynamic> providers =
           data.map((json) => CarWash.fromJsonMap(json)).toList();
 

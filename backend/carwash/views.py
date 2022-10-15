@@ -35,8 +35,10 @@ class ProfileViewSet(viewsets.ModelViewSet):
         queryset = Profile.objects.all()
         if self.action == 'list':
             type = self.request.query_params.get('type', None)
+            provider_type = self.request.query_params.get('provider', None)
             if type is not None:
-            # profileID = Profile.objects.get(type=type)
+                if provider_type is not None:
+                    queryset = queryset.filter(Type=type, Service_provider_type=provider_type)
                 queryset = queryset.filter(Type=type)
         return queryset
 
