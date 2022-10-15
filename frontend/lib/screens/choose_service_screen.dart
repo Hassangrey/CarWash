@@ -18,9 +18,23 @@ class WelcomePage extends StatefulWidget {
   State<WelcomePage> createState() => _WelcomePageState();
 }
 
+  changeId(CarWashProvider provider, String type){
+    if(type =="Laundry"){
+      provider.type='/NavigationBarHolder';
+    }else if(type =="CarWash"){
+      provider.type='/carwashpage';
+
+    }else if(type =="BuildingCleaning"){
+      provider.type='/BuildingCleaning';
+
+    }
+  
+  }
 class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
+    var carProvider = Provider.of<CarWashProvider>(context);
+
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -40,6 +54,7 @@ class _WelcomePageState extends State<WelcomePage> {
               buildServiceCard('Laundry', () {
                    Provider.of<CarWashProvider>(context, listen: false)
                     .getAllCarWashProvidersProfilers("Laundry");
+                    changeId(carProvider, "Laundry");
                                     Navigator.pushNamed(context, ChooseProvider.id);
 
                 // go to laundry page
@@ -48,6 +63,8 @@ class _WelcomePageState extends State<WelcomePage> {
               buildServiceCard('Car Wash', () {
                                 Provider.of<CarWashProvider>(context, listen: false)
                     .getAllCarWashProvidersProfilers("CarWash");
+                      changeId(carProvider, "CarWash");
+
                                     Navigator.pushNamed(context, ChooseProvider.id);
                 // Navigator.pushNamed(context, ChooseProvider.id);
                 // * Fetch the service providers
@@ -56,6 +73,8 @@ class _WelcomePageState extends State<WelcomePage> {
               buildServiceCard('Building Cleaning', () {
                 Provider.of<CarWashProvider>(context, listen: false)
                     .getAllCarWashProvidersProfilers("BuildingCleaning");
+                               changeId(carProvider, "BuildingCleaning");
+
                                     Navigator.pushNamed(context, ChooseProvider.id);
 
                 // Navigator.pushNamed(context, BuildingCleaningMainScreen.id);

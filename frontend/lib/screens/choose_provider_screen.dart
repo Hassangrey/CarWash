@@ -11,13 +11,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';
-
-  const ChooseProvider({Key? key}) : super(key: key);
+   const ChooseProvider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var carProvider = Provider.of<CarWashProvider>(context);
-    print(carProvider.carWashProvidersProfilers);
+
     return PageLayout(
         child: carProvider.isLoading
             ? Center(child: CircularProgressIndicator())
@@ -30,7 +29,7 @@ class ChooseProvider extends StatelessWidget {
 
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, CarWashMain.id),
+                      onTap: () => Navigator.pushNamed(context, carProvider.type),
                       child: Container(
                         decoration: BoxDecoration(
                             color: COLOR_TRY,

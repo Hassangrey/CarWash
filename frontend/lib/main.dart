@@ -99,7 +99,7 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == LoginScreen.id) {
     return MaterialPageRoute(builder: (_) => const LoginScreen());
   } else if (routeSettings.name == ChooseProvider.id) {
-    return MaterialPageRoute(builder: (_) => const ChooseProvider());
+    return MaterialPageRoute(builder: (_) =>  ChooseProvider());
   } else if (routeSettings.name == CarWashMain.id) {
     return MaterialPageRoute(builder: (_) => CarWashMain());
   } else if (routeSettings.name == LaundryMainScreen.id) {
