@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:safacw/screens/item_details_screen.dart';
 import '../screens/item_details_screen.dart';
 import 'Cards.dart';
-import 'package:safacw/Models/Provider.dart';
+import 'package:safacw/Models/CarWash.dart';
 
 class ItemsInAList extends StatelessWidget {
   ItemsInAList({Key? key, required this.provider}) : super(key: key);
-  final MyProvider provider;
+  final CarWash provider;
 
   @override
   Widget build(BuildContext context) {

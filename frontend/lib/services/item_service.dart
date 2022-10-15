@@ -6,10 +6,9 @@ import 'package:http/http.dart' as http;
 import 'auth_service.dart';
 import 'package:safacw/Models/Address.dart';
 import 'package:safacw/Models/Item.dart';
-import 'package:safacw/Models/Provider.dart';
-
+import 'package:safacw/Models/CarWash.dart';
+import 'package:safacw/services/constants.dart';
 class ItemService {
-  static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
@@ -47,23 +46,18 @@ class ItemService {
     return null;
   }
 
-  static Future get_items_provider(MyProvider provider) async {
+  static Future get_items_provider(CarWash provider) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
-
     var req = await client.get(
         Uri.parse(baseUrl + "item?username=" + provider.name!),
         headers: {'Authorization': 'JWT $token'});
-
     final data = jsonDecode(req.body);
-
-    if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Item.fromJsonMap(json)).toList();
+          data.map((json) => Item.fromJsonMap(json)).toList();
 
       return items;
-    }
-    return null;
+    
   }
 
   static Future create(Item item) async {

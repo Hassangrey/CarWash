@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:safacw/Models/Provider.dart';
+import 'package:safacw/Models/CarWash.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/laundry_main_screen.dart';
 import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
@@ -42,10 +42,11 @@ class _WelcomePageState extends State<WelcomePage> {
                 Navigator.pushNamed(context, NavBarHolder.id);
               }),
               buildServiceCard('Car Wash', () {
-                Navigator.pushNamed(context, CarWashMain.id);
+                                Provider.of<CarWashProvider>(context, listen: false)
+                    .getAllCarWashProvidersProfilers();
+                Navigator.pushNamed(context, ChooseProvider.id);
                 // * Fetch the service providers
-                // Provider.of<CarWashProvider>(context, listen: false)
-                //     .getAllCarWashProvidersProfilers();
+
               }),
               buildServiceCard('Building Cleaning', () {
                 Navigator.pushNamed(context, BuildingCleaningMainScreen.id);

@@ -17,6 +17,7 @@ class ChooseProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var carProvider = Provider.of<CarWashProvider>(context);
+    print(carProvider.carWashProvidersProfilers);
     return PageLayout(
         child: carProvider.isLoading
             ? Center(child: CircularProgressIndicator())
@@ -24,7 +25,9 @@ class ChooseProvider extends StatelessWidget {
                 context: context,
                 removeTop: true,
                 child: ListView.separated(
-                  itemCount: 3,
+                  // itemCount: carProvider.carWashProvidersProfilers.length,
+                itemCount: 3,
+
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => Navigator.pushNamed(context, CarWashMain.id),

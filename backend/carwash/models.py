@@ -61,7 +61,7 @@ class Profile(models.Model):
     Type = models.CharField(
         max_length=2,
         choices=types,
-        default=CUSTOMER
+        default=SERVICE_PROVIDER
     )
     def __str__(self):
         return f'Profile for user {self.user.username}'

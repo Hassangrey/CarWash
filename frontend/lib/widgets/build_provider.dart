@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:safacw/screens/carwash_main_screen.dart';
 import '../Constants/Constants.dart';
 import 'package:safacw/Models/Item.dart';
-import 'package:safacw/Models/Provider.dart';
+import 'package:safacw/Models/CarWash.dart';
 
-Widget buildProvider(MyProvider provider, BuildContext context) {
+Widget buildProvider(CarWash provider, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(left: 10, right: 10, top: 10),
     child: InkWell(

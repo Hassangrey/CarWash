@@ -1,13 +1,13 @@
 import 'Item.dart';
 
-class MyProvider {
+class CarWash {
   String? name;
   int? id;
   String? desc;
   String? imgPath;
   List<Item>? items;
 
-  MyProvider({
+  CarWash({
     this.id,
     this.name,
     this.imgPath,
@@ -50,7 +50,7 @@ class MyProvider {
     return data;
   }
 
-  MyProvider.fromJsonMap(Map map) {
+  CarWash.fromJsonMap(Map map) {
     id = map['id'];
     name = map['user'];
     desc = map['description'];

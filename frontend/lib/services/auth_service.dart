@@ -1,16 +1,16 @@
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
-
+import 'package:safacw/services/constants.dart';
 class AuthService {
  // static final baseUrl = 'http://senior-project-api.herokuapp.com'; because we're poor
-  static final baseUrl = 'http://192.168.0.116:8000';
+  // static final baseUrl = 'http://192.168.0.116:8000';
 
   // ignore: non_constant_identifier_names
   static final SESSION = FlutterSession();
 
   static Future<dynamic> register(String email, String username, String password) async {
     try {
-      var res = await http.post(Uri.parse('$baseUrl/auth/users/'), body: {
+      var res = await http.post(Uri.parse('$baseUrlForAuth/auth/users/'), body: {
         'email': email,
         'username': username,
         'password': password,
@@ -24,7 +24,7 @@ class AuthService {
   static Future<dynamic> login(String username, String password) async {
     try {
       var res = await http.post(
-        Uri.parse('$baseUrl/auth/jwt/create/'),
+        Uri.parse('$baseUrlForAuth/auth/jwt/create/'),
         body: {
           'username': username,
           'password': password,

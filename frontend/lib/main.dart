@@ -27,8 +27,12 @@ import 'package:safacw/screens/Screens 4/profile_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() => runApp(
-      ChangeNotifierProvider(
-        create: (context) => CartModel(),
+      MultiProvider(
+        providers: [
+            ChangeNotifierProvider<CartModel>(create: (_) => CartModel()),
+            ChangeNotifierProvider<CarWashProvider>(create: (_) => CarWashProvider()),
+
+],
         child: const Safa(),
       ),
     );
