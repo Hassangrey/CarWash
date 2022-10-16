@@ -112,7 +112,6 @@ class ItemViewSet(viewsets.ModelViewSet):
             if username is not None:
                 userID = User.objects.get(username=username)
                 queryset = queryset.filter(user=userID)
-                print()
         return queryset
 
 class LocationViewSet(viewsets.ModelViewSet):
