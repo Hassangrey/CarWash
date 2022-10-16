@@ -33,9 +33,9 @@ class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name='user_Item',
                              on_delete=models.CASCADE)
-    service_provider = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             related_name='service_provider',
-                             on_delete=models.CASCADE)
+    # service_provider = models.ForeignKey(settings.AUTH_USER_MODEL,
+    #                          related_name='service_provider',
+    #                          on_delete=models.CASCADE)
     driver = models.ForeignKey(settings.AUTH_USER_MODEL,
                              related_name='driver',
                              on_delete=models.CASCADE,null=True)

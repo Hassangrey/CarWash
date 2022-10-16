@@ -22,7 +22,7 @@ class ItemService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Item.fromJsonMap(json)).toList();
+          data['results'].map((json) => Item.fromJson(json)).toList();
 
       return items;
     }
@@ -39,7 +39,7 @@ class ItemService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items = Item.fromJsonMap(data);
+      Item items = Item.fromJson(data);
 
       return items;
     }
@@ -58,7 +58,7 @@ class ItemService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Item.fromJsonMap(json)).toList();
+          data['results'].map((json) => Item.fromJson(json)).toList();
 
       return items;
     }
@@ -75,7 +75,7 @@ class ItemService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items = Item.fromJsonMap(data);
+      Item items = Item.fromJson(data);
 
       return items;
     }
