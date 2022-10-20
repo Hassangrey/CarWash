@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a8b632e-010b-4c3b-8082-7786334e0c62" name="Default Changelist" comment="" />
+    <list default="true" id="2a8b632e-010b-4c3b-8082-7786334e0c62" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/services/service_providers_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/services/service_providers_service.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -6,7 +6,6 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:safacw/services/item_service.dart';
 
-
 import 'package:safacw/Models/Address.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/CarWash.dart';
@@ -29,28 +28,28 @@ class ProviderService {
     // ! USE YOUR MACHINE IP INSTEAD
     // ? Open the terminal, type in ifconfig. Your ip should start with 192.168...
     // ? Replace my IP with yours in the Uri.parse method below
-    response = await client
-        .get(Uri.parse("$baseUrl" + profilesEndPoint + '?type=3&provider=' +type));
+    response = await client.get(
+        Uri.parse("$baseUrl" + profilesEndPoint + '?type=3&provider=' + type));
 
     // headers: {'Authorization': 'JWT $token'}
     try {
       // * If OK. Return the list of the users
       if (response.statusCode == 200) {
-         final data = jsonDecode(response.body);
-         print(data);
-      List<dynamic> providers =
-          data.map((json) => CarWash.fromJsonMap(json)).toList();
+        final data = jsonDecode(response.body);
+        print(data);
+        List<dynamic> providers =
+            data.map((json) => CarWash.fromJsonMap(json)).toList();
 
-for(var i = 0; i< providers.length; i++) {
-
-           List<dynamic> x = await ItemService.get_items_provider(providers[i]);
+        for (var i = 0; i < providers.length; i++) {
+          List<dynamic> x = await ItemService.get_items_provider(providers[i]);
 
           var ints = new List<Item>.from(x);
 
           providers[i].items = ints;
-
-}
-
+          print(providers.length);
+          print('providers: $providers');
+          print(ints);
+        }
 
         return providers;
         // return jsonResponse as List;

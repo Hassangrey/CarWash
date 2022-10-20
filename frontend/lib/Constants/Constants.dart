@@ -30,14 +30,14 @@ const kDropButtonStyle = TextStyle(
 );
 
 const kCarItemNameStyle = TextStyle(
-  fontSize: 17,
+  fontSize: 14,
   fontWeight: FontWeight.bold,
 );
 
 const kCarItemPriceStyle = TextStyle(
   fontSize: 15,
   fontWeight: FontWeight.bold,
-  color: Colors.grey,
+  color: COLOR_BLUE_DARK,
 );
 
 const kItemNameStyle = TextStyle(
