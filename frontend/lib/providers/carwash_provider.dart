@@ -10,14 +10,12 @@ class CarWashProvider extends ChangeNotifier {
   List<dynamic> carWashProvidersProfilers = [];
   String type = '';
 
-
   getAllCarWashProvidersProfilers(String type) async {
-    isLoading = true;
-    type=type;
-    carWashProvidersProfilers = (await ProviderService.getProvidersProfile(type));
+    isLoading = false;
+    type = type;
+    carWashProvidersProfilers =
+        (await ProviderService.getProvidersProfile(type));
     isLoading = false;
     notifyListeners();
   }
-
-   
 }
