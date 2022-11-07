@@ -1,3 +1,33 @@
 backend/env
 frontend/.DS_Store
 driver/l10n.yaml
+backend/Procfile
+backend/requirements.txt
+backend/runtime.txt
+frontend/.flutter-plugins-dependencies
+frontend/assets/images/empty-cart.json
+frontend/lib/providers/carwash_provider.dart
+frontend/lib/screens/choose_service_screen.dart
+frontend/lib/screens/empty_cart_screen.dart
+frontend/lib/screens/Screens 3/cart_screen.dart
+frontend/lib/services/constants.dart
+frontend/lib/services/service_providers_service.dart
+frontend/pubspec.lock
+frontend/pubspec.yaml
+safacw/.dart_tool/flutter_build/9b371cfb5b0d9666431fa3d7b5f6468d/.app.dill.icloud
+safacw/.dart_tool/flutter_build/9b371cfb5b0d9666431fa3d7b5f6468d/app.dill
+safacw/build/.c7922d95bf4a2462b75c84a97c312edb.cache.dill.track.dill.icloud
+safacw/build/c7922d95bf4a2462b75c84a97c312edb.cache.dill.track.dill
+backend/Procfile
+backend/requirements.txt
+backend/runtime.txt
+frontend/.flutter-plugins-dependencies
+frontend/lib/providers/carwash_provider.dart
+frontend/lib/screens/choose_service_screen.dart
+frontend/lib/screens/Screens 3/cart_screen.dart
+frontend/lib/services/constants.dart
+frontend/lib/services/service_providers_service.dart
+frontend/pubspec.lock
+frontend/pubspec.yaml
+safacw/.dart_tool/flutter_build/9b371cfb5b0d9666431fa3d7b5f6468d/.app.dill.icloud
+safacw/build/.c7922d95bf4a2462b75c84a97c312edb.cache.dill.track.dill.icloud

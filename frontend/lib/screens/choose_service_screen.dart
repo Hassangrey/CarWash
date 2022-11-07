@@ -50,22 +50,17 @@ class _WelcomePageState extends State<WelcomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               buildServiceCard('Laundry', () {
-                //  Provider.of<CarWashProvider>(context, listen: false)
-                //   .getAllCarWashProvidersProfilers("Laundry");
+                Provider.of<CarWashProvider>(context, listen: false)
+                    .getAllCarWashProvidersProfilers("Laundry");
                 changeId(carProvider, "Laundry");
                 Navigator.pushNamed(context, ChooseProvider.id);
-
                 // go to laundry page
-                // Navigator.pushNamed(context, NavBarHolder.id);
               }),
               buildServiceCard('Car Wash', () {
                 Provider.of<CarWashProvider>(context, listen: false)
                     .getAllCarWashProvidersProfilers("CarWash");
                 changeId(carProvider, "CarWash");
-
                 Navigator.pushNamed(context, ChooseProvider.id);
-                // Navigator.pushNamed(context, ChooseProvider.id);
-                // * Fetch the service providers
               }),
               buildServiceCard('Building Cleaning', () {
                 Provider.of<CarWashProvider>(context, listen: false)

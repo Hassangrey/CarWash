@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
+import 'package:safacw/screens/empty_cart_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -22,81 +24,109 @@ class CartScreen extends StatelessWidget {
 
     return PageLayout(
       child: Column(children: [
-        Text('Cart Page', style: kServiceTitleStyle),
+        Text('Your Cart', style: kServiceTitleStyle),
         addVerticalSpace(20.h),
-        Expanded(
-          child: MediaQuery.removePadding(
-            context: context,
-            removeTop: true,
-            child: ListView.separated(
-              itemCount: carProvider.cartItems.length,
-              itemBuilder: (BuildContext context, int index) {
-                return (Container(
-                  padding: EdgeInsets.all(8),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: COLOR_GREY.withOpacity(0.2),
-                    borderRadius: BorderRadius.circular(15.r),
-                  ),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      //  mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 68.w,
-                          height: 50.h,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10.r),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    carProvider.myItems[index].imgPath!),
-                              )),
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                carProvider.cartItems[index].title!,
-                                style: kCarItemNameStyle,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+        carProvider.cartItems.isEmpty
+            ? EmptyCartScreen()
+            : Column(
+                children: [
+                  SizedBox(
+                    height: 400.h,
+                    child: MediaQuery.removePadding(
+                      context: context,
+                      removeTop: true,
+                      child: ListView.separated(
+                        itemCount: carProvider.cartItems.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return (Container(
+                            padding: EdgeInsets.all(8),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: COLOR_GREY.withOpacity(0.2),
+                              borderRadius: BorderRadius.circular(15.r),
+                            ),
+                            child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                //  mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    'SAR' +
-                                        carProvider.cartItems[index].price
-                                            .toString(),
-                                    style: kCarItemPriceStyle,
+                                  Container(
+                                    width: 68.w,
+                                    height: 50.h,
+                                    decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(10.r),
+                                        image: DecorationImage(
+                                          image: NetworkImage(carProvider
+                                              .myItems[index].imgPath!),
+                                        )),
                                   ),
-                                  IconButton(
-                                      onPressed: () {
-                                        carProvider.removeItem(
-                                            carProvider.cartItems[index].id!);
-                                        print(carProvider.cartItems.length);
-                                      },
-                                      // ignore: prefer_const_constructors
-                                      icon: Icon(
-                                        Icons.delete,
-                                        color: Colors.red.withOpacity(0.4),
-                                        size: 18,
-                                      ))
-                                ],
-                              ),
-                              Text(carProvider.cartItems[index].desc!),
-                            ],
-                          ),
-                        )
-                      ]),
-                ));
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return addVerticalSpace(10.h);
-              },
-            ),
-          ),
-        )
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          carProvider.cartItems[index].title!,
+                                          style: kCarItemNameStyle,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              'SAR' +
+                                                  carProvider
+                                                      .cartItems[index].price
+                                                      .toString(),
+                                              style: kCarItemPriceStyle,
+                                            ),
+                                            IconButton(
+                                                onPressed: () {
+                                                  carProvider.removeItem(
+                                                      carProvider
+                                                          .cartItems[index]
+                                                          .id!);
+                                                  print(carProvider
+                                                      .cartItems.length);
+                                                },
+                                                // ignore: prefer_const_constructors
+                                                icon: Icon(
+                                                  Icons.delete,
+                                                  color: Colors.red
+                                                      .withOpacity(0.4),
+                                                  size: 18,
+                                                ))
+                                          ],
+                                        ),
+                                        Text(
+                                            carProvider.cartItems[index].desc!),
+                                      ],
+                                    ),
+                                  )
+                                ]),
+                          ));
+                        },
+                        separatorBuilder: (BuildContext context, int index) {
+                          return addVerticalSpace(10.h);
+                        },
+                      ),
+                    ),
+                  ),
+                  addVerticalSpace(100.h),
+                  SizedBox(
+                      width: double.infinity,
+                      height: 70,
+                      child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: COLOR_BLUE_DARK),
+                          onPressed: () {},
+                          child: Text(
+                            'Place Order',
+                            style: TextStyle(
+                                fontSize: 20.sp, fontWeight: FontWeight.bold),
+                          )))
+                ],
+              )
       ]),
     );
   }

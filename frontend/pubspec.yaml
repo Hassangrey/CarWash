@@ -20,6 +20,7 @@ dependencies:
   flutter_session: ^0.1.1
   http: ^0.13.4
   intl: ^0.17.0
+  lottie: ^1.4.3
   provider: ^6.0.0
 
 dev_dependencies:
@@ -33,7 +34,7 @@ flutter:
 
   assets:
     - lib/lang/
-
+    - assets/images/
   # fonts:
   #   - family: JosefinSans
   #     fonts:
@@ -49,4 +50,3 @@ flutter:
   #         weight: 800
   #       - asset: assets/fonts/JosefinSans-Bold.tff
   #         weight: 900
-
