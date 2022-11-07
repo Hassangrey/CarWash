@@ -1,3 +1,6 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class Item {
   int? id;
 
@@ -5,52 +8,77 @@ class Item {
   double? price;
   String? imgPath;
   String? desc;
-
   Item({
     this.id,
-
     this.title,
     this.price,
     this.imgPath,
     this.desc,
   });
 
-
-
-  void setTitle(String value) {
-    title = value;
+  Item copyWith({
+    int? id,
+    String? title,
+    double? price,
+    String? imgPath,
+    String? desc,
+  }) {
+    return Item(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      imgPath: imgPath ?? this.imgPath,
+      desc: desc ?? this.desc,
+    );
   }
 
-
-  void setPrice(double value) {
-    price = value;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'title': title,
+      'price': price,
+      'imgPath': imgPath,
+      'desc': desc,
+    };
   }
 
-  String get getPath {
-    return imgPath!;
+  factory Item.fromMap(Map<String, dynamic> map) {
+    return Item(
+      id: map['id'] != null ? map['id'] as int : null,
+      title: map['title'] != null ? map['title'] as String : null,
+      price: map['price'] != null ? map['price'] as double : null,
+      imgPath: map['imgPath'] != null ? map['imgPath'] as String : null,
+      desc: map['desc'] != null ? map['desc'] as String : null,
+    );
   }
 
-  String get getDesc {
-    return desc!;
+  String toJson() => json.encode(toMap());
+
+  factory Item.fromJson(String source) =>
+      Item.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'Item(id: $id, title: $title, price: $price, imgPath: $imgPath, desc: $desc)';
   }
 
-  Item.fromJsonMap(Map map) {
-    id = map['id'];
+  @override
+  bool operator ==(covariant Item other) {
+    if (identical(this, other)) return true;
 
-    title = map['title'];
-    price = map['price'];
-    imgPath = map['imgPath'];
-    desc = map['desc'];
+    return other.id == id &&
+        other.title == title &&
+        other.price == price &&
+        other.imgPath == imgPath &&
+        other.desc == desc;
   }
-  Map toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
 
-    data['title'] = this.title;
-    data['price'] = this.price;
-    data['imgPath'] = this.imgPath;
-    data['desc'] = this.desc;
-
-    return data;
+  @override
+  int get hashCode {
+    return id.hashCode ^
+        title.hashCode ^
+        price.hashCode ^
+        imgPath.hashCode ^
+        desc.hashCode;
   }
 }

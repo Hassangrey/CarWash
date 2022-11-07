@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:convert';
+
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 
+import '../Models/Address.dart';
+import '../Models/CarWash.dart';
+import '../Models/Item.dart';
 import 'auth_service.dart';
-import 'package:safacw/Models/Address.dart';
-import 'package:safacw/Models/Item.dart';
-import 'package:safacw/Models/CarWash.dart';
-import 'package:safacw/services/constants.dart';
+
 class ItemService {
+  static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
@@ -22,7 +24,7 @@ class ItemService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Item.fromJsonMap(json)).toList();
+          data['results'].map((json) => Item.fromJson(json)).toList();
 
       return items;
     }
@@ -39,7 +41,7 @@ class ItemService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items = Item.fromJsonMap(data);
+      Item items = Item.fromJson(data);
 
       return items;
     }
@@ -49,15 +51,20 @@ class ItemService {
   static Future get_items_provider(CarWash provider) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
+
     var req = await client.get(
         Uri.parse(baseUrl + "item?username=" + provider.name!),
         headers: {'Authorization': 'JWT $token'});
+
     final data = jsonDecode(req.body);
+
+    if (data['results'] != null) {
       List<dynamic> items =
-          data.map((json) => Item.fromJsonMap(json)).toList();
+          data['results'].map((json) => Item.fromJson(json)).toList();
 
       return items;
-    
+    }
+    return null;
   }
 
   static Future create(Item item) async {
@@ -70,7 +77,7 @@ class ItemService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items = Item.fromJsonMap(data);
+      Item items = Item.fromJson(data);
 
       return items;
     }

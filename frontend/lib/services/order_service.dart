@@ -4,10 +4,9 @@ import 'dart:convert';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 
-
-import 'package:safacw/Models/Address.dart';
-import 'package:safacw/Models/Item.dart';
-import 'package:safacw/Models/Order.dart';
+import '../Models/Address.dart';
+import '../Models/Item.dart';
+import '../Models/Order.dart';
 import 'auth_service.dart';
 
 class OrderService {
@@ -25,7 +24,7 @@ class OrderService {
 
     if (data['results'] != null) {
       List<dynamic> items =
-          data['results'].map((json) => Order.fromJsonMap(json)).toList();
+          data['results'].map((json) => Order.fromJson(json)).toList();
 
       return items;
     }
@@ -42,7 +41,7 @@ class OrderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Order orders = Order.fromJsonMap(data);
+      Order orders = Order.fromJson(data);
 
       return orders;
     }
@@ -59,7 +58,7 @@ class OrderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Item items = Item.fromJsonMap(data);
+      Item items = Item.fromJson(data);
 
       return items;
     }
@@ -78,7 +77,7 @@ class OrderService {
     final data = jsonDecode(req.body);
 
     if (data != null) {
-      Order addresses = Order.fromJsonMap(data);
+      Order addresses = Order.fromJson(data);
 
       return addresses;
     }

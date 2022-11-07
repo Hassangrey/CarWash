@@ -2,18 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Models/language_constants.dart';
-import 'package:safacw/models/Item.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/viewall_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safacw/widgets/snackbar_widget.dart';
 
 import '../../Constants/addspace_functions.dart';
-import '../carwash_main_screen.dart';
 
 // TODO 1: Make laundry page the contains a title, list of offers
 // * Display List of items that the provider got

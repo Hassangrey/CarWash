@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:safacw/Models/Item.dart';
 
 import '../Constants/Constants.dart';
-import 'package:safacw/Models/Item.dart';
 
 class Cards extends StatelessWidget {
   const Cards({
@@ -30,7 +30,7 @@ class Cards extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(item.getPath, fit: BoxFit.fill),
+            Image.asset(item.imgPath!, fit: BoxFit.fill),
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
