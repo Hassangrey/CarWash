@@ -48,12 +48,11 @@ class ItemService {
     return null;
   }
 
-  static Future get_items_provider(CarWash provider) async {
+  static Future get_items_provider(String name) async {
     var client = http.Client();
-    var token = (await AuthService.getToken())['token'];
 
     var req = await client.get(
-      Uri.parse(baseUrl + "item?username=" + provider.name!),
+      Uri.parse(baseUrl + "item?username=" + name),
       //  headers: {'Authorization': 'JWT $token'}
     );
 
@@ -62,7 +61,7 @@ class ItemService {
     if (data['results'] != null) {
       List<dynamic> items =
           data['results'].map((json) => Item.fromJson(json)).toList();
-
+      print('number of items: ${items.length}');
       return items;
     }
     return null;

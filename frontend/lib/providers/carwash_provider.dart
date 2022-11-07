@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
+import 'package:safacw/services/item_service.dart';
 import 'package:safacw/services/service_providers_service.dart';
 
 class CarWashProvider extends ChangeNotifier {
@@ -37,6 +38,8 @@ class CarWashProvider extends ChangeNotifier {
             'https://www.picng.com/upload/dress_shirt/png_dress_shirt_26350.png'),
   ];
   List<Item> cartItems = [];
+  List<dynamic> items = [];
+
   getAllCarWashProvidersProfilers(String type) async {
     isLoading = true;
     print('Loading data...');
@@ -44,7 +47,16 @@ class CarWashProvider extends ChangeNotifier {
     carWashProvidersProfilers =
         (await ProviderService.getProvidersProfile(type));
     isLoading = false;
-    print(carWashProvidersProfilers.length);
+    notifyListeners();
+  }
+
+  getItems(String name) async {
+    isLoading = true;
+    print('Loading items...');
+    type = type;
+    items = (await ItemService.get_items_provider(name));
+    isLoading = false;
+    print(items.length);
     notifyListeners();
   }
 

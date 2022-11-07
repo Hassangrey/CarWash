@@ -13,6 +13,11 @@ class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';
   const ChooseProvider({Key? key}) : super(key: key);
 
+  void getItems(BuildContext context, String name) async {
+    var provider = Provider.of<CarWashProvider>(context, listen: false);
+    Navigator.pushNamed(context, provider.type);
+  }
+
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context);
@@ -27,13 +32,15 @@ class ChooseProvider extends StatelessWidget {
                   itemCount: provider.carWashProvidersProfilers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, provider.type),
+                      onTap: () => getItems(
+                          context, provider.carWashProvidersProfilers[0].name),
                       child: Container(
                         decoration: BoxDecoration(
-                            color: COLOR_TRY,
+                            color: Colors.grey[300],
                             borderRadius: BorderRadius.circular(15.r)),
                         width: double.infinity,
                         margin: EdgeInsets.only(top: 16.h),
+                        padding: EdgeInsets.all(5),
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -49,25 +56,23 @@ class ChooseProvider extends StatelessWidget {
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    child: Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          provider
-                                              .carWashProvidersProfilers[index]
-                                              .name,
-                                          style: const TextStyle(
-                                              color: COLOR_BLUE_DARK,
-                                              fontSize: 18,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                        addHorizontalSpace(70.w),
-                                      ],
-                                    ),
+                                  Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        provider
+                                            .carWashProvidersProfilers[index]
+                                            .name,
+                                        style: const TextStyle(
+                                            color: COLOR_BLUE_DARK,
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      addHorizontalSpace(70.w),
+                                    ],
                                   ),
                                   Text('A very good laundry!'),
                                 ],
