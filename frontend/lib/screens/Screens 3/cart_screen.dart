@@ -6,7 +6,6 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
-import 'package:safacw/screens/empty_cart_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,9 +25,7 @@ class CartScreen extends StatelessWidget {
       child: Column(children: [
         Text('Your Cart', style: kServiceTitleStyle),
         addVerticalSpace(20.h),
-        carProvider.cartItems.isEmpty
-            ? EmptyCartScreen()
-            : Column(
+ Column(
                 children: [
                   SizedBox(
                     height: 400.h,
@@ -36,7 +33,7 @@ class CartScreen extends StatelessWidget {
                       context: context,
                       removeTop: true,
                       child: ListView.separated(
-                        itemCount: carProvider.cartItems.length,
+                        itemCount: carProvider.carWashProvidersProfilers.length,
                         itemBuilder: (BuildContext context, int index) {
                           return (Container(
                             padding: EdgeInsets.all(8),

@@ -8,9 +8,8 @@ import '../Models/Address.dart';
 import '../Models/CarWash.dart';
 import '../Models/Item.dart';
 import 'auth_service.dart';
-
+import 'package:safacw/services/constants.dart';
 class ItemService {
-  static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
@@ -50,17 +49,17 @@ class ItemService {
 
   static Future get_items_provider(String name) async {
     var client = http.Client();
+    print(baseUrl + "item?username=" + name);
 
     var req = await client.get(
       Uri.parse(baseUrl + "item?username=" + name),
       //  headers: {'Authorization': 'JWT $token'}
     );
-
     final data = jsonDecode(req.body);
 
-    if (data['results'] != null) {
-      List<dynamic> items =
-          data['results'].map((json) => Item.fromJson(json)).toList();
+    if (data != null) {
+      List<Item> items =
+          data.map((json) => Item.fromJson(json)).toList();
       print('number of items: ${items.length}');
       return items;
     }

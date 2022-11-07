@@ -72,7 +72,7 @@ class _SafaState extends State<Safa> {
                 fontFamily: 'JosefinSans',
               ),
               debugShowCheckedModeBanner: false,
-              initialRoute: LoginScreen.id,
+              initialRoute: WelcomePage.id,
               onGenerateRoute: onGenerateRoute,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
