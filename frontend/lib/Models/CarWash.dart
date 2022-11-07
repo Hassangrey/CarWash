@@ -44,7 +44,7 @@ class CarWash {
     data['id'] = this.id;
     data['user'] = this.name;
     data['description'] = this.desc;
-    data['imgPath'] = this.imgPath;
+    data['photo'] = this.imgPath;
     data['items'] = this.items;
 
     return data;
@@ -54,7 +54,7 @@ class CarWash {
     id = map['id'];
     name = map['user'];
     desc = map['description'];
-    imgPath = map['imgPath'];
+    imgPath = map['photo'];
     items = map['items'];
   }
 }

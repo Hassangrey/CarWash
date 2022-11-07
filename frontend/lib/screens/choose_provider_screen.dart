@@ -11,25 +11,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ChooseProvider extends StatelessWidget {
   static const String id = '/chooseproviderpage';
-   const ChooseProvider({Key? key}) : super(key: key);
+  const ChooseProvider({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var carProvider = Provider.of<CarWashProvider>(context);
+    var provider = Provider.of<CarWashProvider>(context);
 
     return PageLayout(
-        child: carProvider.isLoading
+        child: provider.isLoading
             ? Center(child: CircularProgressIndicator())
             : MediaQuery.removePadding(
                 context: context,
                 removeTop: true,
                 child: ListView.separated(
-                  // itemCount: carProvider.carWashProvidersProfilers.length,
-                itemCount: 3,
-
+                  itemCount: provider.carWashProvidersProfilers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, carProvider.type),
+                      onTap: () => Navigator.pushNamed(context, provider.type),
                       child: Container(
                         decoration: BoxDecoration(
                             color: COLOR_TRY,
@@ -55,24 +53,23 @@ class ChooseProvider extends StatelessWidget {
                                     child: Row(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Text('LAUNDRY_NAME'),
-                                        addHorizontalSpace(70.w),
-                                        Icon(
-                                          Icons.pin_drop_outlined,
-                                          color: Color(0xFF9692AF),
+                                        Text(
+                                          provider
+                                              .carWashProvidersProfilers[index]
+                                              .name,
+                                          style: const TextStyle(
+                                              color: COLOR_BLUE_DARK,
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
                                         ),
-                                        addHorizontalSpace(10.w),
-                                        Container(
-                                          alignment: Alignment.topRight,
-                                          padding: EdgeInsets.all(4),
-                                          color: Color(0xFFB6CDBD),
-                                          child: Text('Open'),
-                                        )
+                                        addHorizontalSpace(70.w),
                                       ],
                                     ),
                                   ),
-                                  Text('LAUNDRY_DESC'),
+                                  Text('A very good laundry!'),
                                 ],
                               ),
                             )

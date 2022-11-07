@@ -35,11 +35,12 @@ class ProviderService {
         final data = jsonDecode(response.body);
         List<dynamic> providers =
             data.map((json) => CarWash.fromJsonMap(json)).toList();
-        for (var i = 0; i < providers.length; i++) {
-          List<dynamic> x = await ItemService.get_items_provider(providers[i]);
-          var ints = new List<Item>.from(x);
-          providers[i].items = ints;
-        }
+        // for (var i = 0; i < providers.length; i++) {
+        //   List<dynamic> x = await ItemService.get_items_provider(providers[i]);
+        //   var ints = new List<Item>.from(x);
+        //   providers[i].items = ints;
+        // }
+        print(providers[0].id);
         return providers;
       } else {
         // * Else, handle the other responses

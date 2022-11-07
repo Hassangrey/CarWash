@@ -53,8 +53,9 @@ class ItemService {
     var token = (await AuthService.getToken())['token'];
 
     var req = await client.get(
-        Uri.parse(baseUrl + "item?username=" + provider.name!),
-        headers: {'Authorization': 'JWT $token'});
+      Uri.parse(baseUrl + "item?username=" + provider.name!),
+      //  headers: {'Authorization': 'JWT $token'}
+    );
 
     final data = jsonDecode(req.body);
 
