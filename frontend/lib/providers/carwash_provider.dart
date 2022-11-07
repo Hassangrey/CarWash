@@ -38,11 +38,13 @@ class CarWashProvider extends ChangeNotifier {
   ];
   List<Item> cartItems = [];
   getAllCarWashProvidersProfilers(String type) async {
-    isLoading = false;
+    isLoading = true;
+    print('Loading data...');
     type = type;
     carWashProvidersProfilers =
         (await ProviderService.getProvidersProfile(type));
     isLoading = false;
+    print(carWashProvidersProfilers.length);
     notifyListeners();
   }
 
