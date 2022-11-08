@@ -42,7 +42,7 @@ class Item {
     };
   }
 
-  factory Item.fromMap(Map<String, dynamic> map) {
+  factory Item.fromMap(Map map) {
     return Item(
       id: map['id'] != null ? map['id'] as int : null,
       title: map['title'] != null ? map['title'] as String : null,
@@ -51,6 +51,13 @@ class Item {
       desc: map['desc'] != null ? map['desc'] as String : null,
     );
   }
+  //   CarWash.fromJsonMap(Map map) {
+  //   id = map['id'];
+  //   name = map['user'];
+  //   desc = map['description'];
+  //   imgPath = map['photo'];
+  //   items = map['items'];
+  // }
 
   String toJson() => json.encode(toMap());
 

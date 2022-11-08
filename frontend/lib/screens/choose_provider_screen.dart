@@ -15,7 +15,7 @@ class ChooseProvider extends StatelessWidget {
 
   void getItems(BuildContext context, String name) async {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
-    // provider.getItems(name);
+    provider.getItems(name);
     Navigator.pushNamed(context, provider.type);
   }
 

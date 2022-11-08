@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
@@ -49,21 +50,35 @@ class ItemService {
 
   static Future get_items_provider(String name) async {
     var client = http.Client();
-    print(baseUrl + "item?username=" + name);
-
-    var req = await client.get(
+    var token = (await AuthService.getToken())['token'];
+    http.Response? req;
+        
+        req = await client.get(
       Uri.parse(baseUrl + "item?username=" + name),
-      //  headers: {'Authorization': 'JWT $token'}
-    );
-    final data = jsonDecode(req.body);
+       headers: {'Authorization': 'JWT $token'});
+       
 
-    if (data != null) {
-      List<Item> items =
-          data.map((json) => Item.fromJson(json)).toList();
-      print('number of items: ${items.length}');
-      return items;
-    }
-    return null;
+
+    
+
+
+    try {
+      // * If OK. Return the list of the users
+      if (req.statusCode == 200) {
+        final data = jsonDecode(req.body);
+        List<dynamic> items =
+            data.map((json) => Item.fromMap(json)).toList();
+      
+
+        return items;
+      } else {
+        // * Else, handle the other responses
+        // TODO: Handle all the other network responses. (404, 401, 501...etc) properly
+        print('Error in returning the providers profiles');
+      }
+    } catch (e) {
+      log(e.toString());
+    }    
   }
 
   static Future create(Item item) async {
