@@ -5,7 +5,7 @@ class Item {
   int? id;
 
   String? title;
-  double? price;
+  String? price;
   String? imgPath;
   String? desc;
   Item({
@@ -19,7 +19,7 @@ class Item {
   Item copyWith({
     int? id,
     String? title,
-    double? price,
+    String? price,
     String? imgPath,
     String? desc,
   }) {
@@ -46,18 +46,12 @@ class Item {
     return Item(
       id: map['id'] != null ? map['id'] as int : null,
       title: map['title'] != null ? map['title'] as String : null,
-      price: map['price'] != null ? map['price'] as double : null,
+      price: map['price'] != null ? map['price'] as String : null,
       imgPath: map['imgPath'] != null ? map['imgPath'] as String : null,
       desc: map['desc'] != null ? map['desc'] as String : null,
     );
   }
-  //   CarWash.fromJsonMap(Map map) {
-  //   id = map['id'];
-  //   name = map['user'];
-  //   desc = map['description'];
-  //   imgPath = map['photo'];
-  //   items = map['items'];
-  // }
+ 
 
   String toJson() => json.encode(toMap());
 

@@ -13,7 +13,7 @@ class ItemDetailsPage extends StatelessWidget {
   static const String id = '/ItemDetailsPage';
   Item item2 = new Item(
     title: 'CAR11761',
-    price: 14,
+    price: "14",
   );
   final Item item;
 
