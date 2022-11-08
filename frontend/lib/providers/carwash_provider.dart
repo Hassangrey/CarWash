@@ -64,7 +64,7 @@ class CarWashProvider extends ChangeNotifier {
     for (int i = 0; i < myItems.length; i++) {
       if (myItems[i].id == id) {
         cartItems.add(myItems[i]);
-        total += myItems[i].price!;
+        total += double.parse(myItems[i].price!);
         break;
       }
     }
@@ -75,10 +75,10 @@ class CarWashProvider extends ChangeNotifier {
   removeItem(int id) {
     for (int i = 0; i < cartItems.length; i++) {
       if (cartItems[i].id == id) {
-        if (total - cartItems[i].price! <= 0)
+        if (total - double.parse(cartItems[0].price!) < 0)
           total = 0;
         else {
-          total -= cartItems[i].price!;
+          total -= double.parse(cartItems[i].price!);
         }
         cartItems.removeAt(i);
       }
