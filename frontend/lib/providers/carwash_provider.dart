@@ -39,6 +39,7 @@ class CarWashProvider extends ChangeNotifier {
   ];
   List<Item> cartItems = [];
   List<dynamic> items = [];
+  double total = 0.0;
 
   getAllCarWashProvidersProfilers(String type) async {
     isLoading = true;
@@ -56,21 +57,37 @@ class CarWashProvider extends ChangeNotifier {
     type = type;
     items = (await ItemService.get_items_provider(name));
     isLoading = false;
-    print(items.length);
     notifyListeners();
   }
 
   addItem(int id) {
     for (int i = 0; i < myItems.length; i++) {
-      if (myItems[i].id == id) cartItems.add(myItems[i]);
+      if (myItems[i].id == id) {
+        cartItems.add(myItems[i]);
+        total += myItems[i].price!;
+        break;
+      }
     }
+
+    notifyListeners();
   }
 
   removeItem(int id) {
-    for (int i = 0; i < cartItems.length; i++)
-      if (cartItems[i].id == id) cartItems.removeAt(i);
+    for (int i = 0; i < cartItems.length; i++) {
+      if (cartItems[i].id == id) {
+        if (total - cartItems[i].price! <= 0)
+          total = 0;
+        else {
+          total -= cartItems[i].price!;
+        }
+        cartItems.removeAt(i);
+      }
+    }
     notifyListeners();
   }
+
+  String getTaxes() => (total * 0.15).toStringAsFixed(2);
+  String getTotal() => (total + 12).toStringAsFixed(0);
 
   clearItems() => cartItems.clear();
 }

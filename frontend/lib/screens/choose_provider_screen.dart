@@ -15,14 +15,13 @@ class ChooseProvider extends StatelessWidget {
 
   void getItems(BuildContext context, String name) async {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
-    provider.getItems(name);
+    await provider.getItems(name);
     Navigator.pushNamed(context, provider.type);
   }
 
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context);
-
     return PageLayout(
         child: provider.isLoading
             ? Center(child: CircularProgressIndicator())

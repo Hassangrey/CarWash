@@ -10,6 +10,7 @@ import '../Models/CarWash.dart';
 import '../Models/Item.dart';
 import 'auth_service.dart';
 import 'package:safacw/services/constants.dart';
+
 class ItemService {
   static final SESSION = FlutterSession();
 
@@ -50,25 +51,19 @@ class ItemService {
 
   static Future get_items_provider(String name) async {
     var client = http.Client();
-    var token = (await AuthService.getToken())['token'];
+    //   var token = (await AuthService.getToken())['token'];
     http.Response? req;
-        
-        req = await client.get(
+
+    req = await client.get(
       Uri.parse(baseUrl + "item?username=" + name),
-       headers: {'Authorization': 'JWT $token'});
-       
-
-
-    
-
+      //  headers: {'Authorization': 'JWT $token'}
+    );
 
     try {
       // * If OK. Return the list of the users
       if (req.statusCode == 200) {
         final data = jsonDecode(req.body);
-        List<dynamic> items =
-            data.map((json) => Item.fromMap(json)).toList();
-      
+        List<dynamic> items = data.map((json) => Item.fromMap(json)).toList();
 
         return items;
       } else {
@@ -78,7 +73,7 @@ class ItemService {
       }
     } catch (e) {
       log(e.toString());
-    }    
+    }
   }
 
   static Future create(Item item) async {
