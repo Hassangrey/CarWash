@@ -12,27 +12,27 @@ class CarWashProvider extends ChangeNotifier {
     Item(
         id: 1,
         title: 'T Shirt',
-        price: 12,
+        price: "12",
         desc: 'hhhh',
         imgPath: 'https://i.ebayimg.com/images/g/aMcAAOSwIL5iMLPb/s-l500.png'),
     Item(
         id: 2,
         title: 'Thobe',
-        price: 14,
+        price: "14",
         desc: 'hhhh',
         imgPath:
             'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBdf5O3NfFcE1CSY9UHSFb7ycnuY-lkRdME3AQqor5zImIJQIG2EEft1nKup_M_W4T-30&usqp=CAU'),
     Item(
         id: 3,
         title: 'Cargo Pants',
-        price: 30,
+        price: "30",
         desc: 'hhhh',
         imgPath:
             'https://prod.haglofs-excite.com/assets/blobs/6045442C5_ST_NM_FR_1_W1_DWB-ba211e611d.jpeg?preset=tiny&dpr=2'),
     Item(
         id: 4,
         title: 'Black Shirt',
-        price: 30,
+        price: "30",
         desc: 'hhhh',
         imgPath:
             'https://www.picng.com/upload/dress_shirt/png_dress_shirt_26350.png'),
