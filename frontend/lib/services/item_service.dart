@@ -54,8 +54,8 @@ class ItemService {
     http.Response? req;
         
         req = await client.get(
-      Uri.parse(baseUrl + "item?username=" + name),
-       headers: {'Authorization': 'JWT $token'});
+      Uri.parse(baseUrl + "item?username=" + name));
+      //  headers: {'Authorization': 'JWT $token'});
        
 
 
