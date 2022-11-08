@@ -8,6 +8,7 @@ import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/viewall_screen.dart';
+import 'package:safacw/widgets/dialog_method.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:safacw/widgets/snackbar_widget.dart';
 
@@ -209,10 +210,12 @@ class ServicesList extends StatelessWidget {
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: COLOR_BLUE_LIGHT),
                               onPressed: () {
-                                carProvider
-                                    .addItem(carProvider.myItems[index].id!);
-                                showActionSnackBar(context,
-                                    '${carProvider.myItems[index].title} added to cart! ${carProvider.cartItems.length}x');
+                                // carProvider
+                                //     .addItem(carProvider.myItems[index].id!);
+                                // showActionSnackBar(context,
+                                //     '${carProvider.myItems[index].title} added to cart! ${carProvider.cartItems.length}x');
+
+                                MethodForDialog(context, index);
                               },
                               child: const Text('Add To Cart')))
                     ],
