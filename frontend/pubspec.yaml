@@ -18,6 +18,10 @@ dependencies:
     sdk: flutter
   flutter_screenutil: ^5.5.4
   flutter_session: ^0.1.1
+  geocoding: ^1.0.5
+  geolocator: ^6.2.1
+
+  google_maps_flutter: ^2.0.10
   http: ^0.13.4
   intl: ^0.17.0
   lottie: ^1.4.3

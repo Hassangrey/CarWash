@@ -123,6 +123,9 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == ProfileScreen.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ProfileScreen());
+  } else if (routeSettings.name == MapScreen.id) {
+    // Retrieve the value.
+    return MaterialPageRoute(builder: (context) => MapScreen());
   } else {
     return null;
   }
