@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safacw/screens/Screens%201/laundry_main_screen.dart';
+import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/carwash_main_screen.dart';
 import 'package:safacw/screens/Screens%203/order_history_screen.dart';
@@ -19,14 +20,15 @@ class NavBarHolder extends StatefulWidget {
 
 class _NavBarHolderState extends State<NavBarHolder> {
   int currentIndex = 0;
-  final screens = [
-    LaundryMainScreen(),
-    const OrderHistoryScreen(),
-    CartScreen(),
-    SettingsScreen()
-  ];
+
   @override
   Widget build(BuildContext context) {
+    final screens = [
+      LaundryMainScreen(),
+      const OrderHistoryScreen(),
+      CartScreen(),
+      SettingsScreen()
+    ];
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(

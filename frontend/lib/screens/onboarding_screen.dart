@@ -8,6 +8,7 @@ import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/choose_service_screen.dart';
+import 'package:safacw/widgets/page_layout.dart';
 
 class OnboardingScreen extends StatefulWidget {
   static const String id = '/OnBoardingScreen';
@@ -44,31 +45,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     ),
     OnBoard(
       imgPath: 'assets/images/laundry.json',
-      title:
-          'Safa\', find the best cleaning services \n you\'ve been looking for ',
+      title: 'Choose the best laundry for your clothes',
       subtitle:
-          'Safa\', is a multi-services app that helps you find the best cleaning solution to all your problems! ',
+          'Safa offers you a list of laundry providers for you to choose from!',
     ),
     OnBoard(
       imgPath: 'assets/images/car-wash.json',
-      title:
-          'Safa\', find the best cleaning services \n you\'ve been looking for ',
+      title: 'Choose the best carwash for your car',
       subtitle:
-          'Safa\', is a multi-services app that helps you find the best cleaning solution to all your problems! ',
+          'Safa offers you a list of car wash providers for you to choose from!',
     ),
     OnBoard(
       imgPath: 'assets/images/house-cleaning.json',
-      title:
-          'Safa\', find the best cleaning services \n you\'ve been looking for ',
+      title: 'Choose the best building cleaning for your rooms and building',
       subtitle:
-          'Safa\', is a multi-services app that helps you find the best cleaning solution to all your problems! ',
+          'Safa offers you a list of building cleaning providers for you to choose from!',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
+    return PageLayout(
+      child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -172,13 +170,12 @@ class OnBoardingScreenItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        const Spacer(),
         LottieBuilder.asset(
           imgPath,
           height: 250.h,
         ),
-        const Spacer(),
         Text(
           title,
           style: kTitleStyle.copyWith(

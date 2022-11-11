@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
+import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%201/viewall_screen.dart';
@@ -19,6 +20,8 @@ import '../../Constants/addspace_functions.dart';
 
 class LaundryMainScreen extends StatelessWidget {
   static const String id = '/LaundryScreen';
+
+  List<Item> offerItems = [];
   @override
   Widget build(BuildContext context) {
     Size screenSize = MediaQuery.of(context).size;
@@ -106,7 +109,11 @@ class OffersList extends StatelessWidget {
                             Text('SAR50',
                                 style: TextStyle(
                                     decoration: TextDecoration.lineThrough,
-                                    color: Colors.red.withOpacity(0.6)))
+                                    color: Colors.red.withOpacity(0.6))),
+                            Text(
+                              'SAR25',
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
                           ],
                         ))
                   ],
@@ -123,108 +130,77 @@ class OffersList extends StatelessWidget {
   }
 }
 
-class CategoriesList extends StatelessWidget {
-  final List CatAss = ['T shirt', 'Thobe', 'Pants', 'Shirt'];
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 200.h,
-      child: MediaQuery.removeViewPadding(
-        removeBottom: true,
-        removeTop: true,
-        removeLeft: true,
-        removeRight: true,
-        context: context,
-        child: ListView.separated(
-          scrollDirection: Axis.horizontal,
-          itemCount: CatAss.length,
-          itemBuilder: (context, index) {
-            return SizedBox(
-              width: 150.w,
-              height: 150.h,
-              child: Column(children: [
-                //  Image.network(CatPic[index]),
-                Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(CatAss[index],
-                        style: const TextStyle(fontSize: 15)))
-              ]),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return addHorizontalSpace(10.w);
-          },
-        ),
-      ),
-    );
-  }
-}
-
 class ServicesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var carProvider = Provider.of<CarWashProvider>(context);
-
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Catagories(),
-          const Divider(),
-          SizedBox(
-            height: 300.h,
-            child: GridView.count(
-                primary: false,
-                crossAxisCount: 2,
-                mainAxisSpacing: 40,
-                crossAxisSpacing: 30,
-                children: List.generate(carProvider.myItems.length, (index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Expanded(
-                        child: Container(
-                            alignment: Alignment.center,
-                            width: 150.w,
-                            height: 150.h,
-                            decoration: BoxDecoration(
-                                color: COLOR_GREY.withOpacity(0.09),
-                                borderRadius: BorderRadius.circular(10.r)),
-                            child: Image.network(
-                                carProvider.myItems[index].imgPath!)),
-                      ),
-                      Text(carProvider.myItems[index].title!,
-                          style: TextStyle(
-                              fontSize: 13.sp,
-                              fontWeight: FontWeight.w400,
-                              color: COLOR_BLUE_DARK)),
-                      Text('SAR' + carProvider.myItems[index].price.toString(),
-                          style: TextStyle(
-                              fontSize: 15.sp, fontWeight: FontWeight.bold)),
-                      SizedBox(
-                          width: double.infinity,
-                          height: 30,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: COLOR_BLUE_LIGHT),
-                              onPressed: () {
-                                // carProvider
-                                //     .addItem(carProvider.myItems[index].id!);
-                                // showActionSnackBar(context,
-                                //     '${carProvider.myItems[index].title} added to cart! ${carProvider.cartItems.length}x');
-
-                                MethodForDialog(context, index);
-                              },
-                              child: const Text('Add To Cart')))
-                    ],
-                  );
-                })),
-          ),
-        ],
-      ),
-    );
+    List<Item> items = [];
+    if (carProvider.type == "Laundry") {
+      items = carProvider.myItems;
+    } else if (carProvider.type == "CarWash") {
+      items = carProvider.carWashItems;
+    } else {
+      items = carProvider.buildingCleaningItems;
+    }
+    return carProvider.isLoading
+        ? Center(child: CircularProgressIndicator())
+        : MediaQuery.removePadding(
+            context: context,
+            removeTop: true,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Catagories(),
+                const Divider(),
+                SizedBox(
+                  height: 300.h,
+                  child: GridView.count(
+                      primary: false,
+                      crossAxisCount:
+                          carProvider.type == "BuildingCleaning" ? 1 : 2,
+                      mainAxisSpacing: 40,
+                      crossAxisSpacing: 30,
+                      children: List.generate(items.length, (index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Container(
+                                  alignment: Alignment.center,
+                                  width: 150.w,
+                                  height: 150.h,
+                                  decoration: BoxDecoration(
+                                      color: COLOR_GREY.withOpacity(0.09),
+                                      borderRadius:
+                                          BorderRadius.circular(10.r)),
+                                  child: Image.network(items[index].imgPath!)),
+                            ),
+                            Text(items[index].title!,
+                                style: TextStyle(
+                                    fontSize: 13.sp,
+                                    fontWeight: FontWeight.w400,
+                                    color: COLOR_BLUE_DARK)),
+                            Text('SAR' + items[index].price.toString(),
+                                style: TextStyle(
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold)),
+                            SizedBox(
+                                width: double.infinity,
+                                height: 30,
+                                child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: COLOR_BLUE_LIGHT),
+                                    onPressed: () {
+                                      MethodForDialog(context, index);
+                                    },
+                                    child: const Text('Add To Cart')))
+                          ],
+                        );
+                      })),
+                ),
+              ],
+            ),
+          );
   }
 }
 

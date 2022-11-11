@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
 import 'package:safacw/providers/carwash_provider.dart';
+import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/carwash_main_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,8 +16,9 @@ class ChooseProvider extends StatelessWidget {
 
   void getItems(BuildContext context, String name) async {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
+    Navigator.pushNamed(context, NavBarHolder.id);
     await provider.getItems(name);
-    Navigator.pushNamed(context, provider.type);
+    provider.clearItems();
   }
 
   @override

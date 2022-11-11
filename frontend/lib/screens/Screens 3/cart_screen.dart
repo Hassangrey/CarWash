@@ -8,8 +8,10 @@ import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
 import 'package:safacw/screens/Screens%203/empty_cart_screen.dart';
 import 'package:safacw/screens/Screens%203/location_map_screen.dart';
+import 'package:safacw/screens/Screens%203/order_done.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:safacw/widgets/snackbar_widget.dart';
 
 import '../../providers/carwash_provider.dart';
 
@@ -18,7 +20,7 @@ import '../../providers/carwash_provider.dart';
 // * A buttom to increment or decrement each item
 // * Display the total price for all the items
 class CartScreen extends StatelessWidget {
-  static const String id = 'CartScreen';
+  static const String id = '/CartScreen';
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context);
@@ -112,7 +114,16 @@ class CartScreen extends StatelessWidget {
                 addVerticalSpace(20.h),
                 GetMyLocationWidget(),
                 addVerticalSpace(20.h),
-                const MyCustomButton(title: 'Place Order')
+                MyCustomButton(
+                  title: 'Place Order',
+                  onPressed: () {
+                    if (provider.address == '')
+                      showActionSnackBar(
+                          context, 'Please confirm your address');
+                    else
+                      Navigator.pushNamed(context, OrderDoneScreen.id);
+                  },
+                )
               ]),
             ),
     );

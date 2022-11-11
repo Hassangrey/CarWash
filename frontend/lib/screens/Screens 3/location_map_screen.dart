@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -93,6 +95,7 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<CarWashProvider>(context);
     return PageLayout(
         child: _kGooglePlex == null
             ? Center(
@@ -123,7 +126,6 @@ class _MapScreenState extends State<MapScreen> {
                             } else {
                               //other calling, later is true,
                               //don't call again completer()
-
                             }
                           }),
                     ),
@@ -147,7 +149,10 @@ class _MapScreenState extends State<MapScreen> {
                   margin: EdgeInsets.only(top: 10, left: 10),
                   child: MyCustomButton(
                     title: "Confirm",
-                    onPressed: () {},
+                    onPressed: () {
+                      provider.address = address;
+                      Navigator.pop(context);
+                    },
                   ),
                 )
               ]));

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
 import 'package:safacw/Constants/addspace_functions.dart';
+import 'package:safacw/Models/Item.dart';
 import 'package:safacw/widgets/counter_widget.dart';
 import 'package:safacw/widgets/snackbar_widget.dart';
 
@@ -10,6 +11,14 @@ import '../providers/carwash_provider.dart';
 
 Future<dynamic> MethodForDialog(BuildContext context, int index) async {
   var provider = Provider.of<CarWashProvider>(context, listen: false);
+  List<Item> items = [];
+  if (provider.type == "Laundry") {
+    items = provider.myItems;
+  } else if (provider.type == "CarWash") {
+    items = provider.carWashItems;
+  } else {
+    items = provider.buildingCleaningItems;
+  }
   return showDialog(
       context: context,
       builder: (context) {
@@ -38,14 +47,12 @@ Future<dynamic> MethodForDialog(BuildContext context, int index) async {
                     const Divider(),
                     ListTile(
                       leading: CircleAvatar(
-                        backgroundImage:
-                            NetworkImage(provider.myItems[index].imgPath!),
+                        backgroundImage: NetworkImage(items[index].imgPath!),
                         backgroundColor: Colors.grey[400],
                         radius: 30,
                       ),
-                      title: Text(provider.myItems[index].title!),
-                      subtitle: Text(
-                          'SAR' + provider.myItems[index].price.toString()),
+                      title: Text(items[index].title!),
+                      subtitle: Text('SAR' + items[index].price.toString()),
                       //  trailing: ItemCounterWidget(),
                     ),
                     TextField(
@@ -79,7 +86,7 @@ Future<dynamic> MethodForDialog(BuildContext context, int index) async {
                             onPressed: () {
                               provider.addItem(provider.myItems[index].id!);
                               showActionSnackBar(context,
-                                  '${provider.myItems[index].title} added to cart! ${provider.cartItems.length}x');
+                                  '${items[index].title} added to cart! ${provider.cartItems.length}x');
                               Navigator.pop(context);
                             },
                             child: const Text('Add To Cart')))

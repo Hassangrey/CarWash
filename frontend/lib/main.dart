@@ -10,6 +10,7 @@ import 'package:safacw/screens/Screens%201/viewall_screen.dart';
 import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/Screens%203/location_map_screen.dart';
+import 'package:safacw/screens/Screens%203/order_done.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/carwash_main_screen.dart';
 import 'package:safacw/screens/item_details_screen.dart';
@@ -92,8 +93,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => SlideMenu());
   } else if (routeSettings.name == OnboardingScreen.id) {
     return MaterialPageRoute(builder: (_) => OnboardingScreen());
+  } else if (routeSettings.name == OrderDoneScreen.id) {
+    return MaterialPageRoute(builder: (_) => OrderDoneScreen());
   } else if (routeSettings.name == NavBarHolder.id) {
-    return MaterialPageRoute(builder: (_) => const NavBarHolder());
+    return MaterialPageRoute(builder: (_) => NavBarHolder());
   } else if (routeSettings.name == SettingsScreen.id) {
     return MaterialPageRoute(builder: (_) => SettingsScreen());
   } else if (routeSettings.name == CartScreen.id) {
