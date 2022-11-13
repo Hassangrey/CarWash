@@ -11,6 +11,8 @@ import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/Screens%203/location_map_screen.dart';
 import 'package:safacw/screens/Screens%203/order_done.dart';
+import 'package:safacw/screens/Screens%204/change_password.dart';
+import 'package:safacw/screens/Screens%204/chenge_phone.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/carwash_main_screen.dart';
 import 'package:safacw/screens/item_details_screen.dart';
@@ -129,6 +131,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == MapScreen.id) {
     // Retrieve the value.
     return MaterialPageRoute(builder: (context) => MapScreen());
+  } else if (routeSettings.name == ChangePassword.id) {
+    return MaterialPageRoute(builder: (context) => ChangePassword());
+  } else if (routeSettings.name == ChangePhone.id) {
+    return MaterialPageRoute(builder: (context) => ChangePhone());
   } else {
     return null;
   }
