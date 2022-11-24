@@ -13,6 +13,8 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:maps_launcher/maps_launcher.dart';
 import 'package:safacw/screens/3rd_screen.dart';
 
+import 'bottom_navigation_bar_holder.dart';
+
 Future<void> getLatAndLong() async {}
 
 class acceptedOrder extends StatefulWidget {
@@ -106,10 +108,8 @@ class _acceptedOrder extends State<acceptedOrder> {
           animType: AnimType.topSlide,
           title: 'Location Services',
           btnOkOnPress: () {
-            Navigator.pushNamed(
-              context,
-              ThirdScreen.id,
-            );
+            Navigator.pushNamedAndRemoveUntil(
+                context, NavBarHolder.id, ModalRoute.withName('/'));
           },
           btnOkColor: Colors.lightBlue,
           body: Text('Good job!',
