@@ -11,6 +11,7 @@ import 'package:safacw/screens/Screens%202/building_cleaning_main_screen.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/Screens%203/location_map_screen.dart';
 import 'package:safacw/screens/Screens%203/order_done.dart';
+import 'package:safacw/screens/Screens%203/order_history_screen.dart';
 import 'package:safacw/screens/Screens%204/change_password.dart';
 import 'package:safacw/screens/Screens%204/chenge_phone.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
@@ -135,6 +136,8 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (context) => ChangePassword());
   } else if (routeSettings.name == ChangePhone.id) {
     return MaterialPageRoute(builder: (context) => ChangePhone());
+  } else if (routeSettings.name == OrderHistoryScreen.id) {
+    return MaterialPageRoute(builder: (context) => OrderHistoryScreen());
   } else {
     return null;
   }

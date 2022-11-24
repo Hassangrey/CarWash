@@ -33,6 +33,7 @@ class _ThirdScreen extends State<ThirdScreen> {
   Widget build(BuildContext context) {
     return PageLayout(
         child: ListView.builder(
+      padding: EdgeInsets.all(5),
       itemCount: 10,
       itemBuilder: (context, index) {
         return Container(
@@ -113,7 +114,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                       textAlign: TextAlign.center,
                     )),
                 Container(
-                  height: 400,
+                  height: 400.h,
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
