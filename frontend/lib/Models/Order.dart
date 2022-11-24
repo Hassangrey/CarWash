@@ -11,24 +11,25 @@ class Order {
   List<Item>? items;
   User? user;
   User? driver;
-  Order({
-    this.id,
-    this.items,
-    this.user,
-    this.driver,
-  });
+  String? long;
+  String? latt;
+  Order({this.id, this.items, this.user, this.driver, this.long, this.latt});
 
   Order copyWith({
     int? id,
     List<Item>? items,
     User? user,
     User? driver,
+    String? long,
+    String? latt,
   }) {
     return Order(
       id: id ?? this.id,
       items: items ?? this.items,
       user: user ?? this.user,
       driver: driver ?? this.driver,
+      long: long ?? this.long,
+      latt: latt ?? this.latt,
     );
   }
 
@@ -38,6 +39,8 @@ class Order {
       'items': items?.map((x) => x?.toMap()).toList(),
       'user': user?.toMap(),
       'driver': driver?.toMap(),
+      'long': long,
+      'latt': latt,
     };
   }
 
@@ -57,6 +60,8 @@ class Order {
       driver: map['driver'] != null
           ? User.fromMap(map['driver'] as Map<String, dynamic>)
           : null,
+      long: map['long'] != null ? map['long'] as String : null,
+      latt: map['latt'] != null ? map['latt'] as String : null,
     );
   }
 

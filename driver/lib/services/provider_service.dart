@@ -10,9 +10,10 @@ import '../Models/Item.dart';
 import '../Models/Order.dart';
 import '../Models/Provider.dart';
 import 'auth_service.dart';
+import 'package:safacw/services/constants.dart';
 
 class ProviderService {
-  static final baseUrl = 'http://localhost:8000/api/';
+  // static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
@@ -26,14 +27,13 @@ class ProviderService {
     if (data['results'] != null) {
       List<dynamic> providers =
           data['results'].map((json) => Provider.fromJsonMap(json)).toList();
-for(var i = 0; i< providers.length; i++) {
-           List<dynamic> x = await ItemService.get_items_provider(providers[i]);
-   
-          var ints = new List<Item>.from(x);
+      for (var i = 0; i < providers.length; i++) {
+        List<dynamic> x = await ItemService.get_items_provider(providers[i]);
 
-          providers[i].items = ints;
-}
+        var ints = new List<Item>.from(x);
 
+        providers[i].items = ints;
+      }
 
       return providers;
     }

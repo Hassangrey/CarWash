@@ -1,16 +1,19 @@
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
+import 'package:safacw/services/constants.dart';
 
 class AuthService {
- // static final baseUrl = 'http://senior-project-api.herokuapp.com'; because we're poor
-  static final baseUrl = 'http://127.0.0.1:8000';
+  // static final baseUrl = 'http://senior-project-api.herokuapp.com'; because we're poor
+  // static final baseUrl = 'http://192.168.0.116:8000';
 
   // ignore: non_constant_identifier_names
   static final SESSION = FlutterSession();
 
-  static Future<dynamic> register(String email, String username, String password) async {
+  static Future<dynamic> register(
+      String email, String username, String password) async {
     try {
-      var res = await http.post(Uri.parse('$baseUrl/auth/users/'), body: {
+      var res =
+          await http.post(Uri.parse('$baseUrlForAuth/auth/users/'), body: {
         'email': email,
         'username': username,
         'password': password,
@@ -24,7 +27,7 @@ class AuthService {
   static Future<dynamic> login(String username, String password) async {
     try {
       var res = await http.post(
-        Uri.parse('$baseUrl/auth/jwt/create/'),
+        Uri.parse('$baseUrlForAuth/auth/jwt/create/'),
         body: {
           'username': username,
           'password': password,
@@ -32,13 +35,11 @@ class AuthService {
       );
 
       return res;
-    }catch (error){
+    } catch (error) {
       print("error occured" + error.toString());
-    } 
-    finally {
+    } finally {
       // you can do somethig here
     }
-    
   }
 
   static setToken(String token, String refreshToken) async {
@@ -50,7 +51,7 @@ class AuthService {
     return await SESSION.get('tokens');
   }
 
-  static removeToken()async {
+  static removeToken() async {
     await SESSION.prefs.clear();
   }
 }
@@ -67,7 +68,7 @@ class _AuthData {
 
     data['token'] = token;
     data['refreshToken'] = refreshToken;
-  //  data['clientId'] = clientId;
+    //  data['clientId'] = clientId;
     return data;
   }
 }

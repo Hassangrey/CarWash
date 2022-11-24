@@ -6,9 +6,10 @@ import '../Models/Address.dart';
 import '../Models/Item.dart';
 import '../Models/Provider.dart';
 import 'auth_service.dart';
+import 'package:safacw/services/constants.dart';
 
 class ItemService {
-  static final baseUrl = 'http://localhost:8000/api/';
+  // static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
