@@ -4,6 +4,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Models/language_constants.dart';
+import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/3rd_screen.dart';
 import 'package:safacw/screens/login_screen.dart';
@@ -50,16 +51,21 @@ class _SafaState extends State<Safa> {
     return ScreenUtilInit(
       designSize: const Size(412, 869),
       builder: (context, child) {
-        return MaterialApp(
-            theme: ThemeData(
-              fontFamily: 'JosefinSans',
-            ),
-            debugShowCheckedModeBanner: false,
-            initialRoute: LoginScreen.id,
-            onGenerateRoute: onGenerateRoute,
-            localizationsDelegates: AppLocalizations.localizationsDelegates,
-            supportedLocales: AppLocalizations.supportedLocales,
-            locale: _locale);
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => DriverProvider()),
+          ],
+          child: MaterialApp(
+              theme: ThemeData(
+                fontFamily: 'JosefinSans',
+              ),
+              debugShowCheckedModeBanner: false,
+              initialRoute: LoginScreen.id,
+              onGenerateRoute: onGenerateRoute,
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: _locale),
+        );
       },
     );
   }

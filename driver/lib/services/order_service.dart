@@ -18,18 +18,15 @@ class OrderService {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
 
-    var req = await client.get(Uri.parse(baseUrl + "order/"),
+    var req = await client.get(Uri.parse(baseUrl + "order"),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
 
-    if (data['results'] != null) {
-      List<dynamic> items =
-          data['results'].map((json) => Order.fromJson(json)).toList();
+    List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
+    print(items);
 
-      return items;
-    }
-    return null;
+    return items;
   }
 
   static Future get_one(int id) async {

@@ -5,7 +5,7 @@ class Item {
   int? id;
 
   String? title;
-  double? price;
+  String? price;
   String? imgPath;
   String? desc;
   Item({
@@ -19,7 +19,7 @@ class Item {
   Item copyWith({
     int? id,
     String? title,
-    double? price,
+    String? price,
     String? imgPath,
     String? desc,
   }) {
@@ -42,11 +42,11 @@ class Item {
     };
   }
 
-  factory Item.fromMap(Map<String, dynamic> map) {
+  factory Item.fromMap(Map map) {
     return Item(
       id: map['id'] != null ? map['id'] as int : null,
       title: map['title'] != null ? map['title'] as String : null,
-      price: map['price'] != null ? map['price'] as double : null,
+      price: map['price'] != null ? map['price'] as String : null,
       imgPath: map['imgPath'] != null ? map['imgPath'] as String : null,
       desc: map['desc'] != null ? map['desc'] as String : null,
     );

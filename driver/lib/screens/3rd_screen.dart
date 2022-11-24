@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:safacw/screens/orderDetails.dart';
@@ -27,10 +29,19 @@ class _ThirdScreen extends State<ThirdScreen> {
     super.initState();
     checkAccess();
     getGradDay();
+    getOrders();
+  }
+
+  getOrders() async {
+    var orders = await Provider.of<DriverProvider>(context, listen: false)
+        .getAllOrders();
+    print(orders);
   }
 
   @override
   Widget build(BuildContext context) {
+    var orderProvider = Provider.of<DriverProvider>(context, listen: false);
+
     return PageLayout(
         child: ListView.builder(
       padding: EdgeInsets.all(5),
