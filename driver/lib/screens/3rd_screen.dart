@@ -42,59 +42,62 @@ class _ThirdScreen extends State<ThirdScreen> {
   Widget build(BuildContext context) {
     List<dynamic> orders =
         Provider.of<DriverProvider>(context, listen: false).orders;
-
+    var provider = Provider.of<DriverProvider>(context);
     return PageLayout(
-        child: ListView.builder(
-      padding: EdgeInsets.all(5),
-      itemCount: orders.length,
-      itemBuilder: (context, index) {
-        return Container(
-          padding: EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.r),
-            color: Colors.grey[100],
-          ),
-          margin: EdgeInsets.only(
-            bottom: 10,
-          ),
-          child: InkWell(
-            onTap: () => {BottomSheet(context, index)},
-            child: Row(
-              children: [
-                Container(
-                  width: 50.w,
-                  height: 50.h,
-                  margin: EdgeInsets.all(5),
-                  child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(left: 15),
-                  width: 170.w,
-                  child: Text('${orders[index].service_provider.username}'),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 15.h),
-                  child: Column(
-                    children: [
-                      Text(
-                        'Price: 30SR',
-                        textAlign: TextAlign.right,
-                        style: TextStyle(fontSize: 10.sp),
+        child: provider.isLoading
+            ? Center(child: CircularProgressIndicator())
+            : ListView.builder(
+                padding: EdgeInsets.all(5),
+                itemCount: orders.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.r),
+                      color: Colors.grey[100],
+                    ),
+                    margin: EdgeInsets.only(
+                      bottom: 10,
+                    ),
+                    child: InkWell(
+                      onTap: () => {BottomSheet(context, index)},
+                      child: Row(
+                        children: [
+                          Container(
+                            width: 50.w,
+                            height: 50.h,
+                            margin: EdgeInsets.all(5),
+                            child: Image.network(
+                              'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(left: 15),
+                            width: 170.w,
+                            child: Text(
+                                '${orders[index].service_provider.username}'),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(top: 15.h),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Price: 30SR',
+                                  textAlign: TextAlign.right,
+                                  style: TextStyle(fontSize: 10.sp),
+                                ),
+                                Text('Distance: 0.3km',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(fontSize: 10.sp)),
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                      Text('Distance: 0.3km',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(fontSize: 10.sp)),
-                    ],
-                  ),
-                )
-              ],
-            ),
-          ),
-        );
-      },
-    ));
+                    ),
+                  );
+                },
+              ));
   }
 
   Future<dynamic> BottomSheet(BuildContext context, index) {
