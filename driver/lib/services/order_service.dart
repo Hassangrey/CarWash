@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:safacw/Models/User.dart';
+import 'package:safacw/Models/accepted_order.dart';
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
@@ -75,12 +76,18 @@ class OrderService {
     User user = User.fromMap(userData);
 
     print(user);
+
     order.driver = user;
     order.status = 'ACCEPTED';
-    var new_order = order.toJson();
+    AcceptedOrder acceptedOrder =
+        AcceptedOrder(id: order.id, driver: user.id, status: 'ACCEPTED');
+    var new_order = acceptedOrder.toJson();
     req = await client.patch(
         Uri.parse(baseUrl + "order/" + order.id.toString() + '/'),
-        headers: {'Authorization': 'JWT $token'},
+        headers: {
+          'Authorization': 'JWT $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
         body: new_order);
 
     final data = jsonDecode(req.body);
