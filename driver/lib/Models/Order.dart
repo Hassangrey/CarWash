@@ -10,14 +10,17 @@ class Order {
   int? id;
   List<Item>? items;
   User? user;
-  // User? driver;
+  User? driver;
+  User? service_provider;
+
   String? long;
   String? latt;
   Order({
     this.id,
     this.items,
     this.user,
-    // this.driver,
+    this.driver,
+    this.service_provider,
     this.long,
     this.latt,
   });
@@ -27,6 +30,7 @@ class Order {
     List<Item>? items,
     User? user,
     User? driver,
+    User? service_provider,
     String? long,
     String? latt,
   }) {
@@ -34,7 +38,8 @@ class Order {
       id: id ?? this.id,
       items: items ?? this.items,
       user: user ?? this.user,
-      // driver: driver ?? this.driver,
+      driver: driver ?? this.driver,
+      service_provider: service_provider ?? this.service_provider,
       long: long ?? this.long,
       latt: latt ?? this.latt,
     );
@@ -45,7 +50,8 @@ class Order {
       'id': id,
       'items': items?.map((x) => x?.toMap()).toList(),
       'user': user?.toMap(),
-      // 'driver': driver?.toMap(),
+      'driver': driver?.toMap(),
+      'service_provider': service_provider?.toMap(),
       'long': long,
       'latt': latt,
     };
@@ -64,9 +70,12 @@ class Order {
       user: map['user'] != null
           ? User.fromMap(map['user'] as Map<String, dynamic>)
           : null,
-      // driver: map['driver'] != null
-      // ? User.fromMap(map['driver'] as Map<String, dynamic>)
-      // : null,
+      driver: map['driver'] != null
+          ? User.fromMap(map['driver'] as Map<String, dynamic>)
+          : null,
+      service_provider: map['service_provider'] != null
+          ? User.fromMap(map['service_provider'] as Map<String, dynamic>)
+          : null,
       long: map['long'] != null ? map['long'] as String : null,
       latt: map['latt'] != null ? map['latt'] as String : null,
     );
@@ -79,9 +88,7 @@ class Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, items: $items, user: $user, ' +
-        // driver: $driver,
-        '  long: $long, latt: $latt)';
+    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt)';
   }
 
   @override
@@ -92,7 +99,8 @@ class Order {
     return other.id == id &&
         listEquals(other.items, items) &&
         other.user == user &&
-        // other.driver == driver &&
+        other.driver == driver &&
+        other.service_provider == service_provider &&
         other.long == long &&
         other.latt == latt;
   }
@@ -102,7 +110,8 @@ class Order {
     return id.hashCode ^
         items.hashCode ^
         user.hashCode ^
-        // driver.hashCode ^
+        driver.hashCode ^
+        service_provider.hashCode ^
         long.hashCode ^
         latt.hashCode;
   }

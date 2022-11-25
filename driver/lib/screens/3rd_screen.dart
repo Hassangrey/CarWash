@@ -28,7 +28,7 @@ class _ThirdScreen extends State<ThirdScreen> {
     // TODO: implement initState
     super.initState();
     checkAccess();
-    getGradDay();
+    // getGradDay();
     getOrders();
   }
 
@@ -40,12 +40,13 @@ class _ThirdScreen extends State<ThirdScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var orderProvider = Provider.of<DriverProvider>(context, listen: false);
+    List<dynamic> orders =
+        Provider.of<DriverProvider>(context, listen: false).orders;
 
     return PageLayout(
         child: ListView.builder(
       padding: EdgeInsets.all(5),
-      itemCount: 10,
+      itemCount: orders.length,
       itemBuilder: (context, index) {
         return Container(
           padding: EdgeInsets.all(5),
@@ -57,7 +58,7 @@ class _ThirdScreen extends State<ThirdScreen> {
             bottom: 10,
           ),
           child: InkWell(
-            onTap: () => {BottomSheet(context)},
+            onTap: () => {BottomSheet(context, index)},
             child: Row(
               children: [
                 Container(
@@ -71,7 +72,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                 Container(
                   margin: EdgeInsets.only(left: 15),
                   width: 170.w,
-                  child: Text('Laundry ${index + 1}'),
+                  child: Text('${orders[index].service_provider.username}'),
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 15.h),
@@ -96,7 +97,11 @@ class _ThirdScreen extends State<ThirdScreen> {
     ));
   }
 
-  Future<dynamic> BottomSheet(BuildContext context) {
+  Future<dynamic> BottomSheet(BuildContext context, index) {
+    List<dynamic> orders =
+        Provider.of<DriverProvider>(context, listen: false).orders;
+    List<dynamic> items =
+        Provider.of<DriverProvider>(context, listen: false).orders[index].items;
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -121,7 +126,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                     width: double.infinity,
                     margin: EdgeInsets.all(5),
                     child: Text(
-                      'Laundry Name',
+                      '${orders[index].service_provider.username}',
                       textAlign: TextAlign.center,
                     )),
                 Container(
@@ -129,7 +134,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: 8,
+                    itemCount: orders[index].items.length,
                     itemBuilder: (context, index) {
                       return Container(
                           padding: EdgeInsets.all(5),
@@ -147,20 +152,20 @@ class _ThirdScreen extends State<ThirdScreen> {
                                 height: 50.h,
                                 margin: EdgeInsets.all(5),
                                 child: Image.network(
-                                  'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                                  '${items[index].imgPath}',
                                 ),
                               ),
                               Container(
                                 margin: EdgeInsets.only(left: 15),
                                 width: 170.w,
-                                child: Text('Item ${index + 1}'),
+                                child: Text('${items[index].title}'),
                               ),
                               Container(
                                 padding: EdgeInsets.only(top: 15.h),
                                 child: Column(
                                   children: [
                                     Text(
-                                      'Price: 10SR',
+                                      '${items[index].price}',
                                       textAlign: TextAlign.right,
                                       style: TextStyle(fontSize: 10.sp),
                                     ),

@@ -22,7 +22,7 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
-
+    print(data);
     List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
     print(items);
 
