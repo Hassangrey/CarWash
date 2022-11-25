@@ -38,6 +38,12 @@ class _ThirdScreen extends State<ThirdScreen> {
     print(orders);
   }
 
+  updateOrder(index) async {
+    var orders = await Provider.of<DriverProvider>(context, listen: false)
+        .updateOrder(index);
+    print(orders);
+  }
+
   @override
   Widget build(BuildContext context) {
     List<dynamic> orders =
@@ -111,6 +117,7 @@ class _ThirdScreen extends State<ThirdScreen> {
             borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         context: context,
         builder: (context) {
+          updateOrder(index);
           return Container(
             padding: EdgeInsets.all(10),
             child: Wrap(
@@ -207,6 +214,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                           backgroundColor: Colors.green[400],
                           heroTag: "laundry",
                           onPressed: () {
+                            updateOrder(index);
                             Navigator.pushNamedAndRemoveUntil(context,
                                 acceptedOrder.id, ModalRoute.withName('/'));
                           },

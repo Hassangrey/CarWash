@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
+import 'package:safacw/Models/User.dart';
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
@@ -66,16 +67,27 @@ class OrderService {
   static Future update(Order order) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrlForAuth + "/auth/users/me/"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+
+    User user = User.fromMap(userData);
+
+    print(user);
+    order.driver = user;
+    order.status = 'ACCEPTED';
     var new_order = order.toJson();
-    var req = await client.put(
+    req = await client.patch(
         Uri.parse(baseUrl + "order/" + order.id.toString() + '/'),
         headers: {'Authorization': 'JWT $token'},
         body: new_order);
 
     final data = jsonDecode(req.body);
+    print(data);
 
     if (data != null) {
-      Order addresses = Order.fromJson(data);
+      Order addresses = Order.fromMap(data);
 
       return addresses;
     }

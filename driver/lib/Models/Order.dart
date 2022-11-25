@@ -15,6 +15,7 @@ class Order {
 
   String? long;
   String? latt;
+  String? status;
   Order({
     this.id,
     this.items,
@@ -23,6 +24,7 @@ class Order {
     this.service_provider,
     this.long,
     this.latt,
+    this.status,
   });
 
   Order copyWith({
@@ -33,6 +35,7 @@ class Order {
     User? service_provider,
     String? long,
     String? latt,
+    String? status,
   }) {
     return Order(
       id: id ?? this.id,
@@ -42,6 +45,7 @@ class Order {
       service_provider: service_provider ?? this.service_provider,
       long: long ?? this.long,
       latt: latt ?? this.latt,
+      status: status ?? this.status,
     );
   }
 
@@ -54,6 +58,7 @@ class Order {
       'service_provider': service_provider?.toMap(),
       'long': long,
       'latt': latt,
+      'status': status,
     };
   }
 
@@ -78,6 +83,7 @@ class Order {
           : null,
       long: map['long'] != null ? map['long'] as String : null,
       latt: map['latt'] != null ? map['latt'] as String : null,
+      status: map['status'] != null ? map['status'] as String : null,
     );
   }
 
@@ -88,7 +94,7 @@ class Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt)';
+    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt, status: $status)';
   }
 
   @override
@@ -102,7 +108,8 @@ class Order {
         other.driver == driver &&
         other.service_provider == service_provider &&
         other.long == long &&
-        other.latt == latt;
+        other.latt == latt &&
+        other.status == status;
   }
 
   @override
@@ -113,6 +120,7 @@ class Order {
         driver.hashCode ^
         service_provider.hashCode ^
         long.hashCode ^
-        latt.hashCode;
+        latt.hashCode ^
+        status.hashCode;
   }
 }

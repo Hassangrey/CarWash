@@ -16,4 +16,12 @@ class DriverProvider extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+  updateOrder(index) async {
+    isLoading = true;
+    print('Loading data...');
+    orders = (await OrderService.update(orders[index]));
+    isLoading = false;
+    notifyListeners();
+  }
 }
