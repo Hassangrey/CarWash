@@ -33,9 +33,9 @@ class OrderService {
     }
 
     final data = jsonDecode(req.body);
-    print(data);
+    print("before $data");
     List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
-    print(items);
+    print("after $items");
 
     return items;
   }
@@ -81,7 +81,10 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
+    // print("User here $userData");
     User user = User.fromMap(userData);
+    // print("User here after $userData");
+
     return user;
   }
 

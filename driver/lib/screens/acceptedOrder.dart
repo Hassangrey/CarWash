@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:safacw/Models/Order.dart';
 import 'package:safacw/Models/order_address.dart';
 import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/widgets/page_layout.dart';
@@ -48,11 +49,30 @@ class _acceptedOrder extends State<acceptedOrder> {
   var longitudeCustomer = 50.0888;
   var latitudeLaundry = 26.4207;
   var longitudeLaundry = 50.087822;
+  var provider;
 
   updateOrder(OrderAddress orderAddress) async {
     var orders = await Provider.of<DriverProvider>(context, listen: false)
         .updateOrderAddress(orderAddress);
     print(orders);
+  }
+
+  getSPLongAndLat() {
+    var provider = Provider.of<DriverProvider>(context, listen: false);
+    Order order = provider.orders[provider.selectedOrder!];
+    var orderAddress = OrderAddress(
+        long: double.parse(order.service_provider!.profile!.long!),
+        latt: double.parse(order.service_provider!.profile!.latt!));
+    return orderAddress;
+  }
+
+  getuserLongAndLat() {
+    var provider = Provider.of<DriverProvider>(context, listen: false);
+    Order order = provider.orders[provider.selectedOrder!];
+    var orderAddress = OrderAddress(
+        long: double.parse(order.user!.profile!.long!),
+        latt: double.parse(order.user!.profile!.latt!));
+    return orderAddress;
   }
 
   getStreaming() {
@@ -85,7 +105,7 @@ class _acceptedOrder extends State<acceptedOrder> {
         infoWindow: InfoWindow(title: 'customer')),
     Marker(
         markerId: MarkerId('laundry'),
-        position: LatLng(26.4207, 50.087822),
+        position: LatLng(1, 2),
         infoWindow: InfoWindow(title: 'laundry')),
   };
 
@@ -93,6 +113,25 @@ class _acceptedOrder extends State<acceptedOrder> {
     // TODO: implement initState
     super.initState();
     // getPostion();
+    OrderAddress user = getuserLongAndLat();
+    OrderAddress SP = getSPLongAndLat();
+    latitudeCustomer = user.latt!;
+    longitudeCustomer = user.long!;
+    latitudeLaundry = SP.latt!;
+    longitudeLaundry = SP.long!;
+
+    marker = {
+      Marker(
+          markerId: MarkerId('customer'),
+          position: LatLng(user.latt!, user.long!),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          infoWindow: InfoWindow(title: 'customer')),
+      Marker(
+          markerId: MarkerId('laundry'),
+          position: LatLng(SP.latt!, SP.long!),
+          infoWindow: InfoWindow(title: 'laundry')),
+    };
+    provider = Provider.of<DriverProvider>(context, listen: false);
 
     ps = Geolocator.getPositionStream().listen((Position position) {
       lat = position.latitude;
