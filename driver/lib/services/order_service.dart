@@ -5,23 +5,32 @@ import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:safacw/Models/User.dart';
 import 'package:safacw/Models/accepted_order.dart';
+import 'package:safacw/Models/order_address.dart';
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
 import '../Models/Order.dart';
 import 'auth_service.dart';
 import 'package:safacw/services/constants.dart';
+import 'dart:developer';
 
 class OrderService {
   // static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
-  static Future get_all() async {
+  static Future get_all({isMe = false}) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
-
-    var req = await client.get(Uri.parse(baseUrl + "order"),
-        headers: {'Authorization': 'JWT $token'});
+    User user = await getUser();
+    var req;
+    if (isMe) {
+      req = await client.get(
+          Uri.parse(baseUrl + "order?driver=${user.username}"),
+          headers: {'Authorization': 'JWT $token'});
+    } else {
+      req = await client.get(Uri.parse(baseUrl + "order"),
+          headers: {'Authorization': 'JWT $token'});
+    }
 
     final data = jsonDecode(req.body);
     print(data);
@@ -65,16 +74,22 @@ class OrderService {
     return null;
   }
 
-  static Future update(Order order) async {
+  static Future getUser() async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var req = await client.get(Uri.parse(baseUrlForAuth + "/auth/users/me/"),
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
-
     User user = User.fromMap(userData);
+    return user;
+  }
 
+  static Future update(Order order) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+
+    User user = await getUser();
     print(user);
 
     order.driver = user;
@@ -82,7 +97,7 @@ class OrderService {
     AcceptedOrder acceptedOrder =
         AcceptedOrder(id: order.id, driver: user.id, status: 'ACCEPTED');
     var new_order = acceptedOrder.toJson();
-    req = await client.patch(
+    var req = await client.patch(
         Uri.parse(baseUrl + "order/" + order.id.toString() + '/'),
         headers: {
           'Authorization': 'JWT $token',
@@ -91,10 +106,34 @@ class OrderService {
         body: new_order);
 
     final data = jsonDecode(req.body);
-    print(data);
+    log('data' + data);
 
     if (data != null) {
       Order addresses = Order.fromMap(data);
+
+      return addresses;
+    }
+    return null;
+  }
+
+  static Future updateDriver(OrderAddress orderAddress) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    User user = await getUser();
+    var new_order = orderAddress.toJson();
+    var req = await client.patch(
+        Uri.parse(baseUrl + "order/" + orderAddress.id.toString() + '/'),
+        headers: {
+          'Authorization': 'JWT $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: new_order);
+
+    final data = jsonDecode(req.body);
+    print("IAM DATA $data");
+    if (data != null) {
+      Order addresses = Order.fromMap(data);
+      print("${addresses.long}:${addresses.latt}");
 
       return addresses;
     }

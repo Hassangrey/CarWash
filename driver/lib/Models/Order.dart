@@ -16,6 +16,8 @@ class Order {
   String? long;
   String? latt;
   String? status;
+  String? price;
+  String? date;
   Order({
     this.id,
     this.items,
@@ -25,6 +27,8 @@ class Order {
     this.long,
     this.latt,
     this.status,
+    this.price,
+    this.date,
   });
 
   Order copyWith({
@@ -36,6 +40,8 @@ class Order {
     String? long,
     String? latt,
     String? status,
+    String? price,
+    String? date,
   }) {
     return Order(
       id: id ?? this.id,
@@ -46,6 +52,8 @@ class Order {
       long: long ?? this.long,
       latt: latt ?? this.latt,
       status: status ?? this.status,
+      price: price ?? this.price,
+      date: date ?? this.date,
     );
   }
 
@@ -59,6 +67,8 @@ class Order {
       'long': long,
       'latt': latt,
       'status': status,
+      'price': price,
+      'date': date,
     };
   }
 
@@ -84,6 +94,8 @@ class Order {
       long: map['long'] != null ? map['long'] as String : null,
       latt: map['latt'] != null ? map['latt'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
+      price: map['price'] != null ? map['price'] as String : null,
+      date: map['date'] != null ? map['date'] as String : null,
     );
   }
 
@@ -94,7 +106,7 @@ class Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt, status: $status)';
+    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt, status: $status, price: $price, date: $date)';
   }
 
   @override
@@ -109,7 +121,9 @@ class Order {
         other.service_provider == service_provider &&
         other.long == long &&
         other.latt == latt &&
-        other.status == status;
+        other.status == status &&
+        other.price == price &&
+        other.date == date;
   }
 
   @override
@@ -121,6 +135,8 @@ class Order {
         service_provider.hashCode ^
         long.hashCode ^
         latt.hashCode ^
-        status.hashCode;
+        status.hashCode ^
+        price.hashCode ^
+        date.hashCode;
   }
 }
