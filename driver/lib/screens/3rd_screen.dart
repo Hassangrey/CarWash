@@ -95,7 +95,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'Price: 30SR',
+                                  'Price: ${orders[index].price}SR',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(fontSize: 10.sp),
                                 ),
