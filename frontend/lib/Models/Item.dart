@@ -51,7 +51,6 @@ class Item {
       desc: map['desc'] != null ? map['desc'] as String : null,
     );
   }
- 
 
   String toJson() => json.encode(toMap());
 

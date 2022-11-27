@@ -13,6 +13,12 @@ class CarWashProvider extends ChangeNotifier {
   double total = 0.0;
   String address = "";
 
+  // * The Order objects
+  String x = ''; // Here the lat will be saved
+  String y = ''; // Here the long will be saved
+  String providerId = ''; // Here the chosen laundy ID will be saved
+  // * End of Order Object
+
   getAllCarWashProvidersProfilers(String type) async {
     isLoading = true;
     print('Loading data...');
@@ -66,6 +72,26 @@ class CarWashProvider extends ChangeNotifier {
       }
     }
     notifyListeners();
+  }
+
+  List<String> returnItemIds() {
+    List<String> itemIds = [];
+    for (int i = 0; i < cartItems.length; i++) {
+      itemIds.add(cartItems[i].id.toString());
+    }
+    return itemIds;
+  }
+
+  void getLocation(String lat, String long) {
+    if (lat.isNotEmpty && long.isNotEmpty) {
+      x = lat;
+      y = long;
+    }
+    print('Your lat is: $x and your long is: $y');
+  }
+
+  bool noAddressSelected() {
+    return (x == '' && y == '');
   }
 
   String getTaxes() => (total * 0.15).toStringAsFixed(2);

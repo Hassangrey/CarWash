@@ -117,11 +117,13 @@ class CartScreen extends StatelessWidget {
                 MyCustomButton(
                   title: 'Place Order',
                   onPressed: () {
-                    if (provider.address == '')
+                    if (provider.noAddressSelected()) {
                       showActionSnackBar(
                           context, 'Please confirm your address');
-                    else
+                    } else {
+                      provider.returnItemIds();
                       Navigator.pushNamed(context, OrderDoneScreen.id);
+                    }
                   },
                 )
               ]),
