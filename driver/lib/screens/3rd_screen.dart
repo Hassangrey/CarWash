@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
+import 'package:safacw/Models/order_address.dart';
 import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,6 +26,8 @@ class ThirdScreen extends StatefulWidget {
 }
 
 class _ThirdScreen extends State<ThirdScreen> {
+  int index = 1;
+  Timer? timer;
   @override
   void initState() {
     // TODO: implement initState
@@ -40,8 +45,7 @@ class _ThirdScreen extends State<ThirdScreen> {
 
   updateOrder(index) async {
     var orders = await Provider.of<DriverProvider>(context, listen: false)
-        .updateOrder(index);
-    print(orders);
+        .updateOrder(index: index);
   }
 
   @override
@@ -66,7 +70,10 @@ class _ThirdScreen extends State<ThirdScreen> {
                       bottom: 10,
                     ),
                     child: InkWell(
-                      onTap: () => {BottomSheet(context, index)},
+                      onTap: () {
+                        provider.selectedOrder = index;
+                        BottomSheet(context, index);
+                      },
                       child: Row(
                         children: [
                           Container(
@@ -88,7 +95,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                             child: Column(
                               children: [
                                 Text(
-                                  'Price: 30SR',
+                                  'Price: ${orders[index].price}SR',
                                   textAlign: TextAlign.right,
                                   style: TextStyle(fontSize: 10.sp),
                                 ),
@@ -111,13 +118,13 @@ class _ThirdScreen extends State<ThirdScreen> {
         Provider.of<DriverProvider>(context, listen: false).orders;
     List<dynamic> items =
         Provider.of<DriverProvider>(context, listen: false).orders[index].items;
+
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         context: context,
         builder: (context) {
-          updateOrder(index);
           return Container(
             padding: EdgeInsets.all(10),
             child: Wrap(

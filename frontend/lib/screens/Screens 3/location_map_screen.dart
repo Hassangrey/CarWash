@@ -45,7 +45,8 @@ class _MapScreenState extends State<MapScreen> {
             "${place.country}, ${place.locality}, ${place.street}, ${place.postalCode} ";
       });
     });
-    print(address);
+
+    // print('Your address' + address);
 /////////////////////////////////////////////////
     _kGooglePlex = CameraPosition(
       target: LatLng(lat, long),
@@ -66,7 +67,8 @@ class _MapScreenState extends State<MapScreen> {
                   "${place.country}, ${place.locality}, ${place.street}, ${place.postalCode} ";
             });
           });
-          print(address);
+
+          // print(address);
         },
         markerId: MarkerId('you'),
         position: LatLng(lat, long),
@@ -151,6 +153,7 @@ class _MapScreenState extends State<MapScreen> {
                     title: "Confirm",
                     onPressed: () {
                       provider.address = address;
+                      provider.getLocation(lat.toString(), long.toString());
                       Navigator.pop(context);
                     },
                   ),

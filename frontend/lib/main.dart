@@ -12,6 +12,7 @@ import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/Screens%203/location_map_screen.dart';
 import 'package:safacw/screens/Screens%203/order_done.dart';
 import 'package:safacw/screens/Screens%203/order_history_screen.dart';
+import 'package:safacw/screens/Screens%203/track_driver_map_screen.dart';
 import 'package:safacw/screens/Screens%204/change_password.dart';
 import 'package:safacw/screens/Screens%204/chenge_phone.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
@@ -91,15 +92,15 @@ class _SafaState extends State<Safa> {
 
 Route? onGenerateRoute(RouteSettings routeSettings) {
   if (routeSettings.name == WelcomePage.id) {
-    return MaterialPageRoute(builder: (context) => WelcomePage());
+    return MaterialPageRoute(builder: (context) => const WelcomePage());
   } else if (routeSettings.name == SlideMenu.id) {
     return MaterialPageRoute(builder: (_) => SlideMenu());
   } else if (routeSettings.name == OnboardingScreen.id) {
-    return MaterialPageRoute(builder: (_) => OnboardingScreen());
+    return MaterialPageRoute(builder: (_) => const OnboardingScreen());
   } else if (routeSettings.name == OrderDoneScreen.id) {
-    return MaterialPageRoute(builder: (_) => OrderDoneScreen());
+    return MaterialPageRoute(builder: (_) => const OrderDoneScreen());
   } else if (routeSettings.name == NavBarHolder.id) {
-    return MaterialPageRoute(builder: (_) => NavBarHolder());
+    return MaterialPageRoute(builder: (_) => const NavBarHolder());
   } else if (routeSettings.name == SettingsScreen.id) {
     return MaterialPageRoute(builder: (_) => SettingsScreen());
   } else if (routeSettings.name == CartScreen.id) {
@@ -109,17 +110,19 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
   } else if (routeSettings.name == LoginScreen.id) {
     return MaterialPageRoute(builder: (_) => const LoginScreen());
   } else if (routeSettings.name == ChooseProvider.id) {
-    return MaterialPageRoute(builder: (_) => ChooseProvider());
+    return MaterialPageRoute(builder: (_) => const ChooseProvider());
   } else if (routeSettings.name == CarWashMain.id) {
     return MaterialPageRoute(builder: (_) => CarWashMain());
   } else if (routeSettings.name == LaundryMainScreen.id) {
     return MaterialPageRoute(builder: (_) => LaundryMainScreen());
   } else if (routeSettings.name == ViewAllScreen.id) {
-    return MaterialPageRoute(builder: (_) => ViewAllScreen());
+    return MaterialPageRoute(builder: (_) => const ViewAllScreen());
   } else if (routeSettings.name == BuildingCleaningMainScreen.id) {
     return MaterialPageRoute(builder: (_) => BuildingCleaningMainScreen());
   } else if (routeSettings.name == MapScreen.id) {
-    return MaterialPageRoute(builder: (_) => MapScreen());
+    return MaterialPageRoute(builder: (_) => const MapScreen());
+  } else if (routeSettings.name == TrackDriverScreen.id) {
+    return MaterialPageRoute(builder: (_) => const TrackDriverScreen());
   } else if (routeSettings.name == ItemDetailsPage.id) {
     final value = routeSettings.arguments as Item; // Retrieve the value.
     return MaterialPageRoute(builder: (context) => ItemDetailsPage(value));
@@ -131,13 +134,13 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (context) => ProfileScreen());
   } else if (routeSettings.name == MapScreen.id) {
     // Retrieve the value.
-    return MaterialPageRoute(builder: (context) => MapScreen());
+    return MaterialPageRoute(builder: (context) => const MapScreen());
   } else if (routeSettings.name == ChangePassword.id) {
     return MaterialPageRoute(builder: (context) => ChangePassword());
   } else if (routeSettings.name == ChangePhone.id) {
     return MaterialPageRoute(builder: (context) => ChangePhone());
   } else if (routeSettings.name == OrderHistoryScreen.id) {
-    return MaterialPageRoute(builder: (context) => OrderHistoryScreen());
+    return MaterialPageRoute(builder: (context) => const OrderHistoryScreen());
   } else {
     return null;
   }

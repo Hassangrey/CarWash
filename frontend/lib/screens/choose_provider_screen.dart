@@ -34,8 +34,8 @@ class ChooseProvider extends StatelessWidget {
                   itemCount: provider.carWashProvidersProfilers.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
-                      onTap: () => getItems(
-                          context, provider.carWashProvidersProfilers[0].name),
+                      onTap: () => getItems(context,
+                          provider.carWashProvidersProfilers[index].name),
                       child: Container(
                         decoration: BoxDecoration(
                             color: Colors.grey[300],
