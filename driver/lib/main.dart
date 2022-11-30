@@ -7,6 +7,8 @@ import 'package:safacw/Models/language_constants.dart';
 import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/screens/bottom_navigation_bar_holder.dart';
 import 'package:safacw/screens/3rd_screen.dart';
+import 'package:safacw/screens/change_password.dart';
+import 'package:safacw/screens/change_phone.dart';
 import 'package:safacw/screens/login_screen.dart';
 import 'package:safacw/screens/order_history_screen.dart';
 import 'package:safacw/screens/settings_page.dart';
@@ -86,6 +88,10 @@ Route? onGenerateRoute(RouteSettings routeSettings) {
     return MaterialPageRoute(builder: (_) => acceptedOrder());
   } else if (routeSettings.name == LoginScreen.id) {
     return MaterialPageRoute(builder: (_) => const LoginScreen());
+  } else if (routeSettings.name == ChangePassword.id) {
+    return MaterialPageRoute(builder: (context) => ChangePassword());
+  } else if (routeSettings.name == ChangePhone.id) {
+    return MaterialPageRoute(builder: (context) => ChangePhone());
   } else {
     return null;
   }

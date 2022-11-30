@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:safacw/screens/change_phone.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../widgets/snackbar_widget.dart';
 import 'package:url_launcher/url_launcher.dart' as Urllancher;
+
+import 'change_password.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -129,7 +133,7 @@ class SettingsPage extends StatelessWidget {
               ),
               // To connect the button
               onPressed: () {
-                Navigator.popAndPushNamed(context, change_password.id);
+                Navigator.pushNamed(context, ChangePassword.id);
               },
             )),
         Container(
@@ -157,7 +161,7 @@ class SettingsPage extends StatelessWidget {
               ),
               // to connect the button
               onPressed: () {
-                Navigator.popAndPushNamed(context, chenge_phone.id);
+                Navigator.pushNamed(context, ChangePhone.id);
               },
             )),
         // Container(
@@ -228,143 +232,5 @@ class SettingsPage extends StatelessWidget {
         )
       ]),
     );
-  }
-}
-
-const COLOR_BLUE_DARK = Color.fromARGB(255, 51, 75, 139);
-
-class MyCustomButton extends StatelessWidget {
-  final String title;
-  final Color? color;
-  final void Function()? onPressed;
-
-  const MyCustomButton({
-    Key? key,
-    required this.title,
-    this.color = COLOR_BLUE_DARK,
-    this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: 70,
-      child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: color,
-            shape: const StadiumBorder(),
-          ),
-          onPressed: onPressed,
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.bold),
-          )),
-    );
-  }
-}
-
-class chenge_phone extends StatelessWidget {
-  static const String id = 'ChangePhone';
-  @override
-  Widget build(BuildContext context) {
-    return PageLayout(
-      child: Wrap(children: [
-        Container(
-          // Header (Manage Phone Number)
-          alignment: Alignment.center,
-          margin: EdgeInsets.all(70),
-          child: Text(
-            "Change Phone Number",
-            style: TextStyle(
-              fontSize: 20,
-            ),
-          ),
-        ),
-        Container(
-          // Text field
-          margin: EdgeInsets.only(left: 40, right: 40),
-          child: TextFormField(
-            obscureText: false,
-            keyboardType: TextInputType.number,
-            maxLength: 10,
-            decoration: InputDecoration(
-              hintText: "05XXXXXXXX",
-            ),
-          ),
-        ),
-        Container(
-            height: 55.h,
-            // Update password button
-            margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 60.h),
-            width: double.infinity,
-            child: MyCustomButton(
-              color: Colors.blue,
-              title: "Change number",
-              onPressed: () {},
-            )),
-      ]),
-    );
-  }
-}
-
-class change_password extends StatelessWidget {
-  static const String id = 'ChangePassword';
-  @override
-  Widget build(BuildContext context) {
-    return PageLayout(
-        child: Wrap(children: [
-      Container(
-        // Header (Manage Passwords)
-        alignment: Alignment.center,
-        margin: EdgeInsets.all(70),
-        child: Text(
-          "Change Password",
-          style: TextStyle(
-            fontSize: 25,
-          ),
-        ),
-      ),
-      Container(
-        // Text field 1 (Enter your current password)
-        margin: EdgeInsets.only(left: 40.w, right: 40.w),
-        child: TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            hintText: "Enter your current password",
-          ),
-        ),
-      ),
-      Container(
-        // Text field 2 (Enter the new password)
-        margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 30.h),
-        child: TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            hintText: "Enter the new password",
-          ),
-        ),
-      ),
-      Container(
-        // Text field 3 (Reapet the new password)
-        margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 30.h),
-        child: TextFormField(
-          obscureText: true,
-          decoration: InputDecoration(
-            hintText: "Repeat the new password",
-          ),
-        ),
-      ),
-      Container(
-          height: 55.h,
-          // Update password button
-          margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 60.h),
-          width: double.infinity,
-          child: MyCustomButton(
-            color: Colors.blue,
-            title: "Change the password",
-            onPressed: () {},
-          )),
-    ]));
   }
 }
