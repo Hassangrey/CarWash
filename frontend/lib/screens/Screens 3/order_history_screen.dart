@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
+import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%203/track_driver_map_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,9 +12,26 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 // TODO 4: Display a list that shows all the previous orders( Will be fetched from the API)
 // * And their state (Completed, pending, or canceled)
 
-class OrderHistoryScreen extends StatelessWidget {
+class OrderHistoryScreen extends StatefulWidget {
   const OrderHistoryScreen({Key? key}) : super(key: key);
   static const String id = 'OrdersHistoryScreen';
+
+  @override
+  State<OrderHistoryScreen> createState() => _OrderHistoryScreenState();
+}
+
+class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
+  getOrders() async {
+    var orders = await Provider.of<CarWashProvider>(context, listen: false)
+        .getAllOrdersHistory();
+    print(orders);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // getOrders();
+  }
 
   @override
   Widget build(BuildContext context) {

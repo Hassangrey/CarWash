@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/services/item_service.dart';
+import 'package:safacw/services/order_service.dart';
 import 'package:safacw/services/service_providers_service.dart';
 
 class CarWashProvider extends ChangeNotifier {
@@ -10,6 +11,7 @@ class CarWashProvider extends ChangeNotifier {
   String type = '';
   List<Item> cartItems = [];
   List<dynamic> items = [];
+  List<dynamic> ordersHistory = [];
   double total = 0.0;
   String address = "";
 
@@ -35,6 +37,14 @@ class CarWashProvider extends ChangeNotifier {
     type = type;
     items = (await ItemService.get_items_provider(name));
     print(items.length);
+    isLoading = false;
+    notifyListeners();
+  }
+
+  getAllOrdersHistory() async {
+    isLoading = true;
+    // print('Loading data...');
+    ordersHistory = (await OrderService.get_all());
     isLoading = false;
     notifyListeners();
   }

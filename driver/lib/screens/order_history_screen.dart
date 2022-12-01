@@ -96,6 +96,8 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   }
 
   Future<dynamic> BottomSheet(BuildContext context) {
+    List<dynamic> orders =
+        Provider.of<DriverProvider>(context, listen: false).ordersHistory;
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -163,7 +165,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                       textAlign: TextAlign.right,
                                       style: TextStyle(fontSize: 10.sp),
                                     ),
-                                    Text('Pieces: 2',
+                                    Text('Pieces: {$orders.length}',
                                         textAlign: TextAlign.right,
                                         style: TextStyle(fontSize: 10.sp)),
                                   ],

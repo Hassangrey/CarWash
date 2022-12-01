@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
+import 'package:safacw/models/User.dart';
+import 'package:safacw/services/constants.dart';
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
@@ -16,19 +18,18 @@ class OrderService {
   static Future get_all() async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
+    User user = await getUser();
+    var req;
 
-    var req = await client.get(Uri.parse(baseUrl + "order/"),
+    req = await client.get(Uri.parse(baseUrl + "order?driver=${user.username}"),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
+    print("before $data");
+    List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
+    print("after $items");
 
-    if (data['results'] != null) {
-      List<dynamic> items =
-          data['results'].map((json) => Order.fromJson(json)).toList();
-
-      return items;
-    }
-    return null;
+    return items;
   }
 
   static Future get_one(int id) async {
@@ -120,6 +121,20 @@ class OrderService {
       return addresses;
     }
     return null;
+  }
+
+  static Future getUser() async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrlForAuth + "/auth/users/me/"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+    // print("User here $userData");
+    User user = User.fromMap(userData);
+    // print("User here after $userData");
+
+    return user;
   }
 }
 
