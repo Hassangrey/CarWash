@@ -12,8 +12,7 @@ Widget buildServiceCard(String title, Function() onPress) => Padding(
             Stack(
               children: [
                 Ink.image(
-                  image: NetworkImage(
-                      'https://365psd.com/images/previews/b0c/icon-pattern-backgrounds-53906.jpg'),
+                  image: AssetImage('assets/images/clean.png'),
                   height: 150,
                   fit: BoxFit.cover,
                   child: InkWell(
@@ -28,7 +27,7 @@ Widget buildServiceCard(String title, Function() onPress) => Padding(
                     title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.blue,
                       fontSize: 25,
                     ),
                   ),
