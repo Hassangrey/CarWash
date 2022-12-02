@@ -31,6 +31,9 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
   getOrder() async {
     var provider = await Provider.of<CarWashProvider>(context, listen: false);
     var order = provider.getOrder(provider.selectedOrder?.id);
+    longDriver = double.parse(order.driver.profile.long);
+    lattDriver = double.parse(order.driver.profile.latt);
+
     setState(() {});
   }
 
