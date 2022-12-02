@@ -27,8 +27,7 @@ class _WelcomePageState extends State<WelcomePage> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: const NetworkImage(
-                'https://cdn.pixabay.com/photo/2019/03/03/20/23/flowers-4032775__340.png'),
+            image: const AssetImage('assets/images/cleaning_wall.jpg'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.blue.withOpacity(0.2), BlendMode.modulate),
