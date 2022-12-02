@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
+import 'package:safacw/Models/Order.dart';
 import 'package:safacw/services/item_service.dart';
 import 'package:safacw/services/order_service.dart';
 import 'package:safacw/services/service_providers_service.dart';
@@ -14,6 +15,7 @@ class CarWashProvider extends ChangeNotifier {
   List<dynamic> ordersHistory = [];
   double total = 0.0;
   String address = "";
+  Order? selectedOrder;
 
   // * The Order objects
   String x = ''; // Here the lat will be saved
@@ -111,6 +113,14 @@ class CarWashProvider extends ChangeNotifier {
     cartItems.clear();
     total = 0;
     address = '';
+  }
+
+  getOrder(id) async {
+    print('Loading data...');
+
+    selectedOrder = (await OrderService.get_one(id));
+
+    notifyListeners();
   }
 
   List<Item> myItems = [
