@@ -36,6 +36,8 @@ class _MapScreenState extends State<MapScreen> {
   var address;
   var coordinates;
   late Placemark place;
+  var latitudeCustomer = 26.4207;
+  var longitudeCustomer = 50.0888;
 
   Future<void> getCurrentPosition() async {
     currentLocation =
@@ -94,6 +96,7 @@ class _MapScreenState extends State<MapScreen> {
     super.initState();
     checkAccess();
     getCurrentPosition();
+
     // ps = Geolocator.getPositionStream().listen((Position position) {
     //   lat = position.latitude;
     //   long = position.longitude;
