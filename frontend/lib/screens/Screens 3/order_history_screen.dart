@@ -35,63 +35,73 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> orders =
+        Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
+    var provider = Provider.of<CarWashProvider>(context);
+
     return PageLayout(
-        child: Container(
-      child: ListView.builder(
-        padding: EdgeInsets.all(5),
-        itemCount: 7,
-        itemBuilder: (context, index) {
-          return Container(
-            padding: EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20.r),
-              color: Colors.grey[100],
-            ),
-            margin: EdgeInsets.only(
-              bottom: 10,
-            ),
-            child: InkWell(
-              onTap: () => {BottomSheet(context)},
-              child: Row(
-                children: [
-                  Container(
-                    width: 50.w,
-                    height: 50.h,
-                    margin: EdgeInsets.all(5),
-                    child: Image.network(
-                      'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 15),
-                    width: 170.w,
-                    child: Text('Order ${index + 1}'),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 15.h),
-                    child: Column(
-                      children: [
-                        Text(
-                          'Price: 30SR',
-                          textAlign: TextAlign.right,
-                          style: TextStyle(fontSize: 10.sp),
+        child: provider.isLoading
+            ? Center(child: CircularProgressIndicator())
+            : Container(
+                child: ListView.builder(
+                  padding: EdgeInsets.all(5),
+                  itemCount: orders.length,
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.r),
+                        color: Colors.grey[100],
+                      ),
+                      margin: EdgeInsets.only(
+                        bottom: 10,
+                      ),
+                      child: InkWell(
+                        onTap: () => {BottomSheet(context, index)},
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 50.w,
+                              height: 50.h,
+                              margin: EdgeInsets.all(5),
+                              child: Image.network(
+                                'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(left: 15),
+                              width: 170.w,
+                              child: Text('Order ${index + 1}'),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(top: 15.h),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Price: ${orders[index].price}SR',
+                                    textAlign: TextAlign.right,
+                                    style: TextStyle(fontSize: 10.sp),
+                                  ),
+                                  Text('${orders[index].price}',
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(fontSize: 10.sp)),
+                                ],
+                              ),
+                            )
+                          ],
                         ),
-                        Text('24/11/2022',
-                            textAlign: TextAlign.right,
-                            style: TextStyle(fontSize: 10.sp)),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
-          );
-        },
-      ),
-    ));
+                      ),
+                    );
+                  },
+                ),
+              ));
   }
 
-  Future<dynamic> BottomSheet(BuildContext context) {
+  Future<dynamic> BottomSheet(BuildContext context, index) {
+    var provider = Provider.of<CarWashProvider>(context, listen: false);
+    List<dynamic> orders =
+        Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
+    List<dynamic> items = orders[index];
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -113,8 +123,9 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   ),
                 ),
                 TextButton(
-                    onPressed: () {
+                    onPressed: () async {
                       Navigator.pop(context);
+                      await provider.getOrder(index);
                       Navigator.pushNamed(context, TrackDriverScreen.id);
                     },
                     child: Text('Go To Map')),
@@ -122,7 +133,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     width: double.infinity,
                     margin: EdgeInsets.all(5),
                     child: Text(
-                      'Order No. 1',
+                      'Order No. ${orders[index].id.toString()}',
                       textAlign: TextAlign.center,
                     )),
                 Container(
@@ -130,7 +141,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: 8,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
                       return Container(
                           padding: EdgeInsets.all(5),
@@ -154,18 +165,18 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               Container(
                                 margin: EdgeInsets.only(left: 15),
                                 width: 170.w,
-                                child: Text('Item ${index + 1}'),
+                                child: Text('${items[index].title}'),
                               ),
                               Container(
                                 padding: EdgeInsets.only(top: 15.h),
                                 child: Column(
                                   children: [
                                     Text(
-                                      'Price: 10SR',
+                                      'Price: ${items[index].price}SR',
                                       textAlign: TextAlign.right,
                                       style: TextStyle(fontSize: 10.sp),
                                     ),
-                                    Text('Pieces: 2',
+                                    Text('Pieces: ${items.length.toString()}',
                                         textAlign: TextAlign.right,
                                         style: TextStyle(fontSize: 10.sp)),
                                   ],

@@ -55,7 +55,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                         bottom: 10,
                       ),
                       child: InkWell(
-                        onTap: () => {BottomSheet(context)},
+                        onTap: () => {BottomSheet(context, index)},
                         child: Row(
                           children: [
                             Container(
@@ -95,9 +95,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
               ));
   }
 
-  Future<dynamic> BottomSheet(BuildContext context) {
+  Future<dynamic> BottomSheet(BuildContext context, index) {
     List<dynamic> orders =
         Provider.of<DriverProvider>(context, listen: false).ordersHistory;
+    List<dynamic> items = orders[index];
+
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -122,7 +124,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     width: double.infinity,
                     margin: EdgeInsets.all(5),
                     child: Text(
-                      'Order No.',
+                      'Order No. ${orders[index].id.toString()}',
                       textAlign: TextAlign.center,
                     )),
                 Container(
@@ -130,7 +132,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     shrinkWrap: true,
-                    itemCount: 8,
+                    itemCount: items.length,
                     itemBuilder: (context, index) {
                       return Container(
                           padding: EdgeInsets.all(5),
@@ -154,18 +156,18 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               Container(
                                 margin: EdgeInsets.only(left: 15),
                                 width: 170.w,
-                                child: Text('Item ${index + 1}'),
+                                child: Text('${items[index].title}'),
                               ),
                               Container(
                                 padding: EdgeInsets.only(top: 15.h),
                                 child: Column(
                                   children: [
                                     Text(
-                                      'Price: 10SR',
+                                      'Price: ${items[index].price}SR',
                                       textAlign: TextAlign.right,
                                       style: TextStyle(fontSize: 10.sp),
                                     ),
-                                    Text('Pieces: {$orders.length}',
+                                    Text('Pieces: ${items.length}',
                                         textAlign: TextAlign.right,
                                         style: TextStyle(fontSize: 10.sp)),
                                   ],

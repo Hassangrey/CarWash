@@ -24,6 +24,15 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
   var lat, long;
   var currentLocation;
   var _kGooglePlex;
+  Timer? timer;
+  var longDriver = 50.1560452580452;
+  var lattDriver = 26.30732385969362;
+
+  getOrder() async {
+    var provider = await Provider.of<CarWashProvider>(context, listen: false);
+    var order = provider.getOrder(provider.selectedOrder?.id);
+    setState(() {});
+  }
 
   Future<void> getUserCurrentLocation() async {
     currentLocation =
@@ -64,9 +73,13 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     checkAccess();
     getUserCurrentLocation();
-    getDriverLiveLocation(26.30732385969362, 50.1560452580452);
+    if (mounted) {
+      timer = Timer.periodic(Duration(seconds: 3), (Timer t) => {getOrder()});
+    }
+    getDriverLiveLocation(lattDriver, longDriver);
   }
 
   @override
