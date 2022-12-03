@@ -30,7 +30,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
   @override
   void initState() {
     super.initState();
-    // getOrders();
+    getOrders();
   }
 
   @override

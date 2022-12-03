@@ -12,7 +12,6 @@ import '../Models/Order.dart';
 import 'auth_service.dart';
 
 class OrderService {
-  static final baseUrl = 'http://localhost:8000/api/';
   static final SESSION = FlutterSession();
 
   static Future get_all() async {
@@ -21,11 +20,11 @@ class OrderService {
     User user = await getUser();
     var req;
 
-    req = await client.get(Uri.parse(baseUrl + "order?driver=${user.username}"),
+    req = await client.get(Uri.parse(baseUrl + "order"),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
-    print("before $data");
+    // print("before $data");
     List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
     print("after $items");
 
