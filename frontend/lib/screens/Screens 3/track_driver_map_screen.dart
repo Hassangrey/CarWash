@@ -34,11 +34,11 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
     print(provider.selectedOrder);
 
     provider.getOrder(provider.selectedOrder!);
-    var order = provider.selectedOrder2!;
+    // var order = provider.selectedOrder2!;
     // print(order);
-    longDriver = double.parse(order.driver!.profile!.long!);
-    lattDriver = double.parse(order.driver!.profile!.latt!);
-    print("langandlott ${longDriver}:$lattDriver");
+    // longDriver = double.parse(order.driver!.profile!.long!);
+    // lattDriver = double.parse(order.driver!.profile!.latt!);
+    //  print("langandlott ${longDriver}:$lattDriver");
 
     setState(() {});
   }
