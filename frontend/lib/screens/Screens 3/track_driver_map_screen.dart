@@ -136,6 +136,22 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
                         alignment: Alignment.bottomRight,
                       ),
                     ),
+                    Positioned.fill(
+                      right: 120,
+                      bottom: 40,
+                      child: Container(
+                        child: FloatingActionButton.extended(
+                          backgroundColor: COLOR_BLUE_DARK,
+                          heroTag: "DriverLocation",
+                          onPressed: _driverLocation,
+                          label: const Icon(
+                            Icons.location_on_outlined,
+                            color: COLOR_BLUE_DARK,
+                          ),
+                        ),
+                        alignment: Alignment.bottomRight,
+                      ),
+                    ),
                   ],
                 ),
               ]));
@@ -157,5 +173,16 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(
         CameraPosition(target: LatLng(lat, long), zoom: 16.951926040649414)));
+  }
+
+  Future<void> _driverLocation() async {
+    var provider = await Provider.of<CarWashProvider>(context, listen: false);
+    var order = provider.selectedOrder2!;
+    lattDriver = double.parse(order.driver!.profile!.latt!);
+    longDriver = double.parse(order.driver!.profile!.long!);
+    print('$lattDriver +  + $longDriver');
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: LatLng(lattDriver, longDriver), zoom: 16.951926040649414)));
   }
 }
