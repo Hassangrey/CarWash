@@ -30,9 +30,15 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
 
   getOrder() async {
     var provider = await Provider.of<CarWashProvider>(context, listen: false);
-    var order = provider.getOrder(provider.selectedOrder?.id);
-    longDriver = double.parse(order.driver.profile.long);
-    lattDriver = double.parse(order.driver.profile.latt);
+    // var selectedOrder = provider.ordersHistory[provider.selectedOrder!]
+    print(provider.selectedOrder);
+
+    provider.getOrder(provider.selectedOrder!);
+    var order = provider.selectedOrder2!;
+    // print(order);
+    longDriver = double.parse(order.driver!.profile!.long!);
+    lattDriver = double.parse(order.driver!.profile!.latt!);
+    print("langandlott ${longDriver}:$lattDriver");
 
     setState(() {});
   }
@@ -76,13 +82,14 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    var provider = Provider.of<CarWashProvider>(context, listen: false);
 
     checkAccess();
     getUserCurrentLocation();
-    if (mounted) {
-      timer = Timer.periodic(Duration(seconds: 3), (Timer t) => {getOrder()});
-    }
-    getDriverLiveLocation(lattDriver, longDriver);
+    timer = Timer.periodic(Duration(seconds: 5), (Timer t) {
+      getOrder();
+      getDriverLiveLocation(lattDriver, longDriver);
+    });
   }
 
   @override

@@ -15,8 +15,8 @@ class CarWashProvider extends ChangeNotifier {
   List<dynamic> ordersHistory = [];
   double total = 0.0;
   String address = "";
-  Order? selectedOrder;
-
+  int? selectedOrder;
+  Order? selectedOrder2;
   // * The Order objects
   String x = ''; // Here the lat will be saved
   String y = ''; // Here the long will be saved
@@ -115,11 +115,17 @@ class CarWashProvider extends ChangeNotifier {
     address = '';
   }
 
+  getOrder0(id) async {
+    print('Loading data...');
+
+    selectedOrder = id;
+    notifyListeners();
+  }
+
   getOrder(id) async {
     print('Loading data...');
 
-    selectedOrder = (await OrderService.get_one(id));
-
+    this.selectedOrder2 = (await OrderService.get_one(id + 1));
     notifyListeners();
   }
 

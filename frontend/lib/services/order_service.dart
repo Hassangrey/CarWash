@@ -20,13 +20,12 @@ class OrderService {
     User user = await getUser();
     var req;
 
-    req = await client.get(Uri.parse(baseUrl + "order"),
+    req = await client.get(
+        Uri.parse(baseUrl + "order?username=" + user.username.toString()),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
-    // print("before $data");
     List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
-    print("after $items");
 
     return items;
   }
@@ -39,9 +38,9 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
-
+    print(data);
     if (data != null) {
-      Order orders = Order.fromJson(data);
+      Order orders = Order.fromMap(data);
 
       return orders;
     }

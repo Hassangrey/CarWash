@@ -28,6 +28,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     print(orders);
   }
 
+  changeid(index) async {
+    var orders = await Provider.of<CarWashProvider>(context, listen: false)
+        .getOrder0(index);
+    print(orders);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -59,8 +65,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                       ),
                       child: InkWell(
                         onTap: () async {
-                          await provider.getOrder(index);
-
+                          changeid(index);
                           BottomSheet(context, index);
                         },
                         child: Row(
@@ -106,7 +111,8 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
     List<dynamic> orders =
         Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
-    List<Item> items = orders[index];
+    List<Item> items = orders[index].items;
+
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
@@ -130,7 +136,6 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 TextButton(
                     onPressed: () async {
                       Navigator.pop(context);
-                      await provider.getOrder(index);
                       Navigator.pushNamed(context, TrackDriverScreen.id);
                     },
                     child: Text('Go To Map')),
