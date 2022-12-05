@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
+import 'package:safacw/Models/Item.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%203/track_driver_map_screen.dart';
 import 'package:safacw/widgets/page_layout.dart';
@@ -57,7 +58,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                         bottom: 10,
                       ),
                       child: InkWell(
-                        onTap: () => {BottomSheet(context, index)},
+                        onTap: () async {
+                          await provider.getOrder(index);
+
+                          BottomSheet(context, index);
+                        },
                         child: Row(
                           children: [
                             Container(
@@ -101,7 +106,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
     List<dynamic> orders =
         Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
-    List<dynamic> items = orders[index];
+    List<Item> items = orders[index];
     return showModalBottomSheet(
         isScrollControlled: true,
         shape: RoundedRectangleBorder(
