@@ -143,7 +143,7 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
-    // print("User here $userData");
+    print("User here $userData");
     User user = User.fromMap(userData);
     // print("User here after $userData");
 
