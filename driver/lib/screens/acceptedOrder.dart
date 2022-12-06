@@ -70,8 +70,7 @@ class _acceptedOrder extends State<acceptedOrder> {
     var provider = Provider.of<DriverProvider>(context, listen: false);
     Order order = provider.orders[provider.selectedOrder!];
     var orderAddress = OrderAddress(
-        long: double.parse(order.user!.profile!.long!),
-        latt: double.parse(order.user!.profile!.latt!));
+        long: double.parse(order.long!), latt: double.parse(order.latt!));
     return orderAddress;
   }
 
