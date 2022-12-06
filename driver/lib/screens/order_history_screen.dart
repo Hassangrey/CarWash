@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -22,6 +24,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     super.initState();
     // getGradDay();
     getOrders();
+    log("dddd");
   }
 
   getOrders() async {

@@ -3,9 +3,12 @@ import 'dart:convert';
 
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
+import 'package:safacw/Models/Profile2.dart';
 import 'package:safacw/Models/User.dart';
+import 'package:safacw/Models/User2.dart';
 import 'package:safacw/Models/accepted_order.dart';
 import 'package:safacw/Models/order_address.dart';
+import 'package:safacw/Models/profile.dart';
 
 import '../Models/Address.dart';
 import '../Models/Item.dart';
@@ -119,27 +122,57 @@ class OrderService {
     return null;
   }
 
+  static Future getProfileID(username) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrl + "profiles/"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+
+    List<dynamic> users =
+        userData.map((json) => Profile.fromMap(json)).toList();
+    int? id = null;
+    users.forEach((element) {
+      if (element.username == username) {
+        id = element.id;
+        return element.id;
+      }
+    });
+    return id;
+
+    // print("User here after $userData");
+  }
+
   static Future updateDriver(OrderAddress orderAddress) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     User user = await getUser();
-    var new_order = orderAddress.toJson();
+    // var id = await getProfileID(user.username);
+
+    print("IAM USER $user");
+    var newProfile = Profile2(
+            latt: orderAddress.latt.toString(),
+            long: orderAddress.long.toString())
+        .toJson();
+    // var new_order = orderAddress.toJson();
     var req = await client.patch(
-        Uri.parse(baseUrl + "order/" + orderAddress.id.toString() + '/'),
+        Uri.parse(baseUrl + "profiles/" + user.username.toString() + '/'),
         headers: {
           'Authorization': 'JWT $token',
           'Content-Type': 'application/json; charset=UTF-8',
         },
-        body: new_order);
+        body: newProfile);
 
     final data = jsonDecode(req.body);
+    print("");
     print("IAM DATA $data");
-    if (data != null) {
-      Order addresses = Order.fromMap(data);
-      print("${addresses.long}:${addresses.latt}");
+    // if (data != null) {
+    //   Profile addresses = Profile.fromMap(data);
+    //   print(" MEEEEEEEEEEEEEEEEEEE r${addresses.long}:${addresses.latt}");
 
-      return addresses;
-    }
+    //   return addresses;
+    // }
     return null;
   }
 

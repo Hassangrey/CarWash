@@ -169,7 +169,7 @@ class _acceptedOrder extends State<acceptedOrder> {
 
       getStreaming();
       if (mounted) {
-        timer = Timer.periodic(Duration(seconds: 3),
+        timer = Timer.periodic(Duration(seconds: 6),
             (Timer t) => updateOrder(OrderAddress(long: long, latt: lat)));
       }
     });
