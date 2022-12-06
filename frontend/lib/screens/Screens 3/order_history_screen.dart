@@ -111,6 +111,8 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
     List<dynamic> orders =
         Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
+    dynamic order = Provider.of<CarWashProvider>(context, listen: false)
+        .ordersHistory[index];
     List<Item> items = orders[index].items;
 
     return showModalBottomSheet(
@@ -187,6 +189,9 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                       style: TextStyle(fontSize: 10.sp),
                                     ),
                                     Text('Pieces: ${items.length.toString()}',
+                                        textAlign: TextAlign.right,
+                                        style: TextStyle(fontSize: 10.sp)),
+                                    Text('status: ${order.status.toString()}',
                                         textAlign: TextAlign.right,
                                         style: TextStyle(fontSize: 10.sp)),
                                   ],

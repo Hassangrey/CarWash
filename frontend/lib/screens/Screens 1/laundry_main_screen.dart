@@ -134,14 +134,14 @@ class ServicesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var carProvider = Provider.of<CarWashProvider>(context);
-    List<Item> items = [];
-    if (carProvider.type == "Laundry") {
-      items = carProvider.myItems;
-    } else if (carProvider.type == "CarWash") {
-      items = carProvider.carWashItems;
-    } else {
-      items = carProvider.buildingCleaningItems;
-    }
+    List<dynamic> items = carProvider.items;
+    // if (carProvider.type == "Laundry") {
+    //   items = carProvider.myItems;
+    // } else if (carProvider.type == "CarWash") {
+    //   items = carProvider.carWashItems;
+    // } else {
+    //   items = carProvider.buildingCleaningItems;
+    // }
     return carProvider.isLoading
         ? Center(child: CircularProgressIndicator())
         : MediaQuery.removePadding(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/Order.dart';
+import 'package:safacw/Models/order_create.dart';
 import 'package:safacw/services/item_service.dart';
 import 'package:safacw/services/order_service.dart';
 import 'package:safacw/services/service_providers_service.dart';
@@ -17,6 +18,8 @@ class CarWashProvider extends ChangeNotifier {
   String address = "";
   int? selectedOrder;
   Order? selectedOrder2;
+  dynamic? selectedSP;
+
   // * The Order objects
   String x = ''; // Here the lat will be saved
   String y = ''; // Here the long will be saved
@@ -92,6 +95,20 @@ class CarWashProvider extends ChangeNotifier {
       itemIds.add(cartItems[i].id.toString());
     }
     return itemIds;
+  }
+
+  void createOrder() async {
+    var order = OrderCreate(
+      items: returnItemIds(),
+      service_provider: selectedSP.id.toString(),
+      price: total.toString(),
+    );
+    await OrderService.create(order, selectedSP, x, y);
+  }
+
+  void selectedSPMethod(SP) {
+    selectedSP = SP;
+    notifyListeners();
   }
 
   void getLocation(String lat, String long) {

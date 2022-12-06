@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
 import 'package:safacw/Models/User.dart';
+import 'package:safacw/Models/User2.dart';
+import 'package:safacw/Models/order_create.dart';
 import 'package:safacw/services/constants.dart';
 
 import '../Models/Address.dart';
@@ -22,7 +24,10 @@ class OrderService {
 
     req = await client.get(
         Uri.parse(baseUrl + "order?username=" + user.username.toString()),
-        headers: {'Authorization': 'JWT $token'});
+        headers: {
+          'Authorization': 'JWT $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        });
 
     final data = jsonDecode(req.body);
     List<dynamic> items = data.map((json) => Order.fromMap(json)).toList();
@@ -38,7 +43,6 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
-    print(data);
     if (data != null) {
       Order orders = Order.fromMap(data);
 
@@ -47,20 +51,31 @@ class OrderService {
     return null;
   }
 
-  static Future create(Order order) async {
+  static Future create(OrderCreate order, SP, latt, long) async {
+    var sp = await OrderService.getSpecificUser(SP.name);
+    User user = await getUser();
+    order.service_provider = sp.toString();
+    order.user = user.id.toString();
+    order.status = "PENDING";
+    order.latt = latt;
+    order.long = long;
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     var new_order = order.toJson();
+
     var req = await client.post(Uri.parse(baseUrl + "order/"),
-        headers: {'Authorization': 'JWT $token'}, body: new_order);
+        headers: {
+          'Authorization': 'JWT $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: new_order);
 
     final data = jsonDecode(req.body);
+    // if (data != null) {
+    //   Item items = Item.fromJson(data);
 
-    if (data != null) {
-      Item items = Item.fromJson(data);
-
-      return items;
-    }
+    //   return items;
+    // }
     return null;
   }
 
@@ -133,6 +148,27 @@ class OrderService {
     // print("User here after $userData");
 
     return user;
+  }
+
+  static Future getSpecificUser(username) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrlForAuth + "/auth/users/"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+
+    List<dynamic> users = userData.map((json) => User2.fromMap(json)).toList();
+    int? id = null;
+    users.forEach((element) {
+      if (element.username == username) {
+        id = element.id;
+        return element.id;
+      }
+    });
+    return id;
+
+    // print("User here after $userData");
   }
 }
 

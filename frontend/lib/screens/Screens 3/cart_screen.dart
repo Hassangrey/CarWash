@@ -20,6 +20,13 @@ import '../../providers/carwash_provider.dart';
 // * A buttom to increment or decrement each item
 // * Display the total price for all the items
 class CartScreen extends StatelessWidget {
+  void create_order(
+    BuildContext context,
+  ) async {
+    var provider = Provider.of<CarWashProvider>(context, listen: false);
+    provider.createOrder();
+  }
+
   static const String id = '/CartScreen';
   @override
   Widget build(BuildContext context) {
@@ -122,6 +129,7 @@ class CartScreen extends StatelessWidget {
                           context, 'Please confirm your address');
                     } else {
                       provider.returnItemIds();
+                      create_order(context);
                       Navigator.pushNamed(context, OrderDoneScreen.id);
                     }
                   },

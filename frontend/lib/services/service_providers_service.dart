@@ -12,6 +12,7 @@ import 'package:safacw/Models/CarWash.dart';
 import 'package:safacw/Models/Order.dart';
 import 'auth_service.dart';
 import 'package:safacw/services/constants.dart';
+import 'package:safacw/services/order_service.dart';
 
 class ProviderService {
   static const profilesEndPoint = 'profiles';
