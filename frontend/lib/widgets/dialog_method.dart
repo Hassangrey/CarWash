@@ -11,14 +11,6 @@ import '../providers/carwash_provider.dart';
 
 Future<dynamic> MethodForDialog(BuildContext context, int index) async {
   var provider = Provider.of<CarWashProvider>(context, listen: false);
-  List<Item> items = [];
-  if (provider.type == "Laundry") {
-    items = provider.myItems;
-  } else if (provider.type == "CarWash") {
-    items = provider.carWashItems;
-  } else {
-    items = provider.buildingCleaningItems;
-  }
   return showDialog(
       context: context,
       builder: (context) {
@@ -47,12 +39,14 @@ Future<dynamic> MethodForDialog(BuildContext context, int index) async {
                     const Divider(),
                     ListTile(
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(items[index].imgPath!),
+                        backgroundImage:
+                            NetworkImage(provider.items[index].imgPath!),
                         backgroundColor: Colors.grey[400],
                         radius: 30,
                       ),
-                      title: Text(items[index].title!),
-                      subtitle: Text('SAR' + items[index].price.toString()),
+                      title: Text(provider.items[index].title!),
+                      subtitle:
+                          Text('SAR' + provider.items[index].price.toString()),
                       //  trailing: ItemCounterWidget(),
                     ),
                     TextField(
@@ -84,9 +78,9 @@ Future<dynamic> MethodForDialog(BuildContext context, int index) async {
                               shape: StadiumBorder(),
                             ),
                             onPressed: () {
-                              provider.addItem(provider.myItems[index].id!);
+                              provider.addItem(provider.items[index].id!);
                               showActionSnackBar(context,
-                                  '${items[index].title} added to cart! ${provider.cartItems.length}x');
+                                  '${provider.items[index].title} added to cart! ${provider.cartItems.length}x');
                               Navigator.pop(context);
                             },
                             child: const Text('Add To Cart')))

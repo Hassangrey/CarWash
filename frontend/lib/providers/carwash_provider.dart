@@ -55,14 +55,6 @@ class CarWashProvider extends ChangeNotifier {
   }
 
   addItem(int id) {
-    List<Item> items = [];
-    if (type == "Laundry") {
-      items = myItems;
-    } else if (type == "CarWash") {
-      items = carWashItems;
-    } else {
-      items = buildingCleaningItems;
-    }
     for (int i = 0; i < items.length; i++) {
       if (items[i].id == id) {
         cartItems.add(items[i]);
