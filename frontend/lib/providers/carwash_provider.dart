@@ -19,6 +19,12 @@ class CarWashProvider extends ChangeNotifier {
   int? selectedOrder;
   Order? selectedOrder2;
   dynamic? selectedSP;
+  dynamic? me;
+
+  getMe() async {
+    me = await OrderService.getUser();
+    notifyListeners();
+  }
 
   // * The Order objects
   String x = ''; // Here the lat will be saved

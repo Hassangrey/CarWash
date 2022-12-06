@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
+import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%203/cart_screen.dart';
 import 'package:safacw/screens/Screens%204/change_password.dart';
 import 'package:safacw/screens/Screens%204/chenge_phone.dart';
@@ -10,10 +12,29 @@ import 'package:safacw/screens/Screens 4/profile_screen.dart';
 import 'package:url_launcher/link.dart';
 import 'package:url_launcher/url_launcher.dart' as Urllancher;
 
-class SettingsScreen extends StatelessWidget {
+class SettingsScreen extends StatefulWidget {
   static const String id = 'SettingsScreen';
+
+  @override
+  State<SettingsScreen> createState() => _SettingsScreenState();
+}
+
+class _SettingsScreenState extends State<SettingsScreen> {
+  getMe() async {
+    var orders =
+        await Provider.of<CarWashProvider>(context, listen: false).getMe();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getMe();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<CarWashProvider>(context, listen: false);
     return PageLayout(
         child: Wrap(children: [
       Container(
@@ -68,7 +89,7 @@ class SettingsScreen extends StatelessWidget {
                       // The first and last name
                       margin: EdgeInsets.only(left: 10.w, top: 20.h),
                       child: Text(
-                        "Ziyad Alwagdani",
+                        "${provider.me.username}",
                         style: TextStyle(fontSize: 20),
                       ),
                     ),
@@ -76,7 +97,7 @@ class SettingsScreen extends StatelessWidget {
                       // The email
                       margin: EdgeInsets.only(left: 30.w, top: 10.h),
                       child: Text(
-                        "zalwagdani@hotmail.com",
+                        "${provider.me.username}",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 15, color: Colors.grey),
                       ),
