@@ -221,7 +221,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                           backgroundColor: Colors.green[400],
                           heroTag: "laundry",
                           onPressed: () {
-                            updateOrder(index);
+                            updateOrder(orders[index].id);
                             Navigator.pushNamedAndRemoveUntil(context,
                                 acceptedOrder.id, ModalRoute.withName('/'));
                           },
