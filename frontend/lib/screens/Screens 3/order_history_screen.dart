@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 import 'package:safacw/Constants/Constants.dart';
+import 'package:safacw/Constants/addspace_functions.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/providers/carwash_provider.dart';
 import 'package:safacw/screens/Screens%203/track_driver_map_screen.dart';
@@ -141,6 +142,22 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                       Navigator.pushNamed(context, TrackDriverScreen.id);
                     },
                     child: Text('Go To Map')),
+                addHorizontalSpace(70.w),
+                Text(
+                  '${order.status.toString()}',
+                  textAlign: TextAlign.center,
+                  style: order.status.toString() == "PENDING"
+                      ? TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          backgroundColor: Colors.amber,
+                          color: Colors.white)
+                      : TextStyle(
+                          fontSize: 15.sp,
+                          fontWeight: FontWeight.bold,
+                          backgroundColor: Colors.green[600],
+                          color: Colors.white),
+                ),
                 Container(
                     width: double.infinity,
                     margin: EdgeInsets.all(5),
@@ -177,7 +194,13 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               Container(
                                 margin: EdgeInsets.only(left: 15),
                                 width: 170.w,
-                                child: Text('${items[index].title}'),
+                                child: Text(
+                                  '${items[index].title}',
+                                  style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                               Container(
                                 padding: EdgeInsets.only(top: 15.h),
@@ -186,14 +209,19 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                     Text(
                                       'Price: ${items[index].price}SR',
                                       textAlign: TextAlign.right,
-                                      style: TextStyle(fontSize: 10.sp),
+                                      style: TextStyle(
+                                        fontSize: 12.sp,
+                                        color: COLOR_BLUE_DARK,
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                     Text('Pieces: ${items.length.toString()}',
                                         textAlign: TextAlign.right,
-                                        style: TextStyle(fontSize: 10.sp)),
-                                    Text('status: ${order.status.toString()}',
-                                        textAlign: TextAlign.right,
-                                        style: TextStyle(fontSize: 10.sp)),
+                                        style: TextStyle(
+                                          fontSize: 12.sp,
+                                          fontWeight: FontWeight.w500,
+                                          color: COLOR_BLUE_DARK,
+                                        )),
                                   ],
                                 ),
                               )
