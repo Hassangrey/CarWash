@@ -46,7 +46,7 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
           double.parse(provider.selectedOrder2!.driver!.profile!.latt!);
     }
 
-    //  print("langandlott ${longDriver}:$lattDriver");
+    print("langandlott ${longDriver}:$lattDriver");
 
     setState(() {});
   }
@@ -97,19 +97,17 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
     getUserCurrentLocation();
     timer = Timer.periodic(Duration(seconds: 1), (Timer t) {
       getOrder();
-      if (provider.selectedOrder2 != null &&
-          provider.selectedOrder2!.driver != null &&
-          provider.selectedOrder2!.driver!.profile != null &&
-          provider.selectedOrder2!.driver!.profile!.long != null &&
-          provider.selectedOrder2!.driver!.profile!.latt != null) {
-        var longDriver2 =
-            double.parse(provider.selectedOrder2!.driver!.profile!.long!);
-        var lattDriver2 =
-            double.parse(provider.selectedOrder2!.driver!.profile!.latt!);
 
-        getDriverLiveLocation(lattDriver2, longDriver2);
-      }
+      var longDriver2 =
+          double.parse(provider.selectedOrder2!.driver!.profile!.long!);
+      var lattDriver2 =
+          double.parse(provider.selectedOrder2!.driver!.profile!.latt!);
+
+      getDriverLiveLocation(lattDriver2, longDriver2);
     });
+    getOrder();
+
+    // });
   }
 
   @override
@@ -200,7 +198,7 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
     var order = provider.selectedOrder2!;
     lattDriver = double.parse(order.driver!.profile!.latt!);
     longDriver = double.parse(order.driver!.profile!.long!);
-    // print('$lattDriver +  + $longDriver');
+    print('$lattDriver + ddddddddddddddddddddr + $longDriver');
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: LatLng(lattDriver, longDriver), zoom: 16.951926040649414)));

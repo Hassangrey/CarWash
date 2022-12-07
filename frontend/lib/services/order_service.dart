@@ -39,11 +39,13 @@ class OrderService {
   static Future get_one(int id) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
+    print("id is $id");
 
     var req = await client.get(Uri.parse(baseUrl + "order/" + id.toString()),
         headers: {'Authorization': 'JWT $token'});
 
     final data = jsonDecode(req.body);
+    print("fff $data");
     if (data != null) {
       Order orders = Order.fromMap(data);
 
