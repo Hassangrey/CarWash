@@ -67,7 +67,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                       ),
                       child: InkWell(
                         onTap: () async {
-                          changeid(orders[index].id);
+                          changeid(orders[index - 1].id);
                           BottomSheet(context, index);
                         },
                         child: Row(
