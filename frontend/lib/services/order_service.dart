@@ -55,9 +55,9 @@ class OrderService {
   static Future create(OrderCreate order, SP, latt, long) async {
     var sp = await OrderService.getSpecificUser(SP.name);
     User user = await getUser();
-    order.service_provider = sp.toString();
+    order.service_provider = sp.id.toString();
     order.user = user.id.toString();
-    order.status = "PENDING";
+    order.status = 'INITIAL';
     order.latt = latt;
     order.long = long;
     var client = http.Client();
@@ -72,6 +72,7 @@ class OrderService {
         body: new_order);
 
     final data = jsonDecode(req.body);
+    print(data);
     // if (data != null) {
     //   Item items = Item.fromJson(data);
 
@@ -144,7 +145,7 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
-    print("User here $userData");
+    // print("User here $userData");
     User user = User.fromMap(userData);
     // print("User here after $userData");
 
@@ -173,11 +174,14 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
-
+    // print(userData);
     List<dynamic> users = userData.map((json) => User2.fromMap(json)).toList();
-    int? id = null;
+    // print(users);
+    var id = null;
 
     users.forEach((element) {
+      // print(element);
+
       if (element.username == username) {
         id = element;
         return element;
