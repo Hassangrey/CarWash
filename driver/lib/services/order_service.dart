@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter_session/flutter_session.dart';
 import 'package:http/http.dart' as http;
+import 'package:safacw/Models/OrderComp.dart';
 import 'package:safacw/Models/Profile2.dart';
 import 'package:safacw/Models/User.dart';
 import 'package:safacw/Models/User2.dart';
@@ -191,7 +192,7 @@ class OrderService {
     return null;
   }
 
-  static Future completeOrder(Order order) async {
+  static Future completeOrder(OrderComp order) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
     User user = await getUser();
