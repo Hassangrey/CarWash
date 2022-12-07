@@ -191,6 +191,35 @@ class OrderService {
     return null;
   }
 
+  static Future completeOrder(Order order) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    User user = await getUser();
+    // var id = await getProfileID(user.username);
+
+    print("IAM USER $user");
+
+    // var new_order = orderAddress.toJson();
+    var req = await client.patch(
+        Uri.parse(baseUrl + "order/" + order.id.toString() + '/'),
+        headers: {
+          'Authorization': 'JWT $token',
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: order.toJson());
+
+    final data = jsonDecode(req.body);
+    print("");
+    print("IAM DATA $data");
+    // if (data != null) {
+    //   Profile addresses = Profile.fromMap(data);
+    //   print(" MEEEEEEEEEEEEEEEEEEE r${addresses.long}:${addresses.latt}");
+
+    //   return addresses;
+    // }
+    return null;
+  }
+
   static Future delete(Order order) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];

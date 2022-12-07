@@ -57,6 +57,13 @@ class _acceptedOrder extends State<acceptedOrder> {
     print(orders);
   }
 
+  completeOrder() async {
+    var newOrder = Order(status: 'COMPLETED');
+    var orders = await Provider.of<DriverProvider>(context, listen: false)
+        .completeOrder(newOrder);
+    print(orders);
+  }
+
   getSPLongAndLat() {
     var provider = Provider.of<DriverProvider>(context, listen: false);
     Order order = provider.orders[provider.selectedOrder!];
@@ -164,7 +171,10 @@ class _acceptedOrder extends State<acceptedOrder> {
           body: Text('Good job!',
               textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold)),
-        )..show().then((value) => ps.cancel());
+        )..show().then((value) {
+            completeOrder();
+            ps.cancel();
+          });
       }
 
       getStreaming();

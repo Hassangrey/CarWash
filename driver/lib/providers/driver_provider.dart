@@ -54,4 +54,13 @@ class DriverProvider extends ChangeNotifier {
 
     notifyListeners();
   }
+
+  completeOrder(Order order) async {
+    print('Loading data...');
+    order.id = orders[this.selectedOrder!].id;
+
+    (await OrderService.completeOrder(order));
+
+    notifyListeners();
+  }
 }
