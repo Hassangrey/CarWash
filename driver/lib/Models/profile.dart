@@ -7,12 +7,14 @@ class Profile {
   String? latt;
   bool? status;
   String? phone;
+  String? imgPath;
   Profile({
     this.real_name,
     this.long,
     this.latt,
     this.status,
     this.phone,
+    this.imgPath,
   });
 
   Profile copyWith({
@@ -21,6 +23,7 @@ class Profile {
     String? latt,
     bool? status,
     String? phone,
+    String? imgPath,
   }) {
     return Profile(
       real_name: real_name ?? this.real_name,
@@ -28,6 +31,7 @@ class Profile {
       latt: latt ?? this.latt,
       status: status ?? this.status,
       phone: phone ?? this.phone,
+      imgPath: imgPath ?? this.imgPath,
     );
   }
 
@@ -38,6 +42,7 @@ class Profile {
       'latt': latt,
       'status': status,
       'phone': phone,
+      'imgPath': imgPath,
     };
   }
 
@@ -48,6 +53,7 @@ class Profile {
       latt: map['latt'] != null ? map['latt'] as String : null,
       status: map['status'] != null ? map['status'] as bool : null,
       phone: map['phone'] != null ? map['phone'] as String : null,
+      imgPath: map['imgPath'] != null ? map['imgPath'] as String : null,
     );
   }
 
@@ -58,7 +64,7 @@ class Profile {
 
   @override
   String toString() {
-    return 'Profile(real_name: $real_name, long: $long, latt: $latt, status: $status, phone: $phone)';
+    return 'Profile(real_name: $real_name, long: $long, latt: $latt, status: $status, phone: $phone, imgPath: $imgPath)';
   }
 
   @override
@@ -69,7 +75,8 @@ class Profile {
         other.long == long &&
         other.latt == latt &&
         other.status == status &&
-        other.phone == phone;
+        other.phone == phone &&
+        other.imgPath == imgPath;
   }
 
   @override
@@ -78,6 +85,7 @@ class Profile {
         long.hashCode ^
         latt.hashCode ^
         status.hashCode ^
-        phone.hashCode;
+        phone.hashCode ^
+        imgPath.hashCode;
   }
 }

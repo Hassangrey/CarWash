@@ -46,6 +46,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     List<dynamic> orders =
         Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
     var provider = Provider.of<CarWashProvider>(context);
+    var sp = provider.selectedSP;
 
     return PageLayout(
         child: provider.isLoading
@@ -76,7 +77,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               height: 50.h,
                               margin: EdgeInsets.all(5),
                               child: Image.network(
-                                '${orders[index].ImgPath}',
+                                '${orders[index].service_provider.profile.imgPath}',
                               ),
                             ),
                             Container(
@@ -130,33 +131,37 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   width: double.infinity,
                   margin: EdgeInsets.all(5),
                   child: Image.network(
-                    '${orders[index].ImgPath}',
+                    '${orders[index].service_provider.profile.imgPath}',
                     width: 50.w,
                     height: 50.h,
                     alignment: Alignment.center,
                   ),
                 ),
-                TextButton(
-                    onPressed: () async {
-                      Navigator.pop(context);
-                      Navigator.pushNamed(context, TrackDriverScreen.id);
-                    },
-                    child: Text('Go To Map')),
-                addHorizontalSpace(70.w),
-                Text(
-                  '${order.status.toString()}',
-                  textAlign: TextAlign.center,
-                  style: order.status.toString() == "PENDING"
-                      ? TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.amber,
-                          color: Colors.white)
-                      : TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                          backgroundColor: Colors.green[600],
-                          color: Colors.white),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    TextButton(
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          Navigator.pushNamed(context, TrackDriverScreen.id);
+                        },
+                        child: Text('Go To Map')),
+                    Text(
+                      '${order.status.toString()}',
+                      textAlign: TextAlign.center,
+                      style: order.status.toString() == "PENDING"
+                          ? TextStyle(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.amber,
+                              color: Colors.white)
+                          : TextStyle(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                              backgroundColor: Colors.green[600],
+                              color: Colors.white),
+                    ),
+                  ],
                 ),
                 Container(
                     width: double.infinity,

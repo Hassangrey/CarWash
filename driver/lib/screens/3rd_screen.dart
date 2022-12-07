@@ -81,7 +81,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                             height: 50.h,
                             margin: EdgeInsets.all(5),
                             child: Image.network(
-                              '${orders[index].ImgPath}',
+                              '${orders[index].service_provider.profile.imgPath}',
                             ),
                           ),
                           Container(
@@ -133,7 +133,7 @@ class _ThirdScreen extends State<ThirdScreen> {
                   width: double.infinity,
                   margin: EdgeInsets.all(5),
                   child: Image.network(
-                    '${orders[index].ImgPath}',
+                    '${orders[index].service_provider.profile.imgPath}',
                     width: 50.w,
                     height: 50.h,
                     alignment: Alignment.center,

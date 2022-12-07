@@ -66,7 +66,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               height: 50.h,
                               margin: EdgeInsets.all(5),
                               child: Image.network(
-                                '${orders[index].ImgPath}',
+                                '${orders[index].service_provider.profile.imgPath}',
                               ),
                             ),
                             Container(
