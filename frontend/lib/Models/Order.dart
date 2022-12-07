@@ -82,7 +82,7 @@ class Order {
       id: map['id'] != null ? map['id'] as int : null,
       items: map['items'] != null
           ? List<Item>.from(
-              (map['items'] as List<int>).map<Item?>(
+              (map['items'] as List<dynamic>).map<Item?>(
                 (x) => Item.fromMap(x as Map<String, dynamic>),
               ),
             )

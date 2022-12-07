@@ -31,7 +31,7 @@ class OrderService {
           Uri.parse(baseUrl + "order?driver=${user.username}"),
           headers: {'Authorization': 'JWT $token'});
     } else {
-      req = await client.get(Uri.parse(baseUrl + "order"),
+      req = await client.get(Uri.parse(baseUrl + "order?status=PENDING"),
           headers: {'Authorization': 'JWT $token'});
     }
 
@@ -63,6 +63,7 @@ class OrderService {
   static Future create(Order order) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
+
     var new_order = order.toJson();
     var req = await client.post(Uri.parse(baseUrl + "order/"),
         headers: {'Authorization': 'JWT $token'}, body: new_order);
@@ -120,7 +121,7 @@ class OrderService {
     print(user);
 
     order.driver = user;
-    order.status = 'ACCEPTED';
+    order.status = 'PENDING_SP';
     AcceptedOrder acceptedOrder =
         AcceptedOrder(id: order.id, driver: user.id, status: 'ACCEPTED');
     var new_order = acceptedOrder.toJson();
