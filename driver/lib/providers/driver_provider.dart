@@ -14,8 +14,11 @@ class DriverProvider extends ChangeNotifier {
   int? selectedOrder;
   dynamic? me;
   getMe() async {
+    isLoading = true;
+
     me = await OrderService.getUser();
     me.profile = await OrderService.getProfile(me.username);
+    isLoading = false;
 
     notifyListeners();
   }
