@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safacw/Models/Item.dart';
 import 'package:safacw/Models/Order.dart';
+import 'package:safacw/Models/OrderComp.dart';
 import 'package:safacw/Models/order_address.dart';
 import 'package:safacw/services/item_service.dart';
 import 'package:safacw/services/order_service.dart';
@@ -61,8 +62,9 @@ class DriverProvider extends ChangeNotifier {
   completeOrder(Order order) async {
     print('Loading data...');
     order.id = orders[this.selectedOrder!].id;
+    var x = OrderComp(id: orders[this.selectedOrder!].id, status: "COMPLETED");
 
-    (await OrderService.completeOrder(order));
+    (await OrderService.completeOrder(x));
 
     notifyListeners();
   }
