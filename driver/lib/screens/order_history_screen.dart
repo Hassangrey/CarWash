@@ -66,7 +66,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               height: 50.h,
                               margin: EdgeInsets.all(5),
                               child: Image.network(
-                                'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                                '${orders[index].ImgPath}',
                               ),
                             ),
                             Container(
@@ -117,7 +117,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   width: double.infinity,
                   margin: EdgeInsets.all(5),
                   child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                    '${orders[index].ImgPath}',
                     width: 50.w,
                     height: 50.h,
                     alignment: Alignment.center,
@@ -153,7 +153,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                                 height: 50.h,
                                 margin: EdgeInsets.all(5),
                                 child: Image.network(
-                                  'https://upload.wikimedia.org/wikipedia/commons/9/94/KFUPM_seal.png',
+                                  '${items[index].ImgPath}',
                                 ),
                               ),
                               Container(
