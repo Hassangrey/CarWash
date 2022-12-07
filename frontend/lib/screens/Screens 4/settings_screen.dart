@@ -21,8 +21,10 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   getMe() async {
-    var orders =
-        await Provider.of<CarWashProvider>(context, listen: false).getMe();
+    var provider = await Provider.of<CarWashProvider>(context, listen: false);
+    if (provider.me == null) {
+      provider.getMe();
+    }
   }
 
   @override
@@ -36,7 +38,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
     return PageLayout(
-        child: provider.isLoading
+        child: provider.me != null
             ? Center(child: CircularProgressIndicator())
             : Wrap(children: [
                 Container(
