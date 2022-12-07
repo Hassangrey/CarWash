@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:safacw/Models/User.dart';
 import 'package:safacw/Models/User2.dart';
 import 'package:safacw/Models/order_create.dart';
+import 'package:safacw/models/profile.dart';
 import 'package:safacw/services/constants.dart';
 
 import '../Models/Address.dart';
@@ -150,6 +151,21 @@ class OrderService {
     return user;
   }
 
+  static Future getProfile(username) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrl + "profiles/${username}"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+
+    var profile = Profile.fromMap(userData);
+
+    return profile;
+
+    // print("User here after $userData");
+  }
+
   static Future getSpecificUser(username) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
@@ -162,8 +178,8 @@ class OrderService {
     int? id = null;
     users.forEach((element) {
       if (element.username == username) {
-        id = element.id;
-        return element.id;
+        id = element;
+        return element;
       }
     });
     return id;

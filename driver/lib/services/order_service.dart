@@ -84,11 +84,32 @@ class OrderService {
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
-    // print("User here $userData");
+    print("User here $userData");
     User user = User.fromMap(userData);
     // print("User here after $userData");
 
     return user;
+  }
+
+  static Future getSpecificUser(username) async {
+    var client = http.Client();
+    var token = (await AuthService.getToken())['token'];
+    var req = await client.get(Uri.parse(baseUrlForAuth + "/auth/users/"),
+        headers: {'Authorization': 'JWT $token'});
+
+    final userData = jsonDecode(req.body);
+
+    List<dynamic> users = userData.map((json) => User2.fromMap(json)).toList();
+    int? id = null;
+    users.forEach((element) {
+      if (element.username == username) {
+        id = element.id;
+        return element.id;
+      }
+    });
+    return id;
+
+    // print("User here after $userData");
   }
 
   static Future update(Order order) async {
@@ -122,24 +143,17 @@ class OrderService {
     return null;
   }
 
-  static Future getProfileID(username) async {
+  static Future getProfile(username) async {
     var client = http.Client();
     var token = (await AuthService.getToken())['token'];
-    var req = await client.get(Uri.parse(baseUrl + "profiles/"),
+    var req = await client.get(Uri.parse(baseUrl + "profiles/${username}"),
         headers: {'Authorization': 'JWT $token'});
 
     final userData = jsonDecode(req.body);
 
-    List<dynamic> users =
-        userData.map((json) => Profile.fromMap(json)).toList();
-    int? id = null;
-    users.forEach((element) {
-      if (element.username == username) {
-        id = element.id;
-        return element.id;
-      }
-    });
-    return id;
+    var profile = Profile.fromMap(userData);
+
+    return profile;
 
     // print("User here after $userData");
   }

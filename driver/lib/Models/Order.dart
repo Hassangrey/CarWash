@@ -12,7 +12,7 @@ class Order {
   User? user;
   User? driver;
   User? service_provider;
-
+  String? ImgPath;
   String? long;
   String? latt;
   String? status;
@@ -24,6 +24,7 @@ class Order {
     this.user,
     this.driver,
     this.service_provider,
+    this.ImgPath,
     this.long,
     this.latt,
     this.status,
@@ -37,6 +38,7 @@ class Order {
     User? user,
     User? driver,
     User? service_provider,
+    String? ImgPath,
     String? long,
     String? latt,
     String? status,
@@ -49,6 +51,7 @@ class Order {
       user: user ?? this.user,
       driver: driver ?? this.driver,
       service_provider: service_provider ?? this.service_provider,
+      ImgPath: ImgPath ?? this.ImgPath,
       long: long ?? this.long,
       latt: latt ?? this.latt,
       status: status ?? this.status,
@@ -64,6 +67,7 @@ class Order {
       'user': user?.toMap(),
       'driver': driver?.toMap(),
       'service_provider': service_provider?.toMap(),
+      'ImgPath': ImgPath,
       'long': long,
       'latt': latt,
       'status': status,
@@ -77,7 +81,7 @@ class Order {
       id: map['id'] != null ? map['id'] as int : null,
       items: map['items'] != null
           ? List<Item>.from(
-              (map['items'] as List<dynamic>).map<Item?>(
+              (map['items'] as List<int>).map<Item?>(
                 (x) => Item.fromMap(x as Map<String, dynamic>),
               ),
             )
@@ -91,6 +95,7 @@ class Order {
       service_provider: map['service_provider'] != null
           ? User.fromMap(map['service_provider'] as Map<String, dynamic>)
           : null,
+      ImgPath: map['ImgPath'] != null ? map['ImgPath'] as String : null,
       long: map['long'] != null ? map['long'] as String : null,
       latt: map['latt'] != null ? map['latt'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
@@ -106,7 +111,7 @@ class Order {
 
   @override
   String toString() {
-    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, long: $long, latt: $latt, status: $status, price: $price, date: $date)';
+    return 'Order(id: $id, items: $items, user: $user, driver: $driver, service_provider: $service_provider, ImgPath: $ImgPath, long: $long, latt: $latt, status: $status, price: $price, date: $date)';
   }
 
   @override
@@ -119,6 +124,7 @@ class Order {
         other.user == user &&
         other.driver == driver &&
         other.service_provider == service_provider &&
+        other.ImgPath == ImgPath &&
         other.long == long &&
         other.latt == latt &&
         other.status == status &&
@@ -133,6 +139,7 @@ class Order {
         user.hashCode ^
         driver.hashCode ^
         service_provider.hashCode ^
+        ImgPath.hashCode ^
         long.hashCode ^
         latt.hashCode ^
         status.hashCode ^

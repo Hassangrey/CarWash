@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/Models/Order.dart';
+import 'package:safacw/Models/order_address.dart';
+import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -31,6 +35,27 @@ class _orderDetails extends State<orderDetails> {
   var cl;
   var lat, long;
   var _kGooglePlex;
+  var latitudeCustomer = 26.4207;
+  var longitudeCustomer = 50.0888;
+  var latitudeLaundry = 26.4207;
+  var longitudeLaundry = 50.087822;
+
+  getSPLongAndLat() {
+    var provider = Provider.of<DriverProvider>(context, listen: false);
+    Order order = provider.orders[provider.selectedOrder!];
+    var orderAddress = OrderAddress(
+        long: double.parse(order.service_provider!.profile!.long!),
+        latt: double.parse(order.service_provider!.profile!.latt!));
+    return orderAddress;
+  }
+
+  getuserLongAndLat() {
+    var provider = Provider.of<DriverProvider>(context, listen: false);
+    Order order = provider.orders[provider.selectedOrder!];
+    var orderAddress = OrderAddress(
+        long: double.parse(order.long!), latt: double.parse(order.latt!));
+    return orderAddress;
+  }
 
   getStreaming() {
     _kGooglePlex = CameraPosition(
@@ -71,6 +96,24 @@ class _orderDetails extends State<orderDetails> {
     // TODO: implement initState
     super.initState();
     // getPostion();
+    OrderAddress user = getuserLongAndLat();
+    OrderAddress SP = getSPLongAndLat();
+    latitudeCustomer = user.latt!;
+    longitudeCustomer = user.long!;
+    latitudeLaundry = SP.latt!;
+    longitudeLaundry = SP.long!;
+
+    marker = {
+      Marker(
+          markerId: MarkerId('customer'),
+          position: LatLng(user.latt!, user.long!),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          infoWindow: InfoWindow(title: 'customer')),
+      Marker(
+          markerId: MarkerId('laundry'),
+          position: LatLng(SP.latt!, SP.long!),
+          infoWindow: InfoWindow(title: 'laundry')),
+    };
 
     ps = Geolocator.getPositionStream().listen((Position position) {
       lat = position.latitude;

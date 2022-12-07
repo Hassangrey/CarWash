@@ -106,7 +106,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       // The phone number
                       margin: EdgeInsets.only(left: 30.w, top: 10.h),
                       child: Text(
-                        "+966 55 996 8801",
+                        "${provider.me.profile.phone}",
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 15, color: Colors.grey),
                       ),
@@ -117,7 +117,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       height: 50.h,
                       margin: EdgeInsets.only(left: 40.w, top: 10.h),
                       child: Text(
-                        "KFUPM Student Housing35248 Building 830 Room 216",
+                        "address ${provider.me.profile.latt}:${provider.me.profile.long}",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(fontSize: 12, color: Colors.grey),

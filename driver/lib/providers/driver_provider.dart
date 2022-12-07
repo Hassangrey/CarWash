@@ -12,6 +12,13 @@ class DriverProvider extends ChangeNotifier {
   List<dynamic> ordersHistory = [];
 
   int? selectedOrder;
+  dynamic? me;
+  getMe() async {
+    me = await OrderService.getUser();
+    me.profile = await OrderService.getProfile(me.username);
+
+    notifyListeners();
+  }
 
   getAllOrders() async {
     isLoading = true;

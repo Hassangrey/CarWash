@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+import 'package:safacw/providers/driver_provider.dart';
 import 'package:safacw/screens/change_phone.dart';
 import 'package:safacw/widgets/page_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,11 +12,30 @@ import 'package:url_launcher/url_launcher.dart' as Urllancher;
 
 import 'change_password.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
   static const String id = '/SettingsPage';
+
+  @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  getMe() async {
+    var orders =
+        await Provider.of<DriverProvider>(context, listen: false).getMe();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getMe();
+  }
+
   @override
   Widget build(BuildContext context) {
+    var me = Provider.of<DriverProvider>(context, listen: false).me;
     return PageLayout(
       child: Wrap(children: [
         Container(
@@ -69,7 +90,7 @@ class SettingsPage extends StatelessWidget {
                         // The first and last name
                         margin: EdgeInsets.only(left: 10.w, top: 20.h),
                         child: Text(
-                          "Ziyad Alwagdani",
+                          "${me.username}",
                           style: TextStyle(fontSize: 20),
                         ),
                       ),
@@ -77,7 +98,7 @@ class SettingsPage extends StatelessWidget {
                         // The email
                         margin: EdgeInsets.only(left: 30.w, top: 10.h),
                         child: Text(
-                          "zalwagdani@hotmail.com",
+                          "${me.email}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 15, color: Colors.grey),
                         ),
@@ -86,7 +107,7 @@ class SettingsPage extends StatelessWidget {
                         // The phone number
                         margin: EdgeInsets.only(left: 30.w, top: 10.h),
                         child: Text(
-                          "+966 55 996 8801",
+                          "${me.profile.phone}",
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 15, color: Colors.grey),
                         ),
@@ -97,7 +118,7 @@ class SettingsPage extends StatelessWidget {
                         height: 50.h,
                         margin: EdgeInsets.only(left: 40.w, top: 10.h),
                         child: Text(
-                          "KFUPM Student Housing35248 Building 830 Room 216",
+                          "address ${me.profile.latt}:${me.profile.long}",
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontSize: 12, color: Colors.grey),
