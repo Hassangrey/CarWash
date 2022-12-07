@@ -35,16 +35,14 @@ class _TrackDriverScreenState extends State<TrackDriverScreen> {
     provider.getOrder(provider.selectedOrder!);
     // var order = provider.selectedOrder2!;
     // print(order);
-    if (provider.selectedOrder2 != null &&
-        provider.selectedOrder2!.driver != null &&
-        provider.selectedOrder2!.driver!.profile != null &&
-        provider.selectedOrder2!.driver!.profile!.long != null &&
-        provider.selectedOrder2!.driver!.profile!.latt != null) {
-      longDriver =
-          double.parse(provider.selectedOrder2!.driver!.profile!.long!);
-      lattDriver =
-          double.parse(provider.selectedOrder2!.driver!.profile!.latt!);
-    }
+    // if (provider.selectedOrder2 != null &&
+    //     provider.selectedOrder2!.driver != null &&
+    //     provider.selectedOrder2!.driver!.profile != null &&
+    //     provider.selectedOrder2!.driver!.profile!.long != null &&
+    //     provider.selectedOrder2!.driver!.profile!.latt != null) {
+    longDriver = double.parse(provider.selectedOrder2!.driver!.profile!.long!);
+    lattDriver = double.parse(provider.selectedOrder2!.driver!.profile!.latt!);
+    // }
 
     print("langandlott ${longDriver}:$lattDriver");
 
