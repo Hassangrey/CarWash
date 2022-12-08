@@ -5,8 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2a8b632e-010b-4c3b-8082-7786334e0c62" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/driver/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/driver/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/driver/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/driver/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/driver/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/macos/Podfile" beforeDir="false" afterPath="$PROJECT_DIR$/driver/macos/Podfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/driver/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/driver/macos/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/driver/macos/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/lib/services/service_providers_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/services/service_providers_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/android/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/android/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/providers/carwash_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/providers/carwash_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 1/laundry_main_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 1/laundry_main_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 1/viewall_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 1/viewall_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 3/order_done.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 3/order_done.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 3/order_history_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 3/order_history_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 4/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 4/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/Screens 4/settings_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/Screens 4/settings_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/choose_provider_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/choose_provider_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/login_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/login_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/lib/screens/signup_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/lib/screens/signup_page.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -24,6 +24,7 @@ class ChooseProvider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context);
+
     return PageLayout(
         child: provider.isLoading
             ? Center(child: CircularProgressIndicator())
@@ -50,11 +51,11 @@ class ChooseProvider extends StatelessWidget {
                         child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              height: 56.h,
-                              width: 60.w,
-                              margin: EdgeInsets.all(8),
-                              color: COLOR_GREY,
+                            Image.network(
+                              'https://i.pinimg.com/736x/e2/e1/2c/e2e12c877e15445b698d59d7bfd1fe2d.jpg',
+                              width: 50.w,
+                              height: 50.h,
+                              alignment: Alignment.center,
                             ),
                             addHorizontalSpace(4.w),
                             Padding(

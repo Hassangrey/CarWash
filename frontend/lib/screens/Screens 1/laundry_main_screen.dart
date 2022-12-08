@@ -24,46 +24,52 @@ class LaundryMainScreen extends StatelessWidget {
   List<Item> offerItems = [];
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<CarWashProvider>(context);
     Size screenSize = MediaQuery.of(context).size;
     return PageLayout(
-      child: Padding(
-        padding: const EdgeInsets.all(14.0),
-        child: SingleChildScrollView(
-          primary: true,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                translation(context).offers_title,
-                style: (kServiceTitleStyle),
+      child: provider.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+              padding: const EdgeInsets.all(14.0),
+              child: SingleChildScrollView(
+                primary: true,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    provider.type == 'Laundry'
+                        ? Text(translation(context).offers_title,
+                            style: (kServiceTitleStyle))
+                        : SizedBox.shrink(),
+                    addVerticalSpace(18.h),
+                    provider.type == 'Laundry'
+                        ? OffersList()
+                        : SizedBox.shrink(),
+
+                    // addVerticalSpace(12.h), //  CategoriesList(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          translation(context).services_title,
+                          style: (kServiceTitleStyle),
+                        ),
+                        TextButton(
+                          onPressed: () =>
+                              Navigator.pushNamed(context, ViewAllScreen.id),
+                          child: Text(translation(context).viewall_title,
+                              style: const TextStyle(
+                                  color: COLOR_BLUE_DARK,
+                                  fontWeight: FontWeight.bold)),
+                        )
+                      ],
+                    ),
+                    addVerticalSpace(18.h),
+                    ServicesList(),
+                    // addVerticalSpace(50.h),
+                  ],
+                ),
               ),
-              addVerticalSpace(18.h),
-              OffersList(),
-              addVerticalSpace(12.h), //  CategoriesList(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    translation(context).services_title,
-                    style: (kServiceTitleStyle),
-                  ),
-                  TextButton(
-                    onPressed: () =>
-                        Navigator.pushNamed(context, ViewAllScreen.id),
-                    child: Text(translation(context).viewall_title,
-                        style: const TextStyle(
-                            color: COLOR_BLUE_DARK,
-                            fontWeight: FontWeight.bold)),
-                  )
-                ],
-              ),
-              addVerticalSpace(18.h),
-              ServicesList(),
-              // addVerticalSpace(50.h),
-            ],
-          ),
-        ),
-      ),
+            ),
     );
   }
 }
@@ -110,7 +116,7 @@ class OffersList extends StatelessWidget {
                                 style: TextStyle(
                                     decoration: TextDecoration.lineThrough,
                                     color: Colors.red.withOpacity(0.6))),
-                            Text(
+                            const Text(
                               'SAR25',
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )
@@ -133,8 +139,8 @@ class OffersList extends StatelessWidget {
 class ServicesList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var carProvider = Provider.of<CarWashProvider>(context);
-    List<dynamic> items = carProvider.items;
+    var provider = Provider.of<CarWashProvider>(context);
+    List<dynamic> items = provider.items;
     // if (carProvider.type == "Laundry") {
     //   items = carProvider.myItems;
     // } else if (carProvider.type == "CarWash") {
@@ -142,65 +148,62 @@ class ServicesList extends StatelessWidget {
     // } else {
     //   items = carProvider.buildingCleaningItems;
     // }
-    return carProvider.isLoading
-        ? Center(child: CircularProgressIndicator())
-        : MediaQuery.removePadding(
-            context: context,
-            removeTop: true,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Catagories(),
-                const Divider(),
-                SizedBox(
-                  height: 300.h,
-                  child: GridView.count(
-                      primary: false,
-                      crossAxisCount:
-                          carProvider.type == "BuildingCleaning" ? 1 : 2,
-                      mainAxisSpacing: 40,
-                      crossAxisSpacing: 30,
-                      children: List.generate(items.length, (index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Expanded(
-                              child: Container(
-                                  alignment: Alignment.center,
-                                  width: 150.w,
-                                  height: 150.h,
-                                  decoration: BoxDecoration(
-                                      color: COLOR_GREY.withOpacity(0.09),
-                                      borderRadius:
-                                          BorderRadius.circular(10.r)),
-                                  child: Image.network(items[index].imgPath!)),
-                            ),
-                            Text(items[index].title!,
-                                style: TextStyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w400,
-                                    color: COLOR_BLUE_DARK)),
-                            Text('SAR' + items[index].price.toString(),
-                                style: TextStyle(
-                                    fontSize: 15.sp,
-                                    fontWeight: FontWeight.bold)),
-                            SizedBox(
-                                width: double.infinity,
-                                height: 30,
-                                child: ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: COLOR_BLUE_LIGHT),
-                                    onPressed: () {
-                                      MethodForDialog(context, index);
-                                    },
-                                    child: const Text('Add To Cart')))
-                          ],
-                        );
-                      })),
-                ),
-              ],
-            ),
-          );
+    return MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Catagories(),
+          const Divider(),
+          SizedBox(
+            height: provider.type == 'Laundry' ? 300.h : 600.h,
+            child: GridView.count(
+                primary: false,
+                crossAxisCount: provider.type == "BuildingCleaning" ? 1 : 2,
+                mainAxisSpacing: 40,
+                crossAxisSpacing: 30,
+                children: List.generate(items.length, (index) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: Container(
+                            alignment: Alignment.center,
+                            width: provider.type == 'Laundry'
+                                ? 150.w
+                                : double.infinity,
+                            height: 150.h,
+                            decoration: BoxDecoration(
+                                color: COLOR_GREY.withOpacity(0.09),
+                                borderRadius: BorderRadius.circular(10.r)),
+                            child: Image.network(items[index].imgPath!)),
+                      ),
+                      Text(items[index].title!,
+                          style: TextStyle(
+                              fontSize: 13.sp,
+                              fontWeight: FontWeight.w400,
+                              color: COLOR_BLUE_DARK)),
+                      Text('SAR' + items[index].price.toString(),
+                          style: TextStyle(
+                              fontSize: 15.sp, fontWeight: FontWeight.bold)),
+                      SizedBox(
+                          width: double.infinity,
+                          height: 30,
+                          child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: COLOR_BLUE_LIGHT),
+                              onPressed: () {
+                                MethodForDialog(context, index);
+                              },
+                              child: const Text('Add To Cart')))
+                    ],
+                  );
+                })),
+          ),
+        ],
+      ),
+    );
   }
 }
 

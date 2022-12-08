@@ -46,28 +46,27 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
     List<dynamic> orders =
         Provider.of<CarWashProvider>(context, listen: false).ordersHistory;
     var provider = Provider.of<CarWashProvider>(context);
-    var sp = provider.selectedSP;
 
     return PageLayout(
         child: provider.isLoading
-            ? Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : Container(
                 child: ListView.builder(
-                  padding: EdgeInsets.all(5),
+                  padding: const EdgeInsets.all(5),
                   itemCount: orders.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      padding: EdgeInsets.all(5),
+                      padding: const EdgeInsets.all(5),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20.r),
                         color: Colors.grey[100],
                       ),
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         bottom: 10,
                       ),
                       child: InkWell(
                         onTap: () async {
-                          changeid(orders[index - 1].id);
+                          changeid(orders[index].id);
                           BottomSheet(context, index);
                         },
                         child: Row(
@@ -75,15 +74,15 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                             Container(
                               width: 50.w,
                               height: 50.h,
-                              margin: EdgeInsets.all(5),
+                              margin: const EdgeInsets.all(5),
                               child: Image.network(
                                 '${orders[index].service_provider.profile.imgPath}',
                               ),
                             ),
                             Container(
-                              margin: EdgeInsets.only(left: 15),
+                              margin: const EdgeInsets.only(left: 15),
                               width: 170.w,
-                              child: Text('Order ${index + 1}'),
+                              child: Text('Order #${index + 1}'),
                             ),
                             Container(
                               padding: EdgeInsets.only(top: 15.h),
@@ -119,17 +118,17 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
 
     return showModalBottomSheet(
         isScrollControlled: true,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
         context: context,
         builder: (context) {
           return Container(
-            padding: EdgeInsets.all(10),
+            padding: const EdgeInsets.all(10),
             child: Wrap(
               children: [
                 Container(
                   width: double.infinity,
-                  margin: EdgeInsets.all(5),
+                  margin: const EdgeInsets.all(5),
                   child: Image.network(
                     '${orders[index].service_provider.profile.imgPath}',
                     width: 50.w,
@@ -140,32 +139,54 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    TextButton(
-                        onPressed: () async {
-                          Navigator.pop(context);
-                          Navigator.pushNamed(context, TrackDriverScreen.id);
-                        },
-                        child: Text('Go To Map')),
-                    Text(
-                      '${order.status.toString()}',
-                      textAlign: TextAlign.center,
-                      style: order.status.toString() == "PENDING"
-                          ? TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.bold,
-                              backgroundColor: Colors.amber,
-                              color: Colors.white)
-                          : TextStyle(
-                              fontSize: 15.sp,
-                              fontWeight: FontWeight.bold,
-                              backgroundColor: Colors.green[600],
-                              color: Colors.white),
-                    ),
+                    order.status.toString() == "ACCEPTED" &&
+                            provider.type == 'Laundry'
+                        ? TextButton(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                              Navigator.pushNamed(
+                                  context, TrackDriverScreen.id);
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                color: COLOR_BLUE_LIGHT,
+                                borderRadius: BorderRadius.circular(15),
+                              ),
+                              child: const Text(
+                                '🚘 Track Driver',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: COLOR_BLUE_DARK,
+                                ),
+                              ),
+                            ))
+                        : const SizedBox.shrink(),
+                    Text('${order.status.toString()}',
+                        textAlign: TextAlign.center,
+                        style: order.status.toString() == "INITIAL"
+                            ? TextStyle(
+                                fontSize: 15.sp,
+                                fontWeight: FontWeight.bold,
+                                backgroundColor: Colors.orange,
+                                color: Colors.white)
+                            : order.status.toString() == "PENDING"
+                                ? TextStyle(
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold,
+                                    backgroundColor: Colors.amber[600],
+                                    color: Colors.white)
+                                : TextStyle(
+                                    fontSize: 15.sp,
+                                    fontWeight: FontWeight.bold,
+                                    backgroundColor: Colors.green[600],
+                                    color: Colors.white)),
                   ],
                 ),
                 Container(
                     width: double.infinity,
-                    margin: EdgeInsets.all(5),
+                    margin: const EdgeInsets.all(5),
                     child: Text(
                       'Order No. ${orders[index].id.toString()}',
                       textAlign: TextAlign.center,
@@ -178,12 +199,12 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                     itemCount: items.length,
                     itemBuilder: (context, index) {
                       return Container(
-                          padding: EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20.r),
                             color: Colors.grey[200],
                           ),
-                          margin: EdgeInsets.only(
+                          margin: const EdgeInsets.only(
                             bottom: 10,
                           ),
                           child: Row(
@@ -191,13 +212,13 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                               Container(
                                 width: 50.w,
                                 height: 50.h,
-                                margin: EdgeInsets.all(5),
+                                margin: const EdgeInsets.all(5),
                                 child: Image.network(
                                   '${items[index].imgPath}',
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 15),
+                                margin: const EdgeInsets.only(left: 15),
                                 width: 170.w,
                                 child: Text(
                                   '${items[index].title}',

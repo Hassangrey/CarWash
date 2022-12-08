@@ -30,7 +30,7 @@ class OrderDoneScreen extends StatelessWidget {
             title: 'Go Back Home',
             onPressed: () {
               Navigator.pushNamedAndRemoveUntil(
-                  context, NavBarHolder.id, (route) => false);
+                  context, WelcomePage.id, (route) => false);
             },
           ),
           const Spacer(),

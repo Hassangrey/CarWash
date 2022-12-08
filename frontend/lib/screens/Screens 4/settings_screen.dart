@@ -35,226 +35,229 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     var provider = Provider.of<CarWashProvider>(context, listen: false);
-    return provider.isLoading
-        ? const Center(child: CircularProgressIndicator())
-        : PageLayout(
-            child: Wrap(children: [
-            Container(
-              // Settings Word
-              alignment: Alignment.center,
-              margin: const EdgeInsets.all(10),
-              child: const Text(
-                "Settings",
-                style: TextStyle(
-                  fontSize: 25,
-                ),
-              ),
-            ),
-            Container(
-              child: const Text(
-                // Personal details word
-                "Personal details",
-                style: TextStyle(fontSize: 20),
-              ),
-              margin: const EdgeInsets.only(left: 10, top: 10),
-              width: double.infinity,
-            ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Container(
-                  padding: const EdgeInsets.all(5),
-                  // The card contains the details
-                  width: 350.w,
-                  height: 200.h,
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 245, 244, 244),
-                      borderRadius: BorderRadius.all(Radius.circular(35))),
-                  margin: EdgeInsets.all(
-                    10.h,
+    return PageLayout(
+        child: provider.me == null
+            ? const Center(child: CircularProgressIndicator())
+            : Wrap(children: [
+                Container(
+                  // Settings Word
+                  alignment: Alignment.center,
+                  margin: const EdgeInsets.all(10),
+                  child: const Text(
+                    "Settings",
+                    style: TextStyle(
+                      fontSize: 25,
+                    ),
                   ),
-                  child: Row(
-                    children: [
-                      Container(
-                        // The image (Icon)
-                        alignment: AlignmentDirectional.topStart,
-                        width: 30.w,
-                        height: 250.h,
-                        child: const Icon(
-                          Icons.person,
-                          size: 75,
-                        ),
+                ),
+                Container(
+                  child: const Text(
+                    // Personal details word
+                    "Personal details",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                  margin: const EdgeInsets.only(left: 10, top: 10),
+                  width: double.infinity,
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Container(
+                      padding: const EdgeInsets.all(5),
+                      // The card contains the details
+                      width: 350.w,
+                      height: 200.h,
+                      decoration: const BoxDecoration(
+                          color: Color.fromARGB(255, 245, 244, 244),
+                          borderRadius: BorderRadius.all(Radius.circular(35))),
+                      margin: EdgeInsets.all(
+                        10.h,
                       ),
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                      child: Row(
                         children: [
                           Container(
-                            // The first and last name
-                            margin: EdgeInsets.only(left: 10.w, top: 20.h),
-                            child: Text(
-                              "${provider.me.username}",
-                              style: const TextStyle(fontSize: 20),
+                            // The image (Icon)
+                            alignment: AlignmentDirectional.topStart,
+                            width: 30.w,
+                            height: 250.h,
+                            child: const Icon(
+                              Icons.person,
+                              size: 75,
                             ),
                           ),
-                          Container(
-                            // The email
-                            margin: EdgeInsets.only(left: 30.w, top: 10.h),
-                            child: Text(
-                              "${provider.me.username}",
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 15, color: Colors.grey),
-                            ),
-                          ),
-                          Container(
-                            // The phone number
-                            margin: EdgeInsets.only(left: 30.w, top: 10.h),
-                            child: Text(
-                              "${provider.me.profile.phone}",
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 15, color: Colors.grey),
-                            ),
-                          ),
-                          Container(
-                            // The address
-                            width: 250.w,
-                            height: 50.h,
-                            margin: EdgeInsets.only(left: 40.w, top: 10.h),
-                            child: Text(
-                              "address ${provider.me.profile.latt}:${provider.me.profile.long}",
-                              maxLines: 2,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                  fontSize: 12, color: Colors.grey),
-                            ),
-                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Container(
+                                // The first and last name
+                                margin: EdgeInsets.only(left: 10.w, top: 20.h),
+                                child: Text(
+                                  "${provider.me.username}",
+                                  style: const TextStyle(fontSize: 20),
+                                ),
+                              ),
+                              Container(
+                                // The email
+                                margin: EdgeInsets.only(left: 30.w, top: 10.h),
+                                child: Text(
+                                  "${provider.me.email}",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontSize: 15, color: Colors.grey),
+                                ),
+                              ),
+                              Container(
+                                // The phone number
+                                margin: EdgeInsets.only(left: 30.w, top: 10.h),
+                                child: Text(
+                                  "${provider.me.profile.phone}",
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontSize: 15, color: Colors.grey),
+                                ),
+                              ),
+                              Container(
+                                // The address
+                                width: 250.w,
+                                height: 50.h,
+                                margin: EdgeInsets.only(left: 40.w, top: 10.h),
+                                child: Text(
+                                  '',
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      fontSize: 12, color: Colors.grey),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
-                      )
-                    ],
-                  )),
-            ),
-            Container(
-                // The first button (change password)
-                margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 30.h),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: const BorderSide(
-                          color: Colors.transparent,
-                          width: 2.0,
+                      )),
+                ),
+                Container(
+                    // The first button (change password)
+                    margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 30.h),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: const BorderSide(
+                              color: Colors.transparent,
+                              width: 2.0,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text("Change password "),
-                      Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                      )
-                    ],
-                  ),
-                  // To connect the button
-                  onPressed: () {
-                    Navigator.popAndPushNamed(context, ChangePassword.id);
-                  },
-                )),
-            Container(
-                // // The second button (change phone)
-                margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(
-                          color: Colors.transparent,
-                          width: 2.0.w,
+                      child: Row(
+                        children: [
+                          const Text("Change password "),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                          )
+                        ],
+                      ),
+                      // To connect the button
+                      onPressed: () {
+                        Navigator.popAndPushNamed(context, ChangePassword.id);
+                      },
+                    )),
+                Container(
+                    // // The second button (change phone)
+                    margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(
+                              color: Colors.transparent,
+                              width: 2.0.w,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      const Text("Change Phone Number"),
-                      Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                      )
-                    ],
-                  ),
-                  // to connect the button
-                  onPressed: () {
-                    Navigator.popAndPushNamed(context, ChangePhone.id);
-                  },
-                )),
-            // Container(
-            //     // The fourth button (Payment methods)
-            //     margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
-            //     child: ElevatedButton(
-            //       style: ButtonStyle(
-            //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            //           RoundedRectangleBorder(
-            //             borderRadius: BorderRadius.circular(18.0),
-            //             side: BorderSide(
-            //               color: Colors.transparent,
-            //               width: 2.0.w,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //       child: Row(
-            //         children: [
-            //           Text("Payement Method "),
-            //           Container(
-            //             alignment: AlignmentDirectional.centerEnd,
-            //           )
-            //         ],
-            //       ),
-            //       // to connect
-            //       onPressed: () {},
-            //     )),
-            Container(
-                // The fifth button (Help)
-                margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
-                child: ElevatedButton(
-                  style: ButtonStyle(
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(18.0),
-                        side: BorderSide(
-                          color: Colors.transparent,
-                          width: 2.0.w,
+                      child: Row(
+                        children: [
+                          const Text("Change Phone Number"),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                          )
+                        ],
+                      ),
+                      // to connect the button
+                      onPressed: () {
+                        Navigator.popAndPushNamed(context, ChangePhone.id);
+                      },
+                    )),
+                // Container(
+                //     // The fourth button (Payment methods)
+                //     margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
+                //     child: ElevatedButton(
+                //       style: ButtonStyle(
+                //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                //           RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(18.0),
+                //             side: BorderSide(
+                //               color: Colors.transparent,
+                //               width: 2.0.w,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //       child: Row(
+                //         children: [
+                //           Text("Payement Method "),
+                //           Container(
+                //             alignment: AlignmentDirectional.centerEnd,
+                //           )
+                //         ],
+                //       ),
+                //       // to connect
+                //       onPressed: () {},
+                //     )),
+                Container(
+                    // The fifth button (Help)
+                    margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 10.h),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        shape:
+                            MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(18.0),
+                            side: BorderSide(
+                              color: Colors.transparent,
+                              width: 2.0.w,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      child: Row(
+                        children: [
+                          const Text("Help"),
+                          Container(
+                            alignment: AlignmentDirectional.centerEnd,
+                          )
+                        ],
+                      ),
+                      //to connect
+                      onPressed: () {
+                        Urllancher.launch("tel:+966559968801");
+                      },
+                    )),
+                Container(
+                  height: 33.h,
+                  // The fifth button (logout)
+                  margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 15.h),
+                  child: MyCustomButton(
+                    title: "Logout",
+                    color: const Color.fromARGB(255, 249, 106, 95),
+                    onPressed: () {},
                   ),
-                  child: Row(
-                    children: [
-                      const Text("Help"),
-                      Container(
-                        alignment: AlignmentDirectional.centerEnd,
-                      )
-                    ],
-                  ),
-                  //to connect
-                  onPressed: () {
-                    Urllancher.launch("tel:+966559968801");
-                  },
-                )),
-            Container(
-              height: 33.h,
-              // The fifth button (logout)
-              margin: EdgeInsets.only(left: 10.w, right: 10.w, top: 15.h),
-              child: MyCustomButton(
-                title: "Logout",
-                color: const Color.fromARGB(255, 249, 106, 95),
-                onPressed: () {},
-              ),
 
-              //to connect
-            )
-          ]));
+                  //to connect
+                )
+              ]));
   }
 }

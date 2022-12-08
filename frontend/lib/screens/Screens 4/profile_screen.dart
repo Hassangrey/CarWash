@@ -17,80 +17,113 @@ class ProfileScreen extends StatelessWidget {
 
         // Change Name
 
-        SizedBox(height: 45,),
+        const SizedBox(
+          height: 45,
+        ),
         Container(
-          child:Text('Change your name', style: TextStyle(fontSize: 20),) ,
+          child: const Text(
+            'Change your name',
+            style: TextStyle(fontSize: 20),
           ),
+        ),
 
-        SizedBox(height: 10,),
-          TextField(
-            keyboardType: TextInputType.name,
-            decoration: InputDecoration(
-              hintText: 'New Name',
-              prefixIcon: Icon(Icons.person)
-            ),
-          ),
-        Column(children: [
-          TextButton(
-            onPressed:(){showActionSnackBar(context, 'Your name has been change!');}, 
-            child: Text('Change'), 
-            style:TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.blueAccent,) )
-        ],),
+        const SizedBox(
+          height: 10,
+        ),
+        const TextField(
+          keyboardType: TextInputType.name,
+          decoration: InputDecoration(
+              hintText: 'New Name', prefixIcon: Icon(Icons.person)),
+        ),
+        Column(
+          children: [
+            TextButton(
+                onPressed: () {
+                  showActionSnackBar(context, 'Your name has been change!');
+                },
+                child: const Text('Change'),
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.blueAccent,
+                ))
+          ],
+        ),
         // Change Email
-        
-        SizedBox(height: 25,),
-        Container(
-          child:Text('Change your Email', style: TextStyle(fontSize: 20),) ,
-          ),
 
-        SizedBox(height: 10,),
-          TextField(
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(
-              hintText: 'New Email',
-              prefixIcon: Icon(Icons.email)
-            ),
+        const SizedBox(
+          height: 25,
+        ),
+        Container(
+          child: const Text(
+            'Change your Email',
+            style: TextStyle(fontSize: 20),
           ),
-        Column(children: [
-          TextButton(onPressed:(){showActionSnackBar(context, 'Your Email has been change!');}, 
-          child: Text('Change'), 
-          style:TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.blueAccent,) )
-        ],),
+        ),
+
+        const SizedBox(
+          height: 10,
+        ),
+        const TextField(
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(
+              hintText: 'New Email', prefixIcon: Icon(Icons.email)),
+        ),
+        Column(
+          children: [
+            TextButton(
+                onPressed: () {
+                  showActionSnackBar(context, 'Your Email has been change!');
+                },
+                child: const Text('Change'),
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.blueAccent,
+                ))
+          ],
+        ),
 
         // Change Password
-        
-        SizedBox(height: 25,),
+
+        const SizedBox(
+          height: 25,
+        ),
         Container(
-          child:Text('Change your Password', style: TextStyle(fontSize: 20),) ,
+          child: const Text(
+            'Change your Password',
+            style: TextStyle(fontSize: 20),
           ),
+        ),
 
-          // Old Password
+        // Old Password
 
-        SizedBox(height: 10,),
-        TextField(
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
-              hintText: 'Old Password',
-              prefixIcon: Icon(Icons.password)
-            ),
-          ),
+        const SizedBox(
+          height: 10,
+        ),
+        const TextField(
+          keyboardType: TextInputType.visiblePassword,
+          decoration: InputDecoration(
+              hintText: 'Old Password', prefixIcon: Icon(Icons.password)),
+        ),
 
-          // New Password
-          TextField(
-            keyboardType: TextInputType.visiblePassword,
-            decoration: InputDecoration(
-              hintText: 'New Password',
-              prefixIcon: Icon(Icons.password)
-            ),
-          ),
-        Column(children: [
-          TextButton(onPressed:(){showActionSnackBar(context, 'Your Password has been change!');}, 
-          child: Text('Change'), 
-          style:TextButton.styleFrom(primary: Colors.white, backgroundColor: Colors.blueAccent,) )
-        ],),
-
-
-        
+        // New Password
+        const TextField(
+          keyboardType: TextInputType.visiblePassword,
+          decoration: InputDecoration(
+              hintText: 'New Password', prefixIcon: Icon(Icons.password)),
+        ),
+        Column(
+          children: [
+            TextButton(
+                onPressed: () {
+                  showActionSnackBar(context, 'Your Password has been change!');
+                },
+                child: const Text('Change'),
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.blueAccent,
+                ))
+          ],
+        ),
       ]),
     );
   }

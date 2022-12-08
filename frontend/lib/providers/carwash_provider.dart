@@ -26,9 +26,7 @@ class CarWashProvider extends ChangeNotifier {
     me = await OrderService.getUser();
     if (me != null) {
       me.profile = await OrderService.getProfile(me.username);
-      print(me);
     }
-
     isLoading = false;
     notifyListeners();
   }

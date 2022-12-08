@@ -370,7 +370,7 @@ class _SignUpPageState extends State<SignUpPage> {
         child: const Text(
           'SIGN UP',
           style: TextStyle(
-            color: Color(0xFF3c8ad1),
+            color: Colors.white,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -453,21 +453,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         buildPassword(),
                         const SizedBox(height: 15),
                         buildConfirmPassword(),
-                        const SizedBox(height: 25),
-                        TextButton(
-                          onPressed: () => Navigator.pushNamed(
-                            context,
-                            WelcomePage.id,
-                          ),
-                          child: Text(
-                            'Skip ->',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 24.sp,
-                            ),
-                          ),
-                        ),
+                        const SizedBox(height: 15),
                         buildSignUpBtn(),
                         buildLoginBtn(() {
                           Navigator.popAndPushNamed(context, LoginScreen.id);
